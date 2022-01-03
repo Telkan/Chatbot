@@ -74,7 +74,7 @@ nlu:
     examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
-    - go to my [voicemail] and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
+    - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
     - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
 
   - do_I_have_new_msg
@@ -84,16 +84,29 @@ nlu:
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
 
   - change_voicemail_msg
-    use_entities: true
+    examples: |
+    - I want to change my voicemail message
+    - I would like to record another voicemail message
+
   - archive_email
     examples: |
-    - can you archive my [last]{"entity": "reception_time", "value": "Last"} email{"entity": "medium_comm", "value": "Email"} in the folder UPSSITECH ?
-    - can you archive every emails from [etam]
-    - can you save the 
+    - can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
+    - can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
+    - can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
 
   - call_contact
-    use_entities: true
+    examples: |
+    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
+
   - schedule_appointment
-    use_entities: true
+    examples: |
+    - Schedule an appointment for the [dentist]{"entity": "appointment_object", "value": "Dentist"} [tuesday]{"entity": "date", "value": "tuesday"} at [ten]{"entity": "timetable", "value": "ten"} [a.m]{"entity": "day_moment", "value": "a.m"}
+    - Can you add a new appointment in my agenda please ?
+    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
+    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening]{"entity": "day_moment", "value": "Evening"}at [eight]{"entity": "timetable", "value": "eight"}
+    - Add an appointment [in two hours]{"entity": "timetable", "value": "In two hours"}
+
   - modify_appointment
-    use_entities: true
+    examples: |
+    - Can you move this appointment ?
