@@ -31,7 +31,14 @@ nlu:
     - bye bye
     - see you later
 
-- intent: affirm
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: confirm
   examples: |
     - yes
     - y
@@ -40,7 +47,7 @@ nlu:
     - that sounds good
     - correct
 
-- intent: deny
+- intent: decline
   examples: |
     - no
     - n
@@ -50,43 +57,43 @@ nlu:
     - no way
     - not really
 
-- intent: mood_great
+- find_msg
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - what did [mom]{"entity": "contact", "value": "Mom"} say ?
+    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS] ? {"entity": "medium_comm", "value": "SMS"}
+    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
+    - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
+    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - write_new_msg
+    examples: |
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - delete_msg
+    examples: |
+    - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+    - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
+    - go to my [voicemail] and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
+    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+
+  - do_I_have_new_msg
+    examples: |
+    - do I have new [messages]{"entity": "medium_comm"} ?
+    - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
+    - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
+
+  - change_voicemail_msg
+    use_entities: true
+  - archive_email
+    examples: |
+    - can you archive my [last]{"entity": "reception_time", "value": "Last"} email{"entity": "medium_comm", "value": "Email"} in the folder UPSSITECH ?
+    - can you archive every emails from [etam]
+    - can you save the 
+
+  - call_contact
+    use_entities: true
+  - schedule_appointment
+    use_entities: true
+  - modify_appointment
+    use_entities: true
