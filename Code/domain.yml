@@ -29,6 +29,16 @@ intents:
     use_entities: true
   - modify_appointment
     use_entities: true
+entities:
+- contact
+- reception_time
+- medium_comm
+- quantity_msg
+- archive
+- appointment_object
+- date
+- timetable
+- day_moment
 responses:
   utter_greet:
   - text: "Hey! How are you?"
