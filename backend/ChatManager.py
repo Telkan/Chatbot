@@ -1,22 +1,21 @@
-from os import remove
-
-import vlc
-
 import speech_recognition as sr  
 from gtts import gTTS
-import time
-from io import BytesIO
+from playsound import playsound
 
 def textToSpeech(outputText):
-    audioFilePointer = BytesIO()
     tts = gTTS(outputText)
-    tts.write_to_fp(audioFilePointer)
-    
+    tts.save('temp.mp3')
 
-    pass 
+    repeat = True
+    while repeat:
+        try:
+            playsound("temp.mp3")
+            repeat = False 
+        except :
+            tts = gTTS(outputText)
+            tts.save('temp.mp3')
 
-p = vlc.MediaPlayer('temp.mp3')
-p.play()
+
 #get audio from the microphone                                                                       
 r = sr.Recognizer()                                                                                   
 
@@ -26,19 +25,10 @@ with sr.Microphone() as source:
     
 try:
     print("You said " + r.recognize_google(audio))
-    print("asdfasdfasdf not ")
     tts = gTTS(r.recognize_google(audio))
-    os:remove('temp.mp3')
-    tts.save('temp.mp3')
-    print("asdfasdfasdf not ")
-    p = vlc.MediaPlayer('temp.mp3')
-    p.play()
-    
-    print("asdfasdfasdf not ")
-    
+    textToSpeech("You said " + r.recognize_google(audio))    
 except sr.UnknownValueError:
     print("Could not understand audio")
 except sr.RequestError as e:
     print("Could not request results; {0}".format(e))
-
 
