@@ -7,7 +7,7 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
@@ -19,7 +19,7 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
@@ -28,7 +28,7 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m in the hallway
+    - message: hello I'm in the hallway
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
@@ -41,7 +41,7 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
@@ -54,7 +54,7 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: null
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg
