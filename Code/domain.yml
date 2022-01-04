@@ -29,16 +29,77 @@ intents:
     use_entities: true
   - modify_appointment
     use_entities: true
+  - can_you_repeat
+    use_entities: true
+  - cancel_appointment
+    use_entities: true
+  - get_appointment_memo
+    use_entities: true
+  - add_to_contact_list
+    use_entities: true
 entities:
 - contact
+- contact_calling
+- contact_to_call
 - reception_time
 - medium_comm
+- message
 - quantity_msg
 - archive
-- appointment_object
+- name_apppointment
+- new_name_appointment
 - date
-- timetable
-- day_moment
+- time
+- new_date
+- new_time
+- new_voicemail_msg
+- duration
+slots:
+  contact:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  message:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: ---
+    auto_fill: true
+    influence_conversation: true
+  time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: now
+    auto_fill: true
+    influence_conversation: true
+  medium_comm:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: all
+    auto_fill: true
+    influence_conversation: true
+  reception_time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  new_voicemail_msg:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  contact_calling:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  name_appointment:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  date:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: Today
+    auto_fill: true
+    influence_conversation: true
 responses:
   utter_greet:
   - text: "Hey!"
