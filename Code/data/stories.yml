@@ -2,80 +2,15 @@ version: "2.0"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: write new sms confirmation user
-  steps:
-  - intent: write_new_msg
-     entities : 
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-  - action: utter_confirm_new_msg 
-    entities :  
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
 - story: write new sms deny user
   steps:
   - intent: write_new_msg
-     entities : 
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-- action: utter_confirm_new_msg 
-    entities :  
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
+    entities: 
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
   - intent: decline
-  - action : utter_feedback_msg_not_sent
-  - action: utter_what_message 
-  - intent: write_new_msg
-     entities : 
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-  - action: utter_confirm_new_msg 
-    entities :  
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
+  - action: utter_feedback_msg_not_sent
+
