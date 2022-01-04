@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Say hello anytime the user says hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Launch confirm new msg action anytime user shows intent write_new_msg
+  steps:
+  - intent: write_new_msg
+  - action: action_confirm_new_msg

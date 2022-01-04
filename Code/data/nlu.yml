@@ -89,13 +89,15 @@ nlu:
 - intent: write_new_msg
   examples: |
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - I need you to write a message
     - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
     - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
-    - To [Mom]{"entity": "contact", "value": "Mom"}
+    - say [hello I'm on wy way]{"entity": "message", "value":"hello I'm on my way"}
+    - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"} to say [hello I'm on my way]{"entity": "message", "value":"hello I'm on my way"}
@@ -174,3 +176,42 @@ nlu:
   examples: |
     - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
     - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "mail"} list.
+
+- lookup: time
+  examples: |
+    - six o'clock
+    - ten o'clock
+    - at nine
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - tomorrow morning at seven
+    - at six a.m.
+    - seven p.m.
+    - at two p.m.
+
+- lookup: contact
+  examples: |
+    - dad
+    - brother
+    - grandma
+    - grandpa
+    - Margot
+    - Gaël
+    - Alexander
+    - Anaïs
+    - Clément
+    - Maxence
+    - Raphaël
+    - Aurélien
+    - Rémi
+    - Oualid
+    - Hugo
+    - Libio
+    - Kim
+    - Pierre
+    - Ramos
+    - Dorianne
+

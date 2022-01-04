@@ -155,12 +155,6 @@ responses:
   - text: "Done, this message has effectively been sent."
   - text: "Okay, it has been sent."
 
-  utter_feedback_msg_not_sent:
-  - text: "Okay, I haven't send anything."
-  - text: "No worries, I have cancelled the sending of the message."
-  - text: "No harm done, nothing was sent."
-  - text: "Okay, mission aborted."
-
   utter_ask_which_voicemail_msg :
   - text: "Okay, what do you want as a new voicemail message?"
   - text: "Sure, tell me the new message you would like to have on your voicemail."
@@ -217,6 +211,9 @@ responses:
 
 actions:
 - action_confirm_new_msg
+- action_sending_new_msg
+- action_feedback_msg_not_sent
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
