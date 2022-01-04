@@ -133,7 +133,8 @@ nlu:
   - call_contact
     examples: |
     - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
+    - Could you call my [mom]{"entity": "cont
+    act_to_call", "value": "Mom"} ?
     - I want to call
     - I have to make a call
     - Call

@@ -1,13 +1,13 @@
 version: "2.0"
 
 intents:
-  - greet
+  - greet:
     use_entities: true
-  - goodbye
+  - goodbye:
     use_entities: true
-  - bot_challenge
+  - bot_challenge:
     use_entities: true
-  - confirm
+  - confirm:
     use_entities: true
   - decline
     use_entities: false
