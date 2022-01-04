@@ -46,6 +46,14 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - answer
+    - perfect
+    - alright
+    - great
+    - ok
+    - exact
+    - exactly
+    - read it
 
 - intent: decline
   examples: |
@@ -56,19 +64,40 @@ nlu:
     - don't like that
     - no way
     - not really
+    - not now
+    - I don't want
+    - later
+    - don't
+
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
+    - many thanks
+    - thank you so much
 
 - find_msg
   examples: |
     - what did [mom]{"entity": "contact", "value": "Mom"} say ?
-    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS] ? {"entity": "medium_comm", "value": "SMS"}
+    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
     - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
     - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
+    - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
   - write_new_msg
     examples: |
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
+    - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
+    - I need you to write a message
+    - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
+    - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
+    - To [Mom]{"entity": "contact", "value": "Mom"}
+    - [Lucas]{"entity": "contact", "value": "Lucas"}
+    - by [SMS]{"entity": "medium_comm", "value": "SMS"}
 
   - delete_msg
     examples: |
@@ -76,17 +105,24 @@ nlu:
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
     - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Can you remove it please ?
+    - Delete this message
+    - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
+    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
 
   - do_I_have_new_msg
     examples: |
     - do I have new [messages]{"entity": "medium_comm"} ?
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
+    - Did I get any new {text}{"entity": "medium_comm", "value": "SMS"}?
 
   - change_voicemail_msg
     examples: |
     - I want to change my voicemail message
     - I would like to record another voicemail message
+    - I would like to change my answering machine message
+    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
 
   - archive_email
     examples: |
@@ -96,17 +132,43 @@ nlu:
 
   - call_contact
     examples: |
-    - Call [Julie]{"entity": "contact", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
+    - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
+    - I want to call
+    - I have to make a call
+    - Call
 
   - schedule_appointment
     examples: |
-    - Schedule an appointment for the [dentist]{"entity": "appointment_object", "value": "Dentist"} [tuesday]{"entity": "date", "value": "tuesday"} at [ten]{"entity": "timetable", "value": "ten"} [a.m]{"entity": "day_moment", "value": "a.m"}
+    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
     - Can you add a new appointment in my agenda please ?
     - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
-    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening]{"entity": "day_moment", "value": "Evening"}at [eight]{"entity": "timetable", "value": "eight"}
-    - Add an appointment [in two hours]{"entity": "timetable", "value": "In two hours"}
+    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
+    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
+    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
+    - [Next week]{"entity": "date", "value": "Next week"}
+    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
+    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
+    - at [eleven]{"entity": "time", "value": "Eleven"}
+    - [two]{"entity": "time", "value": "Two"}
 
   - modify_appointment
     examples: |
-    - Can you move this appointment ?
+    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
+    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
+    - Modify the name of my [seven o'clock]{"entity": "time", "value": "Seven o'clock"} appointment with [dinner with my family]{"entity": "new_name_appointment", "value": "Dinner with my family"} instead of [Dinner]{"entity": "name_appointment", "value": "Dinner"}
+  
+  - cancel_appointment
+    examples: |
+    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
+    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
+
+  - get_appointment_memo
+    examples: |
+    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
+    - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
+    - Can you remind me the [duration]{"entity": "duration", "value": "Duration"} of my appointment [thursday]{"entity": "date", "value": "Thursday morning"} [morning]{"entity": "time", "value": "Morning"} ?
+
+  - add_to_contact_list
+    examples: |
+    - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
