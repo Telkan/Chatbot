@@ -1,10 +1,9 @@
 from os import remove
-import winsound
+
 import vlc
-import socket
+
 import speech_recognition as sr  
 from gtts import gTTS
-from playsound import playsound
 import time
 from io import BytesIO
 
@@ -16,22 +15,25 @@ def textToSpeech(outputText):
 
     pass 
 
+p = vlc.MediaPlayer('temp.mp3')
+p.play()
 #get audio from the microphone                                                                       
 r = sr.Recognizer()                                                                                   
 
 with sr.Microphone() as source:                                                                       
     print("Speak:")                                                                                   
-    audio = r.listen(source,10,4)   
+    audio = r.listen(source,10,4)       
     
 try:
     print("You said " + r.recognize_google(audio))
     print("asdfasdfasdf not ")
     tts = gTTS(r.recognize_google(audio))
-    print("asdfasdfasdf not ")
+    os:remove('temp.mp3')
     tts.save('temp.mp3')
     print("asdfasdfasdf not ")
-    #del(tts)
-    playsound('temp.mp3',False)
+    p = vlc.MediaPlayer('temp.mp3')
+    p.play()
+    
     print("asdfasdfasdf not ")
     
 except sr.UnknownValueError:
