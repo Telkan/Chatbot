@@ -29,6 +29,7 @@ intents:
     use_entities: true
   - modify_appointment
     use_entities: true
+
 entities:
 - contact
 - reception_time
@@ -39,7 +40,9 @@ entities:
 - date
 - timetable
 - day_moment
+
 responses:
+
   utter_greet:
   - text: "Hey!"
   - text: "Hello!"
@@ -55,6 +58,13 @@ responses:
   - text: "Bye bye!"
   - text: "See you!"
   - text : "See you later!"
+
+  utter_you_are_welcome:
+  - text: "You are welcome!"
+  - text: "You're most welcome!"
+  - text: "Sure, no problem!"
+  - text: "My pleasure!"
+  - text: "Anytime!"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
@@ -87,6 +97,12 @@ responses:
   - text: "Done, this message has effectively been sent."
   - text: "Okay, it has been sent."
 
+  utter_feedback_msg_not_sent:
+  - text: "Okay, I haven't send anything."
+  - text: "No worries, I have cancelled the sending of the message."
+  - text: "No harm done, nothing was sent."
+  - text: "Okay, mission aborted."
+
   utter_ask_which_voicemail_msg :
   - text: "Okay, what do you want as a new voicemail message?"
   - text: "Sure, tell me the new message you would like to have on your voicemail."
@@ -101,7 +117,7 @@ responses:
   - text: "Okay, it has been changed."
   - text: "Okay, it has been modified."
 
-  utter_ask_appointment_name :
+  utter_ask_name_appointment :
   - text: "What is the name of the appointment you are referring to?"
   - text: "I am sorry, what is the name of the appointment you are talking about?"
   - text: "Could you please tell me the name of the appointment you have just mentionned?"
