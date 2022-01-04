@@ -31,7 +31,14 @@ nlu:
     - bye bye
     - see you later
 
-- intent: affirm
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: confirm
   examples: |
     - yes
     - y
@@ -39,8 +46,16 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - answer
+    - perfect
+    - alright
+    - great
+    - ok
+    - exact
+    - exactly
+    - read it
 
-- intent: deny
+- intent: decline
   examples: |
     - no
     - n
@@ -49,44 +64,113 @@ nlu:
     - don't like that
     - no way
     - not really
+    - not now
+    - I don't want
+    - later
+    - don't
 
-- intent: mood_great
+- intent: thank_you
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - thanks
+    - thank you
+    - many thanks
+    - thank you so much
 
-- intent: mood_unhappy
+- intent: find_msg
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - what did [mom]{"entity": "contact", "value": "Mom"} say ?
+    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
+    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
+    - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
+    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
+    - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
-- intent: bot_challenge
+- intent: write_new_msg
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
+    - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
+    - I need you to write a message
+    - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
+    - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
+    - To [Mom]{"entity": "contact", "value": "Mom"}
+    - [Lucas]{"entity": "contact", "value": "Lucas"}
+    - by [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"} to say [hello I'm on my way]{"entity": "message", "value":"hello I'm on my way"}
+
+- intent: delete_msg
+  examples: |
+    - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+    - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
+    - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
+    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Can you remove it please ?
+    - Delete this message
+    - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
+    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
+
+- intent: do_I_have_new_msg
+  examples: |
+    - do I have new [messages]{"entity": "medium_comm"} ?
+    - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
+    - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
+    - Did I get any new {text}{"entity": "medium_comm", "value": "SMS"}?
+
+- intent: change_voicemail_msg
+  examples: |
+    - I want to change my voicemail message
+    - I would like to record another voicemail message
+    - I would like to change my answering machine message
+    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
+    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can]{"entity": "new_voicemail_msg", "value": "It's Bruce, leave a message after the bip, I'll call you back as soon as I can"}
+
+- intent: archive_email
+  examples: |
+    - can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
+    - can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
+    - can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
+
+- intent: call_contact
+  examples: |
+    - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
+    - I want to call
+    - I have to make a call
+    - Call
+
+- intent: schedule_appointment
+  examples: |
+    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
+    - Can you add a new appointment in my agenda please ?
+    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
+    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
+    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
+    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
+    - [Next week]{"entity": "date", "value": "Next week"}
+    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
+    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
+    - at [eleven]{"entity": "time", "value": "Eleven"}
+    - [two]{"entity": "time", "value": "Two"}
+
+- intent: modify_appointment
+  examples: |
+    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
+    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
+    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
+
+- intent: cancel_appointment
+  examples: |
+    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
+    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
+
+- intent: get_appointment_memo
+  examples: |
+    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
+    - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
+
+- intent: add_to_contact_list
+  examples: |
+    - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
+    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "mail"} list.
