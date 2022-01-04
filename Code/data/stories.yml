@@ -14,3 +14,10 @@ stories:
   - intent: decline
   - action: utter_feedback_msg_not_sent
 
+- story: write new sms deny user
+  steps:
+  - intent: delete_msg
+    entities: 
+    - quantity_msg: five last
+  - action: utter_feedback_msg_deleted
+

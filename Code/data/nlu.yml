@@ -116,7 +116,7 @@ nlu:
     - do I have new [messages]{"entity": "medium_comm"} ?
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
-    - Did I get any new {text}{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
 
 - intent: change_voicemail_msg
   examples: |
@@ -174,4 +174,108 @@ nlu:
 - intent: add_to_contact_list
   examples: |
     - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
-    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "mail"} list.
+    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "Email"} list.
+
+- lookup: date
+  examples: |
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    - today
+    - yesterday
+    - tomorrow
+    - next week
+    - newt month
+    - january
+    - february
+    - march
+    - april
+    - may
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - december
+    - in two days
+    - in ten days
+
+- lookup: time
+  examples: |
+    - six o'clock
+    - ten o'clock
+    - at nine
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - tomorrow morning at seven
+    - at six a.m
+    - seven p.m
+
+- lookup: reception_time
+  examples: |
+    - six o'clock
+    - ten o'clock
+    - at nine
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - at six a.m
+    - seven p.m
+    - at five ten
+
+- lookup: name_appointment
+  examples: |
+    - doctor
+    - dentist
+    - work
+    - dinner with my family
+    - ice skating
+    - golf
+    - free time
+    - exam
+    - project
+    - date
+    - meeting
+    - hairdresser
+    - groceries
+    - birthday
+    - party
+    - the last
+    - the last one
+    - last
+    - first
+    - first one
+    - previous
+
+- lookup: quantity_msg
+  examples: |
+    - all
+    - one
+    - two
+    - three
+    - four
+    - five
+    - six
+    - seven
+    - eight
+    - nine
+    - ten
+    - eleven
+    - twelve
+    - twenty
+    - thirty
+    - fifty
+    - three last
+    - six last
+    - five last
+

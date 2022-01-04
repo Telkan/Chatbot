@@ -59,6 +59,11 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
+  quantity_msg:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
   message:
     type: rasa.shared.core.slots.TextSlot
     initial_value: ---
@@ -142,11 +147,11 @@ responses:
   - text: "Would you like me to print it on the screen?"
 
   utter_feedback_msg_deleted:
-  - text: "Okay, the message has been deleted."
-  - text: "Done, the message has been deleted."
-  - text: "Sure thing, it has been deleted."
-  - text: "Done, this message has effectively been deleted."
-  - text: "Okay, it has been deleted."
+  - text: "Okay, the message has been deleted. {quantity_msg}"
+  - text: "Done, the message has been deleted. {quantity_msg}"
+  - text: "Sure thing, it has been deleted. {quantity_msg}"
+  - text: "Done, this message has effectively been deleted. {quantity_msg}"
+  - text: "Okay, it has been deleted. {quantity_msg}"
 
   utter_feedback_msg_sent:
   - text: "Okay, the message has been sent."
