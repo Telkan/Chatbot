@@ -14,3 +14,20 @@ stories:
   - intent: decline
   - action: utter_feedback_msg_not_sent
 
+- story: write new sms confirmation user
+  steps:
+  - intent: write_new_msg
+     entities : 
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
+	- medium_comm: SMS
+  - action: utter_confirm_new_msg 
+    entities :  
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
+	- medium_comm: SMS
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
