@@ -1,41 +1,41 @@
 version: "2.0"
 
 intents:
-  - greet
+- greet:
     use_entities: true
-  - goodbye
+- goodbye:
     use_entities: true
-  - bot_challenge
+- bot_challenge:
     use_entities: true
-  - confirm
+- confirm:
     use_entities: true
-  - decline
+- decline:
     use_entities: false
-  - find_msg
+- find_msg:
     use_entities: true
-  - write_new_msg
+- write_new_msg:
     use_entities: true
-  - delete_msg
+- delete_msg:
     use_entities: true
-  - do_I_have_new_msg
+- do_I_have_new_msg:
     use_entities: true
-  - change_voicemail_msg
+- change_voicemail_msg:
     use_entities: true
-  - archive_email
+- archive_email:
     use_entities: true
-  - call_contact
+- call_contact:
     use_entities: true
-  - schedule_appointment
+- schedule_appointment:
     use_entities: true
-  - modify_appointment
+- modify_appointment:
     use_entities: true
-  - can_you_repeat
+- can_you_repeat:
     use_entities: true
-  - cancel_appointment
+- cancel_appointment:
     use_entities: true
-  - get_appointment_memo
+- get_appointment_memo:
     use_entities: true
-  - add_to_contact_list
+- add_to_contact_list:
     use_entities: true
 entities:
 - contact
@@ -47,13 +47,12 @@ entities:
 - quantity_msg
 - archive
 - name_apppointment
-- new_name_appointment
 - date
 - time
 - new_date
 - new_time
 - new_voicemail_msg
-- duration
+
 slots:
   contact:
     type: rasa.shared.core.slots.TextSlot
@@ -216,6 +215,8 @@ responses:
   - text: "Could you please precise the object for this email?"
   - text: "What is the email's object please?"
 
+actions:
+- action_confirm_new_msg
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
