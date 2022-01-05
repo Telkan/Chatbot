@@ -33,17 +33,17 @@ stories:
 - story: write new sms confirmation user
   steps:
   - intent: write_new_msg
-     entities : 
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
-  - action: utter_confirm_new_msg 
-    entities :  
-	- contact: mom
-	- message: hello i’m on my way
-	- time : now
-	- medium_comm: SMS
+    entities :
+    - contact: mom
+    - message: hello i’m on my way
+    - time : now
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+    entities :
+    - contact: mom
+    - message: hello i’m on my way
+    - time : now
+    - medium_comm: SMS
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
@@ -67,7 +67,7 @@ stories:
 - story: search old SMS deny read
   steps:
   - intent: find_msg
-  entities:
+    entities:
     - contact: stalker
     - message: please stay because I love you
     - time: yesterday
@@ -171,28 +171,28 @@ stories:
   - action: utter_what_message
   - intent: write_new_msg
 <<<<<<< Updated upstream
-     entities : 
+     entities :
 	- contact: mom
 	- message: hello i’m on my way
 	- time : now
 	- medium_comm: SMS
-- action: utter_confirm_new_msg 
-    entities :  
+- action: utter_confirm_new_msg
+    entities :
 	- contact: mom
 	- message: hello i’m on my way
 	- time : now
 	- medium_comm: SMS
   - intent: decline
   - action : utter_feedback_msg_not_sent
-  - action: utter_what_message 
+  - action: utter_what_message
   - intent: write_new_msg
-     entities : 
+     entities :
 	- contact: mom
 	- message: hello i’m on my way
 	- time : now
 	- medium_comm: SMS
-  - action: utter_confirm_new_msg 
-    entities :  
+  - action: utter_confirm_new_msg
+    entities :
 	- contact: mom
 	- message: hello i’m on my way
 	- time : now
