@@ -91,16 +91,25 @@ nlu:
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
-    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - I need you to write a message
-    - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
-    - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
-    - say [hello I'm on wy way]{"entity": "message", "value":"hello I'm on my way"}
     - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"} to say [hello I'm on my way]{"entity": "message", "value":"hello I'm on my way"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
+
+- intent: write_new_msg_content
+  examples: |
+    - I'm on my way
+    - I am here
+    - Hi, how are you ?
+    - How you doin' ?
+    - Hello
+    - see you soon
+    - I am going to the grocery store
+    - buy a pizza
+    - I need my keys
 
 - intent: delete_msg
   examples: |
@@ -209,13 +218,41 @@ nlu:
     - november
     - december
     - in two days
+    - two days ago
+    - three days ago
+    - four days ago
+    - five days ago
+    - a week ago
     - in ten days
 
 - lookup: time
   examples: |
+    - one o'clock
+    - two o'clock
+    - three o'clock
+    - four o'clock
+    - five o'clock
     - six o'clock
+    - seven o'clock
+    - eight o'clock
+    - nine o'clock
     - ten o'clock
+    - eleven o'clock
+    - midnight
+    - twelve o'clock
+    - noon
+    - at one
+    - at two
+    - at three
+    - at four
+    - at five
+    - at six
+    - at seven
+    - at eight
     - at nine
+    - at ten
+    - at eleven
+    - at twelve
     - tonight
     - morning
     - afternoon
@@ -227,9 +264,32 @@ nlu:
 
 - lookup: reception_time
   examples: |
+    - one o'clock
+    - two o'clock
+    - three o'clock
+    - four o'clock
+    - five o'clock
     - six o'clock
+    - seven o'clock
+    - eight o'clock
+    - nine o'clock
     - ten o'clock
+    - eleven o'clock
+    - midnight
+    - twelve o'clock
+    - noon
+    - at one
+    - at two
+    - at three
+    - at four
+    - at five
+    - at six
+    - at seven
+    - at eight
     - at nine
+    - at ten
+    - at eleven
+    - at twelve
     - tonight
     - morning
     - afternoon
@@ -238,6 +298,12 @@ nlu:
     - at six a.m
     - seven p.m
     - at five ten
+    - the last
+    - the last one
+    - last
+    - first
+    - first one
+    - previous
 
 - lookup: name_appointment
   examples: |
@@ -256,12 +322,6 @@ nlu:
     - groceries
     - birthday
     - party
-    - the last
-    - the last one
-    - last
-    - first
-    - first one
-    - previous
 
 - lookup: quantity_msg
   examples: |

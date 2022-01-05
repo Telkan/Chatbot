@@ -19,6 +19,8 @@ intents:
     use_entities: true
 - write_new_msg:
     use_entities: true
+- write_new_msg_content:
+    use_entities: true
 - delete_msg:
     use_entities: true
 - do_I_have_new_msg:
@@ -49,7 +51,6 @@ entities:
 - contact_to_call
 - reception_time
 - medium_comm
-- message
 - quantity_msg
 - archive
 - name_apppointment
@@ -67,7 +68,7 @@ slots:
     influence_conversation: true
   message:
     type: rasa.shared.core.slots.TextSlot
-    initial_value: '---'
+    initial_value: --
     auto_fill: true
     influence_conversation: true
   time:
