@@ -105,11 +105,12 @@ nlu:
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
-    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Could you move the [two last]{"entity": "reception_time", "value": "two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
     - Can you remove it please ?
     - Delete this message
     - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
-    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
+    - Delete the [three last]{"entity": "quantity_msg", "value": "three last"} messages
+    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
 
 - intent: do_I_have_new_msg
   examples: |
@@ -135,8 +136,7 @@ nlu:
 - intent: call_contact
   examples: |
     - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "cont
-    act_to_call", "value": "Mom"} ?
+    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
     - I want to call
     - I have to make a call
     - Call
@@ -175,6 +175,10 @@ nlu:
   examples: |
     - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
     - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "Email"} list.
+
+- regex: message
+  examples: |
+    - .*
 
 - lookup: date
   examples: |
@@ -279,3 +283,25 @@ nlu:
     - six last
     - five last
 
+- lookup: contact
+  examples: |
+    - dad
+    - brother
+    - grandma
+    - grandpa
+    - Margot
+    - Gaël
+    - Alexander
+    - Anaïs
+    - Clément
+    - Maxence
+    - Raphaël
+    - Aurélien
+    - Rémi
+    - Oualid
+    - Hugo
+    - Libio
+    - Kim
+    - Pierre
+    - Ramos
+    - Dorianne
