@@ -1,0 +1,93 @@
+{
+    "SMS_History": [
+        {
+            "contactname": "voicemail",
+            "mobilenumber": "123",
+            "messages": [
+                {
+                    "date": "05/01/2022, 15:01:34",
+                    "from": "voicemail",
+                    "text": "You have 1 unread message from mom"
+                }
+            ]
+        },
+        {
+            "contactname": "mom",
+            "mobilenumber": "0612345678",
+            "messages": [
+                {
+                    "date": "02/01/2022, 09:04:52",
+                    "from": "mom",
+                    "text": "Howdoyoudoaspaceplease?"
+                },
+                {
+                    "date": "04/01/2022, 01:12:14",
+                    "from": "mom",
+                    "text": "Where are you?"
+                },
+                {
+                    "date": "04/01/2022, 12:54:48",
+                    "from": "mom",
+                    "text": "I can't find my phone, can you call me?"
+                },
+                {
+                    "date": "04/01/2022, 12:56:12",
+                    "from": "user",
+                    "text": "You have it in your hand mom"
+                }
+            ]
+        },
+        {
+            "contactname": "Razmo",
+            "mobilenumber": "01.23.45.67.89",
+            "messages": [
+                {
+                    "date": "05/01/2022, 15:15:53",
+                    "from": "Razmo",
+                    "text": "Yoyoyoyoyoyoyo"
+                },
+                {
+                    "date": "05/01/2022, 15:16:02",
+                    "from": "Razmo",
+                    "text": "I'm a ratz doing rap"
+                },
+                {
+                    "date": "05/01/2022, 15:17:13",
+                    "from": "user",
+                    "text": "Don't say \"A fond les bananes\" plz"
+                }
+            ]
+        },
+        {
+            "contactname": "Lucas",
+            "mobilenumber": "07.77.46.52.46",
+            "messages": [
+                {
+                    "date": "02/01/2022, 08:35:46",
+                    "from": "Lucas",
+                    "text": "Here's my phonenumber."
+                },
+                {
+                    "date": "03/01/2022, 23:00:00",
+                    "from": "Lucas",
+                    "text": "This is an important scheduled message, try to catch it"
+                },
+                {
+                    "date": "05/01/2022, 15:17:15",
+                    "from": "user",
+                    "text": "Can you create the SMS Database plz?"
+                },
+                {
+                    "date": "05/01/2022, 15:18:48",
+                    "from": "Lucas",
+                    "text": "No."
+                },
+                {
+                    "date": "05/01/2022, 15:18:48",
+                    "from": "Lucas",
+                    "text": "Haha, I'm kidding, I created it yesterday :)"
+                }
+            ]
+        }
+    ]
+}
