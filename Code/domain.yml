@@ -19,6 +19,8 @@ intents:
     use_entities: true
 - write_new_msg:
     use_entities: true
+- write_new_msg_content:
+    use_entities: true
 - delete_msg:
     use_entities: true
 - do_I_have_new_msg:
@@ -199,7 +201,8 @@ responses:
   - text: Could you please precise the object for this email?
   - text: What is the email's object please?
 actions:
-- action_confirm_new_msg
+- action_confirm_new_msg_contact_medium
+- action_confirm_new_msg_content
 - action_sending_new_msg
 - action_feedback_msg_not_sent
 forms: {}

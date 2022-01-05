@@ -7,112 +7,55 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
-  - action: action_confirm_new_msg 
+  - action: action_confirm_new_msg_contact_medium
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: write new SMS deny user
+- story: write new SMS deny user give up 2
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
-  - action: action_confirm_new_msg 
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
   - intent: decline
   - action: action_feedback_msg_not_sent
-  - intent: write_new_msg
-    entities: 
-    - contact: mom
-    - message: hello I'm in the hallway
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg 
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
 
 - story: write new SMS confirmation user
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
-  - action: action_confirm_new_msg 
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new SMS contact missing
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: null
-    - message: hello I'm on my way
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg
-  - intent: write_new_msg
-    entities: 
-    - contact: dad
-  - action: action_confirm_new_msg
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new SMS message missing
+- story: write new SMS confirmation user 2
   steps:
   - intent: write_new_msg
     entities: 
     - contact: dad
-    - message: ---
     - time: now
     - medium_comm: SMS
-  - action: action_confirm_new_msg
-  - intent: write_new_msg
-    entities: 
-    - message: I'm on my way
-  - action: action_confirm_new_msg
+  - action: action_confirm_new_msg_contact_medium
   - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new SMS contact message missing
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: null
-    - message: ---
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg
-  - intent: write_new_msg
-    entities: 
-    - contact : mom
-  - action: action_confirm_new_msg
-  - intent: write_new_msg
-    entities: 
-    - message: I'm on my way
-  - action: action_confirm_new_msg
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new SMS programmation message
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: dad
-    - message: hello it is me Mario
-    - time: at two p.m.
-    - medium_comm: SMS
-  - action: action_confirm_new_msg 
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
