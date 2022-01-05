@@ -1,5 +1,9 @@
-version: "2.0"
-
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
 - greet:
     use_entities: true
@@ -10,7 +14,7 @@ intents:
 - confirm:
     use_entities: true
 - decline:
-    use_entities: false
+    use_entities: []
 - find_msg:
     use_entities: true
 - write_new_msg:
@@ -37,6 +41,8 @@ intents:
     use_entities: true
 - add_to_contact_list:
     use_entities: true
+- thank_you:
+    use_entities: true
 entities:
 - contact
 - contact_calling
@@ -52,7 +58,7 @@ entities:
 - new_date
 - new_time
 - new_voicemail_msg
-
+- name_appointment
 slots:
   contact:
     type: rasa.shared.core.slots.TextSlot
@@ -61,7 +67,7 @@ slots:
     influence_conversation: true
   message:
     type: rasa.shared.core.slots.TextSlot
-    initial_value: ---
+    initial_value: '---'
     auto_fill: true
     influence_conversation: true
   time:
@@ -100,123 +106,101 @@ slots:
     auto_fill: true
     influence_conversation: true
 responses:
-
   utter_greet:
-  - text: "Hey!"
-  - text: "Hello!"
-  - text: "Hi!"
-  - text: "Welcome!"
-  - text: "Good day to you!"
-
+  - text: Hey!
+  - text: Hello!
+  - text: Hi!
+  - text: Welcome!
+  - text: Good day to you!
   utter_goodbye:
-  - text: "Bye!"
-  - text: "Goodbye!"
-  - text: "Until next time!"
-  - text: "See you soon!"
-  - text: "Bye bye!"
-  - text: "See you!"
-  - text : "See you later!"
-
+  - text: Bye!
+  - text: Goodbye!
+  - text: Until next time!
+  - text: See you soon!
+  - text: Bye bye!
+  - text: See you!
+  - text: See you later!
   utter_you_are_welcome:
-  - text: "You are welcome!"
-  - text: "You're most welcome!"
-  - text: "Sure, no problem!"
-  - text: "My pleasure!"
-  - text: "Anytime!"
-
+  - text: You are welcome!
+  - text: You're most welcome!
+  - text: Sure, no problem!
+  - text: My pleasure!
+  - text: Anytime!
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
   utter_should_I_read:
-  - text: "Should I read it aloud?"
-  - text: "Do you want me to read it aloud?"
-  - text: "Shall I read it to you?"
-  - text: "Do you want to hear it?"
-  - text: "Would you like to listen to it?"
-
+  - text: Should I read it aloud?
+  - text: Do you want me to read it aloud?
+  - text: Shall I read it to you?
+  - text: Do you want to hear it?
+  - text: Would you like to listen to it?
   utter_should_I_show:
-  - text: "Should I show it on the screen?"
-  - text: "Do you want me to display it on the screen?"
-  - text: "Shall I show it to you?"
-  - text: "Do you want to read it yourself?"
-  - text: "Would you like me to print it on the screen?"
-
+  - text: Should I show it on the screen?
+  - text: Do you want me to display it on the screen?
+  - text: Shall I show it to you?
+  - text: Do you want to read it yourself?
+  - text: Would you like me to print it on the screen?
   utter_feedback_msg_deleted:
-  - text: "Okay, the message has been deleted."
-  - text: "Done, the message has been deleted."
-  - text: "Sure thing, it has been deleted."
-  - text: "Done, this message has effectively been deleted."
-  - text: "Okay, it has been deleted."
-
+  - text: Okay, the message has been deleted.
+  - text: Done, the message has been deleted.
+  - text: Sure thing, it has been deleted.
+  - text: Done, this message has effectively been deleted.
+  - text: Okay, it has been deleted.
   utter_feedback_msg_sent:
-  - text: "Okay, the message has been sent."
-  - text: "Done, the message has been sent."
-  - text: "Sure thing, it has been sent."
-  - text: "Done, this message has effectively been sent."
-  - text: "Okay, it has been sent."
-
-  utter_feedback_msg_not_sent:
-  - text: "Okay, I haven't send anything."
-  - text: "No worries, I have cancelled the sending of the message."
-  - text: "No harm done, nothing was sent."
-  - text: "Okay, mission aborted."
-
-  utter_ask_which_voicemail_msg :
-  - text: "Okay, what do you want as a new voicemail message?"
-  - text: "Sure, tell me the new message you would like to have on your voicemail."
-  - text: "Of course, what new voicemail message would you like?"
-  - text: "No problem, what is the new message you want?"
-
-  utter_feedback_voicemail_changed :
-  - text: "Okay, your voicemail message has been changed."
-  - text: "Done, your voicemail message has been modified."
-  - text: "Sure thing, it has been updated."
-  - text: "Done, your voicemail message has effectively been updated."
-  - text: "Okay, it has been changed."
-  - text: "Okay, it has been modified."
-
-  utter_ask_name_appointment :
-  - text: "What is the name of the appointment you are referring to?"
-  - text: "I am sorry, what is the name of the appointment you are talking about?"
-  - text: "Could you please tell me the name of the appointment you have just mentionned?"
-  - text: "Could you please precise the name of the appointment you are talking about?"
-  - text: "What is the appointment's name please?"
-
-  utter_reschedule_when :
-  - text: "When would you like to reschedule this appointment?"
-  - text: "Can you specify when you would like to reschedule this appointment?"
-  - text: "I am sorry, could you tell me when you would like this appoint to be rescheduled?"
-  - text: "Could you please tell me when you would like it to be rescheduled?"
-
-  utter_contact_not_found :
-  - text: "I am sorry, I could not find this contact in your contact list."
-  - text: "I am sorry, this contact seems to be invalid."
-  - text: "I am sorry, it appears that this contact does not exist."
-  - text: "I am sorry to say I could not find this contact in your contact list."
-
-  utter_what_contact :
-  - text: "Who is the contact you are referring to?"
-  - text: "I am sorry, which of your contacts is concerned by this?"
-  - text: "Could you please tell me which of your contacts is concerned by this?"
-  - text: "Could you please precise which of your contacts you are talking about?"
-
-  utter_what_message :
-  - text: "What message would you like to send?"
-  - text: "What should I send?"
-  - text : "Tell me, what do you want to send?"
-  - text: "Can you specify the message you would like?"
-  - text: "I am sorry, could you tell me what message you would like me to send?"
-  - text: "Could you please tell me what you would like me to write as a message?"
-
-  utter_what_object :
-  - text: "What is the object of the email you are sending?"
-  - text: "I am sorry, what should I put as object of this email?"
-  - text: "Could you please tell me what to put as object of the email?"
-  - text: "Could you please precise the object for this email?"
-  - text: "What is the email's object please?"
-
+  - text: Okay, the message has been sent.
+  - text: Done, the message has been sent.
+  - text: Sure thing, it has been sent.
+  - text: Done, this message has effectively been sent.
+  - text: Okay, it has been sent.
+  utter_ask_which_voicemail_msg:
+  - text: Okay, what do you want as a new voicemail message?
+  - text: Sure, tell me the new message you would like to have on your voicemail.
+  - text: Of course, what new voicemail message would you like?
+  - text: No problem, what is the new message you want?
+  utter_feedback_voicemail_changed:
+  - text: Okay, your voicemail message has been changed.
+  - text: Done, your voicemail message has been modified.
+  - text: Sure thing, it has been updated.
+  - text: Done, your voicemail message has effectively been updated.
+  - text: Okay, it has been changed.
+  - text: Okay, it has been modified.
+  utter_ask_name_appointment:
+  - text: What is the name of the appointment you are referring to?
+  - text: I am sorry, what is the name of the appointment you are talking about?
+  - text: Could you please tell me the name of the appointment you have just mentionned?
+  - text: Could you please precise the name of the appointment you are talking about?
+  - text: What is the appointment's name please?
+  utter_reschedule_when:
+  - text: When would you like to reschedule this appointment?
+  - text: Can you specify when you would like to reschedule this appointment?
+  - text: I am sorry, could you tell me when you would like this appoint to be rescheduled?
+  - text: Could you please tell me when you would like it to be rescheduled?
+  utter_contact_not_found:
+  - text: I am sorry, I could not find this contact in your contact list.
+  - text: I am sorry, this contact seems to be invalid.
+  - text: I am sorry, it appears that this contact does not exist.
+  - text: I am sorry to say I could not find this contact in your contact list.
+  utter_what_contact:
+  - text: Who is the contact you are referring to?
+  - text: I am sorry, which of your contacts is concerned by this?
+  - text: Could you please tell me which of your contacts is concerned by this?
+  - text: Could you please precise which of your contacts you are talking about?
+  utter_what_message:
+  - text: What message would you like to send?
+  - text: What should I send?
+  - text: Tell me, what do you want to send?
+  - text: Can you specify the message you would like?
+  - text: I am sorry, could you tell me what message you would like me to send?
+  - text: Could you please tell me what you would like me to write as a message?
+  utter_what_object:
+  - text: What is the object of the email you are sending?
+  - text: I am sorry, what should I put as object of this email?
+  - text: Could you please tell me what to put as object of the email?
+  - text: Could you please precise the object for this email?
+  - text: What is the email's object please?
 actions:
 - action_confirm_new_msg
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+- action_sending_new_msg
+- action_feedback_msg_not_sent
+forms: {}
+e2e_actions: []

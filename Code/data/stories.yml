@@ -2,32 +2,36 @@ version: "2.0"
 
 stories:
 
-- story: write new sms deny user
+- story: write new SMS deny user give up
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
   - intent: decline
-  - action: utter_feedback_msg_not_sent
+  - action: action_feedback_msg_not_sent
 
-- story: write new sms confirmation user
+- story: write new SMS deny user
   steps:
   - intent: write_new_msg
-    entities:
-	- contact: mom
-	- message: hello i’m on my way
-	- time: now
-	- medium_comm: SMS
-  - action: utter_confirm_new_msg 
-    entities:  
+    entities: 
     - contact: mom
-	- message: hello i’m on my way
-	- time: now
-	- medium_comm: SMS
+    - message: hello I'm on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - message: hello I'm in the hallway
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
