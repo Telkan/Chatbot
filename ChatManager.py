@@ -18,10 +18,17 @@ class ChatManager:
         pass
     
 
-    def textToSpeech(self,outputText:str):
+    def textToSpeech(self,outputText):
         """
         Plays the audio generated from the text of outputText. This function is blocking everything until it works, and it may be stuck sometimes, sorry :/
         """
+        if isinstance(outputText,list):
+            if outputText == []:
+                self.textToSpeech("I don't know what to say")
+                return
+            else:
+                outputText = outputText[0]["text"]
+
         tts = gTTS(outputText)
         tts.save('temp.mp3')
 
@@ -34,25 +41,6 @@ class ChatManager:
                 tts = gTTS(outputText)
                 tts.save('temp.mp3')
 
-    def textToSpeech(self,outputText:list = None):
-        """
-        Plays the audio generated from the text of outputText. This function is blocking everything until it works, and it may be stuck sometimes, sorry :/
-        """
-        if outputText != [] and outputText != None :
-            self.textToSpeech("I don't know what to say")
-            return
-        outputText = outputText[0]["text"]
-        tts = gTTS(outputText)
-        tts.save('temp.mp3')
-
-        repeat = True
-        while repeat:
-            try:
-                playsound("temp.mp3")
-                repeat = False 
-            except :
-                tts = gTTS(outputText)
-                tts.save('temp.mp3')
 
     def listenForVoice(self)->str:
         """
@@ -124,6 +112,6 @@ sys.path.insert(1, os.getcwd())
 if __name__ == "__main__":
     CM = ChatManager() # create chat manager obj
     AM = actionManager.ActionManagerObject(CM) # create action manager obj
-    textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
-    AM.add_message(textFromAlex) 
+    #textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
+    #AM.add_message(textFromAlex) 
     CM.startComProgram()

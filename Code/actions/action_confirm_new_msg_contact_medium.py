@@ -31,17 +31,20 @@ class ActionConfirmNewMsgContactMedium(Action):
         contact = tracker.get_slot('contact')
         medium_comm = tracker.get_slot('medium_comm')
         time = tracker.get_slot("time")
+        # print("Medium_comm: " + str(medium_comm))
+        # print("Contact: " + str(contact))
+        # print("Time: " + str(time))
 
-        if(medium_comm=="null" or contact=="null"): #if one of the required slots was not filled
-            if(medium_comm=="null"):
+        if(str(medium_comm)=="all" or str(contact)=="null" or str(contact)=="None"): #if one of the required slots was not filled
+            if(str(medium_comm)=="all"):
                 msg = "Through which medium of communication?"
-            elif(contact=="null"):
+            else:#if(contact=="null" or contact=="None"):
                 msg = "To which contact should I send it?"
         else: # all mandatory slots are filled
             if(time=="now"): # not a programmed 
-                msg = "Can you confirm that you want to send a message to " + contact + " through " + medium_comm + " ?"
+                msg = "Can you confirm that you want to send a message to " + str(contact) + " through " + str(medium_comm) + " ?"
             else:
-                msg = "Can you confirm that you want to send a message to " + contact + " through " + medium_comm + " at " + time + " ?"
+                msg = "Can you confirm that you want to send a message to " + str(contact) + " through " + str(medium_comm) + " at " + str(time) + " ?"
 
         dispatcher.utter_message(text=msg)
         return []

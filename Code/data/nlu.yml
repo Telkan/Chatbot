@@ -82,10 +82,9 @@ nlu:
     - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
     - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
-    - Can you play [dad]{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}'s ?
+    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
-    - Read me the [last]{"entity": "reception_time", "value": "Last"} message that [Mom]{"entity": "contact", "value": "Mom"} sent on [discord]{"entity": "medium_comm", "value": "Discord"}
-    - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
+    - Can I listen to [Lucas]{"entity": "contact", "value": "Lucas"}'s' [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
 - intent: write_new_msg
   examples: |
@@ -94,15 +93,20 @@ nlu:
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
-    - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
     - I need you to write a message
     - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
+    - [Mike]{"entity": "contact", "value": "Mike"}
+    - [Mom]{"entity": "contact", "value": "Mom"}
+    - [Sister]{"entity": "contact", "value": "Sister"}
+    - [Paolo]{"entity": "contact", "value": "Paolo"}
+    - [Chandler]{"entity": "contact", "value": "Chandler"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
-    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
-    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
-    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - write a [text]{"entity": "medium_comm", "value": "SMS"}
+    - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - send a [text]{"entity": "medium_comm", "value": "SMS"}
 
 - intent: write_new_msg_content
   examples: |
@@ -119,20 +123,21 @@ nlu:
     - I am going to my meeting
     - I will be home later
     - I am not coming home tonight
-    - I have a meeting this afternoon
+    - I am sorry I can't take your call right now
+    - Sorry, I will call you back
+    - I will call you back as soon as I can
+
 
 - intent: delete_msg
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
-    - Could you delete the messages from [Mike]{"entity": "contact", "value": "Mike"} on [discord]{"entity": "medium_comm", "value": "Discord"}
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
-    - Could you move the [two last]{"entity": "reception_time", "value": "two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
     - Can you remove it please ?
     - Delete this message
     - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
-    - Delete the [three last]{"entity": "quantity_msg", "value": "three last"} messages
-    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
+    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
 
 - intent: do_I_have_new_msg
   examples: |
@@ -140,8 +145,6 @@ nlu:
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
-    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
-    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
 
 - intent: change_voicemail_msg
   examples: |
@@ -160,10 +163,14 @@ nlu:
 - intent: call_contact
   examples: |
     - Call [Julie]{"entity": "contact", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
-    - I want to call
-    - I have to make a call
-    - Call
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"}?
+    - I want to call [Julie]{"entity": "contact", "value": "Julie"}
+    - I have to make a call to [Lucas]{"entity": "contact", "value": "Lucas"}
+    - Ring [Mike]{"entity": "contact", "value": "Mike"}
+    - Could you ring my [mom]{"entity": "contact", "value": "Mom"}?
+    - Make a call to [Julie]{"entity": "contact", "value": "Julie"}
+    - Phone [mom]{"entity": "contact", "value": "Mom"}
+    - Make a phone call to [Mike]{"entity": "contact", "value": "Mike"}
 
 - intent: schedule_appointment
   examples: |
@@ -195,164 +202,31 @@ nlu:
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
 
-- lookup: date
+- intent: contact_calling # false intent sent by .py file when incomming call, not from the user
   examples: |
-    - monday
-    - tuesday
-    - wednesday
-    - thursday
-    - friday
-    - saturday
-    - sunday
-    - today
-    - yesterday
-    - tomorrow
-    - next week
-    - newt month
-    - january
-    - february
-    - march
-    - april
-    - may
-    - june
-    - july
-    - august
-    - september
-    - october
-    - november
-    - december
-    - in two days
-    - two days ago
-    - three days ago
-    - four days ago
-    - five days ago
-    - a week ago
-    - in ten days
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Julie]{"entity": "contact", "value": "Julie"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
 
 - lookup: time
   examples: |
-    - one o'clock
-    - two o'clock
-    - three o'clock
-    - four o'clock
-    - five o'clock
     - six o'clock
-    - seven o'clock
-    - eight o'clock
-    - nine o'clock
     - ten o'clock
-    - eleven o'clock
-    - midnight
-    - twelve o'clock
-    - noon
-    - at one
-    - at two
-    - at three
-    - at four
-    - at five
-    - at six
-    - at seven
-    - at eight
     - at nine
-    - at ten
-    - at eleven
-    - at twelve
     - tonight
     - morning
     - afternoon
     - at eight tonight
     - tonight at nine
     - tomorrow morning at seven
-    - at six a.m
-    - seven p.m
-
-- lookup: reception_time
-  examples: |
-    - one o'clock
-    - two o'clock
-    - three o'clock
-    - four o'clock
-    - five o'clock
-    - six o'clock
-    - seven o'clock
-    - eight o'clock
-    - nine o'clock
-    - ten o'clock
-    - eleven o'clock
-    - midnight
-    - twelve o'clock
-    - noon
-    - at one
-    - at two
-    - at three
-    - at four
-    - at five
-    - at six
-    - at seven
-    - at eight
-    - at nine
-    - at ten
-    - at eleven
-    - at twelve
-    - tonight
-    - morning
-    - afternoon
-    - at eight tonight
-    - tonight at nine
-    - at six a.m
-    - seven p.m
-    - at five ten
-    - the last
-    - the last one
-    - last
-    - first
-    - first one
-    - previous
-
-- lookup: name_appointment
-  examples: |
-    - doctor
-    - dentist
-    - work
-    - dinner with my family
-    - ice skating
-    - golf
-    - free time
-    - exam
-    - project
-    - date
-    - meeting
-    - hairdresser
-    - groceries
-    - birthday
-    - party
-
-- lookup: quantity_msg
-  examples: |
-    - all
-    - one
-    - two
-    - three
-    - four
-    - five
-    - six
-    - seven
-    - eight
-    - nine
-    - ten
-    - eleven
-    - twelve
-    - twenty
-    - thirty
-    - fifty
-    - three last
-    - six last
-    - five last
+    - at six a.m.
+    - seven p.m.
+    - at two p.m.
 
 - lookup: contact
   examples: |
     - dad
-    - me
     - brother
     - grandma
     - grandpa
@@ -372,3 +246,4 @@ nlu:
     - Pierre
     - Ramos
     - Dorianne
+
