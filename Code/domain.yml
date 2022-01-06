@@ -47,11 +47,8 @@ intents:
     use_entities: true
 entities:
 - contact
-- contact_calling
-- contact_to_call
 - reception_time
 - medium_comm
-- message
 - quantity_msg
 - archive
 - name_apppointment
@@ -69,7 +66,7 @@ slots:
     influence_conversation: true
   message:
     type: rasa.shared.core.slots.TextSlot
-    initial_value: '---'
+    initial_value: ---
     auto_fill: true
     influence_conversation: true
   time:
@@ -88,11 +85,6 @@ slots:
     auto_fill: true
     influence_conversation: true
   new_voicemail_msg:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  contact_calling:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
