@@ -84,6 +84,7 @@ nlu:
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
     - Can you play [dad]{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}'s ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} message that [Mom]{"entity": "contact", "value": "Mom"} sent on [discord]{"entity": "medium_comm", "value": "Discord"}
     - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
 - intent: write_new_msg
@@ -93,6 +94,7 @@ nlu:
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
+    - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
     - I need you to write a message
     - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
@@ -192,10 +194,6 @@ nlu:
   examples: |
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
-
-- regex: message
-  examples: |
-    - .*
 
 - lookup: date
   examples: |

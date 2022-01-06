@@ -89,11 +89,6 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  contact_calling:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
   name_appointment:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
