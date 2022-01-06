@@ -4,6 +4,8 @@ from gtts import gTTS
 from playsound import playsound
 import requests
 class ChatManager:
+    def __init__(self):
+        pass
 
     def __init__(self) -> None:
         self.api_url = "http://localhost:5005/webhooks/rest/webhook"
@@ -39,13 +41,22 @@ class ChatManager:
             audio = r.listen(source,10,5)  #Get audio with a timeout of 10s and a max phrase length of 5s
         try:
             print("You said " + r.recognize_google(audio))
-            tts = gTTS(r.recognize_google(audio))
+            #tts = gTTS(r.recognize_google(audio))
             return r.recognize_google(audio)
         except sr.UnknownValueError:
             print("Could not understand audio")
             return "ERR-BadAudio"
         except sr.RequestError as e:
             print("Could not request results; {0}".format(e))    
+    def handle_action_manager_msg(self, medium, sender):
+        # read the msg out loud and send it to chatbot
+
+        msg = "New {} from {}".format(medium, sender)
+        # TODO send message to chatbot
+
+        # speech 
+        self.textToSpeech(msg)
+        pass                                                          
             return "ERR-DontWork"                              
 
     def sendToChatbot(self, textToSend:str)->str:                
@@ -82,5 +93,11 @@ class ChatManager:
                 self.textToSpeech("I don't know what to say")
 
                               
-chat = ChatManager()
-chat.startComProgram()
+import os, sys
+sys.path.insert(1, os.getcwd()) 
+import actionManager 
+if __name__ == "__main__":
+    CM = ChatManager() # create chat manager obj
+    AM = actionManager.ActionManagerObject(CM) # create action manager obj
+    textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
+    AM.add_message(textFromAlex) 
