@@ -85,20 +85,16 @@ nlu:
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"}
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
-=======
     - Can you play [dad]{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}'s ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom](contact) sent
     - Read me the [last]{"entity": "reception_time", "value": "Last"} message that [Mom](contact) sent on [discord]{"entity": "medium_comm", "value": "Discord"}
     - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message](medium_comm) please?
-- intent: write_new_msg
-  examples: |
     - write an [SMS](medium_comm) to my [sister]{"entity": "contact", "value": "Sister"}
     - write an [SMS](medium_comm) to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.](time)
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike](contact)
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact) [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - I need you to write a message
-<<<<<<< Updated upstream
     - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
     - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
     - say [hello I'm on wy way]{"entity": "message", "value":"hello I'm on my way"}
@@ -110,7 +106,6 @@ nlu:
 - intent: delete_msg
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
-=======
     - to [Mom](contact)
     - [Lucas](contact)
     - by [SMS](medium_comm)
@@ -140,7 +135,6 @@ nlu:
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
     - Could you delete the messages from [Mike](contact) on [discord]{"entity": "medium_comm", "value": "Discord"}
->>>>>>> Stashed changes
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
     - Could you move the [two last](reception_time) [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
@@ -155,12 +149,9 @@ nlu:
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
-<<<<<<< Updated upstream
-
-=======
     - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
     - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
->>>>>>> Stashed changes
+
 - intent: change_voicemail_msg
   examples: |
     - I want to change my voicemail message
@@ -175,13 +166,11 @@ nlu:
     - can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
 - intent: call_contact
   examples: |
-<<<<<<< Updated upstream
+
     - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
     - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
-=======
     - Call [Julie](contact) please
     - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
->>>>>>> Stashed changes
     - I want to call
     - I have to make a call
     - Call
@@ -211,7 +200,6 @@ nlu:
   examples: |
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
-<<<<<<< Updated upstream
 
 - intent: add_to_contact_list
   examples: |
@@ -222,7 +210,6 @@ nlu:
   examples: |
     - .*
 
-=======
 - synonym: Mom
   examples: |
     - mom
@@ -314,7 +301,7 @@ nlu:
 - synonym: Dinner with my sister
   examples: |
     - dinner with my sister
->>>>>>> Stashed changes
+
 - lookup: date
   examples: |
     - monday
@@ -369,16 +356,13 @@ nlu:
     - at six a.m
     - seven p.m
     - at five ten
-<<<<<<< Updated upstream
-
-=======
     - the last
     - the last one
     - last
     - first
     - first one
     - previous
->>>>>>> Stashed changes
+
 - lookup: name_appointment
   examples: |
     - doctor
@@ -396,7 +380,6 @@ nlu:
     - groceries
     - birthday
     - party
-<<<<<<< Updated upstream
     - the last
     - the last one
     - last
@@ -404,8 +387,6 @@ nlu:
     - first one
     - previous
 
-=======
->>>>>>> Stashed changes
 - lookup: quantity_msg
   examples: |
     - all
