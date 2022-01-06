@@ -84,7 +84,7 @@ nlu:
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
     - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
-    - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
+    - Can I listen to [Lucas]{"entity": "contact", "value": "Lucas"}'s' [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
 - intent: write_new_msg
   examples: |
@@ -96,6 +96,11 @@ nlu:
     - I need you to write a message
     - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
+    - [Mike]{"entity": "contact", "value": "Mike"}
+    - [Mom]{"entity": "contact", "value": "Mom"}
+    - [Sister]{"entity": "contact", "value": "Sister"}
+    - [Paolo]{"entity": "contact", "value": "Paolo"}
+    - [Chandler]{"entity": "contact", "value": "Chandler"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
 
@@ -114,6 +119,9 @@ nlu:
     - I am going to my meeting
     - I will be home later
     - I am not coming home tonight
+    - I am sorry I can't take your call right now
+    - Sorry, I will call you back
+    - I will call you back as soon as I can
 
 
 - intent: delete_msg
@@ -132,7 +140,7 @@ nlu:
     - do I have new [messages]{"entity": "medium_comm"} ?
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
-    - Did I get any new {text}{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
 
 - intent: change_voicemail_msg
   examples: |
@@ -150,11 +158,15 @@ nlu:
 
 - intent: call_contact
   examples: |
-    - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
-    - I want to call
-    - I have to make a call
-    - Call
+    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"}?
+    - I want to call [Julie]{"entity": "contact", "value": "Julie"}
+    - I have to make a call to [Lucas]{"entity": "contact", "value": "Lucas"}
+    - Ring [Mike]{"entity": "contact", "value": "Mike"}
+    - Could you ring my [mom]{"entity": "contact", "value": "Mom"}?
+    - Make a call to [Julie]{"entity": "contact", "value": "Julie"}
+    - Phone [mom]{"entity": "contact", "value": "Mom"}
+    - Make a phone call to [Mike]{"entity": "contact", "value": "Mike"}
 
 - intent: schedule_appointment
   examples: |
@@ -186,10 +198,12 @@ nlu:
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
 
-- intent: add_to_contact_list
+- intent: contact_calling # false intent sent by .py file when incomming call, not from the user
   examples: |
-    - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
-    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "mail"} list.
+    - Lattecannofee iiyama [Julie]{"entity": "contact", "value": "Julie"}
+    - Lattecannofee iiyama [Mom]{"entity": "contact", "value": "Mom"}
+    - Lattecannofee iiyama [Mike]{"entity": "contact", "value": "Mike"}
+    - Lattecannofee iiyama [Sister]{"entity": "contact", "value": "Sister"}
 
 - lookup: time
   examples: |

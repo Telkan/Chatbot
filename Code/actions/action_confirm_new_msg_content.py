@@ -27,9 +27,9 @@ class ActionConfirmNewMsgContent(Action):
         time = tracker.get_slot("time")
         
         if(time=="now"): # not a programmed 
-            msg = "Can you confirm that you want to send \"" +  user_msg + "\" to " + contact + " through " + medium_comm + " ?"
+            msg = "Can you confirm that you want to send \"" +  str(user_msg) + "\" to " + str(contact) + " through " + str(medium_comm) + " ?"
         else:
-            msg = "Can you confirm that you want to send \"" +  user_msg + "\" to " + contact + " through " + medium_comm + " at " + time + " ?"
+            msg = "Can you confirm that you want to send \"" +  str(user_msg) + "\" to " + str(contact) + " through " + str(medium_comm) + " at " + str(time) + " ?"
 
         dispatcher.utter_message(text=msg)
         return [SlotSet("message", user_msg)]

@@ -24,4 +24,7 @@ rules:
   steps:
   - intent: write_new_msg_content
   - action: action_confirm_new_msg_content
-
+- rule: Each time the user receives a call, the chatbot informs the user
+  steps:
+  - intent: contact_calling
+  - action: utter_incoming_call

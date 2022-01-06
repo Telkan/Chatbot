@@ -29,6 +29,8 @@ intents:
     use_entities: true
 - archive_email:
     use_entities: true
+- contact_calling:
+    use_entities: true
 - call_contact:
     use_entities: true
 - schedule_appointment:
@@ -47,11 +49,8 @@ intents:
     use_entities: true
 entities:
 - contact
-- contact_calling
-- contact_to_call
 - reception_time
 - medium_comm
-- message
 - quantity_msg
 - archive
 - name_apppointment
@@ -88,11 +87,6 @@ slots:
     auto_fill: true
     influence_conversation: true
   new_voicemail_msg:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  contact_calling:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -200,10 +194,32 @@ responses:
   - text: Could you please tell me what to put as object of the email?
   - text: Could you please precise the object for this email?
   - text: What is the email's object please?
+  utter_incoming_call:
+  - text: Hey, {contact} is calling you. Do you want to take the call?
+  - text: You have an incoming call from {contact}, do you want to take it?
+  - text: Do you want to take a call from {contact}?
+  utter_confirm_call:
+  - text: Call with {contact}...
+  - text: Currently in call with {contact}...
+  - text: Ongoing call with {contact}...
+  utter_decline_call:
+  - text: Call from {contact} refused.
+  - text: You refused the call from {contact}.
+  - text: Ok, the call from {contact} was refused.
+  utter_feedback_call_cancelled:
+  - text: No worries, I haven't called {contact}.
+  - text: Okay, call to {contact} cancelled.
+  - text: Alright, mission calling {contact} aborted.
+  utter_confirm_call_contact:
+  - text: Can you confirm that you want to call {contact}?
+  - text: Are you sure you want me to call {contact}?
+  - text: Shall I call {contact}?
+  - text: You want to make a call to {contact}, is that right?
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content
 - action_sending_new_msg
 - action_feedback_msg_not_sent
+- action_reset_contact
 forms: {}
 e2e_actions: []
