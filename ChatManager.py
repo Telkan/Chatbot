@@ -3,6 +3,12 @@ import speech_recognition as sr
 from gtts import gTTS
 from playsound import playsound
 import requests
+import os, sys
+import actionManager 
+
+
+
+
 class ChatManager:
     def __init__(self):
         pass
@@ -16,6 +22,26 @@ class ChatManager:
         """
         Plays the audio generated from the text of outputText. This function is blocking everything until it works, and it may be stuck sometimes, sorry :/
         """
+        tts = gTTS(outputText)
+        tts.save('temp.mp3')
+
+        repeat = True
+        while repeat:
+            try:
+                playsound("temp.mp3")
+                repeat = False 
+            except :
+                tts = gTTS(outputText)
+                tts.save('temp.mp3')
+
+    def textToSpeech(self,outputText:list = None):
+        """
+        Plays the audio generated from the text of outputText. This function is blocking everything until it works, and it may be stuck sometimes, sorry :/
+        """
+        if outputText != [] and outputText != None :
+            self.textToSpeech("I don't know what to say")
+            return
+        outputText = outputText[0]["text"]
         tts = gTTS(outputText)
         tts.save('temp.mp3')
 
@@ -48,16 +74,20 @@ class ChatManager:
             return "ERR-BadAudio"
         except sr.RequestError as e:
             print("Could not request results; {0}".format(e))    
+            return "ERR-DontWork"                              
+    
     def handle_action_manager_msg(self, medium, sender):
         # read the msg out loud and send it to chatbot
 
-        msg = "New {} from {}".format(medium, sender)
-        # TODO send message to chatbot
 
+        answer = self.sendToChatbot("THE PROTOCOL THAT  WE DECIDE I DON'T REMEMBER SORRY") # TODO create a message using the medium and sender
+
+        #msg = "New {} from {}".format(medium, sender)
+        # TODO send message to chatbot
+        
         # speech 
-        self.textToSpeech(msg)
+        self.textToSpeech(answer)
         pass                                                          
-            return "ERR-DontWork"                              
 
     def sendToChatbot(self, textToSend:str)->str:                
         """
@@ -87,17 +117,13 @@ class ChatManager:
                     return
             
             answer = self.sendToChatbot(message)
-            if answer != []:
-                self.textToSpeech(answer[0]["text"])
-            else:
-                self.textToSpeech("I don't know what to say")
-
+            self.textToSpeech(answer)
                               
-import os, sys
 sys.path.insert(1, os.getcwd()) 
-import actionManager 
+
 if __name__ == "__main__":
     CM = ChatManager() # create chat manager obj
     AM = actionManager.ActionManagerObject(CM) # create action manager obj
     textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
     AM.add_message(textFromAlex) 
+    CM.startComProgram()
