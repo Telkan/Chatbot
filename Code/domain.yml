@@ -14,7 +14,7 @@ intents:
 - confirm:
     use_entities: true
 - decline:
-    use_entities: []
+    use_entities: false
 - find_msg:
     use_entities: true
 - write_new_msg:
