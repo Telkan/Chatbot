@@ -100,10 +100,18 @@ class  ActionManagerObject:
         # here we have the lookup function
 
         pass
-
+    
     def add_message(self, args):
         # here we have add message logic, db-related etc.
 
         # code for contacting CM
         # TODO use self.cm to contact chat manager
+        pass
+
+    def lookup_event(self, args)
+        # lookup event db
+        pass
+
+    def add_event(self, args)
+        # add event to db
         pass
