@@ -81,7 +81,7 @@ def createNewContact(contact, message, message_before, phonenumber, date):
     write_json(structureContact)
 
 add_contact_and_voicemail(contact="Voicemail", message="welcome.mp3", message_before="", phonenumber="123", date="")
-add_contact_and_voicemail(contact="Boss", message="boss.mp3", message_before="boss_voicemail.mp3", phonenumber="01.23.45.67.89", date="05/01/2022, 10:00")
-add_contact_and_voicemail(contact="mom", message="mom.mp3", message_before="mom_before.mp3",  phonenumber="06.66.66.66.66",date="05/01/2022, 9:30")
+add_contact_and_voicemail(contact="Boss", message="boss.mp3", message_before="boss_voicemail.mp3", phonenumber="06.00.00.00.00", date="05/01/2022, 10:00")
+add_contact_and_voicemail(contact="mom", message="mom.mp3", message_before="mom_before.mp3",  phonenumber="06.44.44.44.44",date="05/01/2022, 9:30")
 
 
