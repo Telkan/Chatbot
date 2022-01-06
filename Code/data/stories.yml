@@ -2,35 +2,26 @@ version: "2.0"
 
 stories:
 
-<<<<<<< Updated upstream
-- story: happy path
+- story: write new SMS deny user give up
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - message: hello I'm on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
+  - intent: decline
+  - action: action_feedback_msg_not_sent
 
-- story: sad path 1
+- story: delete messages
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: delete_msg
+    entities: 
+    - quantity_msg: five last
+  - action: utter_feedback_msg_deleted
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: write new sms confirmation user
+- story: write new SMS deny user
   steps:
   - intent: write_new_msg
     entities :
@@ -44,14 +35,26 @@ stories:
     - message: hello i’m on my way
     - time : now
     - medium_comm: SMS
+    entities: 
+    - contact: mom
+    - message: hello I'm on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - message: hello I'm in the hallway
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new sms deny user
-=======
 - story: search old SMS
->>>>>>> Stashed changes
   steps:
   - intent: find_msg
     entities:
@@ -170,7 +173,6 @@ stories:
   - action: utter_feedback_msg_not_sent
   - action: utter_what_message
   - intent: write_new_msg
-<<<<<<< Updated upstream
     entities :
     - contact: mom
     - message: hello i’m on my way
@@ -182,6 +184,17 @@ stories:
     - message: hello i’m on my way
     - time : now
     - medium_comm: SMS
+    entities : 
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
+	- medium_comm: SMS
+- action: utter_confirm_new_msg 
+    entities :  
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
+	- medium_comm: SMS
   - intent: decline
   - action : utter_feedback_msg_not_sent
   - action: utter_what_message
@@ -200,7 +213,6 @@ stories:
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
-=======
     entities:
     - contact: mom
     - message: hello i’m on my way
@@ -927,4 +939,3 @@ stories:
     - message: you have an internship congrats
     - time: today
   - action: utter_feedback_archive_email
->>>>>>> Stashed changes
