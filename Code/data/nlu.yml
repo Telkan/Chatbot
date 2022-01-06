@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,14 +28,12 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: confirm
   examples: |
     - yes
@@ -54,7 +50,6 @@ nlu:
     - exact
     - exactly
     - read it
-
 - intent: decline
   examples: |
     - no
@@ -68,19 +63,17 @@ nlu:
     - I don't want
     - later
     - don't
-
 - intent: thank_you
   examples: |
     - thanks
     - thank you
     - many thanks
     - thank you so much
-
 - intent: find_msg
   examples: |
     - what did [mom]{"entity": "contact", "value": "Mom"} say ?
-    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
-    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
+    - Could you tell me what is [Maxime](contact)'s [last]{"entity": "reception_time", "value": "Last"} [SMS](medium_comm) ?
+    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex](contact) sent me [today]{"entity": "reception_time", "value": "Today"} ?
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
     - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
@@ -90,10 +83,22 @@ nlu:
   examples: |
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
-    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"}
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
+=======
+    - Can you play [dad]{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}'s ?
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom](contact) sent
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} message that [Mom](contact) sent on [discord]{"entity": "medium_comm", "value": "Discord"}
+    - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message](medium_comm) please?
+- intent: write_new_msg
+  examples: |
+    - write an [SMS](medium_comm) to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS](medium_comm) to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.](time)
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike](contact)
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact) [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - I need you to write a message
+<<<<<<< Updated upstream
     - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
     - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
     - say [hello I'm on wy way]{"entity": "message", "value":"hello I'm on my way"}
@@ -105,44 +110,81 @@ nlu:
 - intent: delete_msg
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+=======
+    - to [Mom](contact)
+    - [Lucas](contact)
+    - by [SMS](medium_comm)
+    - write an [SMS](medium_comm) to [Mom](contact)
+    - Send a message to [Tom](contact) via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy](contact)
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel](contact)
+    - write an [SMS](medium_comm) to [mom]{"entity": "contact", "value": "Mom"}
+- intent: write_new_msg_content
+  examples: |
+    - I'm on my way
+    - I am here
+    - Hi, how are you ?
+    - How you doin' ?
+    - see you soon
+    - I am going to the grocery store
+    - I am coming home
+    - Buy me a pizza
+    - I need my keys
+    - Help me please
+    - I am going to my meeting
+    - I will be home later
+    - I am not coming home tonight
+    - I have a meeting this afternoon
+    - please buy [groceries](name_appointment)
+- intent: delete_msg
+  examples: |
+    - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+    - Could you delete the messages from [Mike](contact) on [discord]{"entity": "medium_comm", "value": "Discord"}
+>>>>>>> Stashed changes
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
-    - Could you move the [two last]{"entity": "reception_time", "value": "two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Could you move the [two last](reception_time) [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
     - Can you remove it please ?
     - Delete this message
-    - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
-    - Delete the [three last]{"entity": "quantity_msg", "value": "three last"} messages
-    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
-
+    - Can you delete the messages from [Margot](contact)
+    - Delete the [three last](quantity_msg) messages
+    - Delete [five](quantity_msg) messages
 - intent: do_I_have_new_msg
   examples: |
-    - do I have new [messages]{"entity": "medium_comm"} ?
+    - do I have new [messages](medium_comm) ?
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
+<<<<<<< Updated upstream
 
+=======
+    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
+    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
+>>>>>>> Stashed changes
 - intent: change_voicemail_msg
   examples: |
     - I want to change my voicemail message
     - I would like to record another voicemail message
     - I would like to change my answering machine message
-    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
-    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can]{"entity": "new_voicemail_msg", "value": "It's Bruce, leave a message after the bip, I'll call you back as soon as I can"}
-
+    - Change my voicemail message to [It's Emma, leave a message after the bip](new_voicemail_msg)
+    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can](new_voicemail_msg)
 - intent: archive_email
   examples: |
     - can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
-    - can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
+    - can you archive every emails from [Julie](contact) in [UPSSITECH](archive)
     - can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
-
 - intent: call_contact
   examples: |
+<<<<<<< Updated upstream
     - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
     - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
+=======
+    - Call [Julie](contact) please
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
+>>>>>>> Stashed changes
     - I want to call
     - I have to make a call
     - Call
-
 - intent: schedule_appointment
   examples: |
     - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
@@ -151,27 +193,25 @@ nlu:
     - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
     - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
     - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
-    - [Next week]{"entity": "date", "value": "Next week"}
-    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
-    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
+    - [Next week](date)
+    - The name is [Max's birthday](name_appointment)
+    - [Birthday party](name_appointment)
     - at [eleven]{"entity": "time", "value": "Eleven"}
     - [two]{"entity": "time", "value": "Two"}
-
 - intent: modify_appointment
   examples: |
     - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
     - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
-    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
-
+    - Can you change the appointment with my [doctor](name_appointment) to [Monday](new_date) at [ten a.m.](new_time) ?
 - intent: cancel_appointment
   examples: |
     - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
     - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
-
 - intent: get_appointment_memo
   examples: |
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
+<<<<<<< Updated upstream
 
 - intent: add_to_contact_list
   examples: |
@@ -182,6 +222,99 @@ nlu:
   examples: |
     - .*
 
+=======
+- synonym: Mom
+  examples: |
+    - mom
+- synonym: Last
+  examples: |
+    - last
+- synonym: Email
+  examples: |
+    - email
+    - emails
+- synonym: Today
+  examples: |
+    - today
+- synonym: Call
+  examples: |
+    - call
+- synonym: Yesterday
+  examples: |
+    - yesterday
+- synonym: Dad
+  examples: |
+    - dad
+- synonym: Voicemail
+  examples: |
+    - voicemail
+- synonym: SMS
+  examples: |
+    - text
+- synonym: Discord
+  examples: |
+    - discord
+- synonym: Sister
+  examples: |
+    - sister
+- synonym: Tonight at nine
+  examples: |
+    - tonight at nine
+- synonym: Last month
+  examples: |
+    - last month
+- synonym: Internship
+  examples: |
+    - internship
+- synonym: First
+  examples: |
+    - first
+- synonym: Work
+  examples: |
+    - work
+- synonym: Dentist
+  examples: |
+    - dentist
+- synonym: Tuesday
+  examples: |
+    - tuesday
+- synonym: Ten a.m
+  examples: |
+    - ten a.m
+- synonym: In five days
+  examples: |
+    - in five days
+- synonym: Tomorrow
+  examples: |
+    - tomorrow
+- synonym: Evening at eight
+  examples: |
+    - evening at eight
+- synonym: In two hours
+  examples: |
+    - in two hours
+- synonym: Friday
+  examples: |
+    - friday
+- synonym: Eleven
+  examples: |
+    - eleven
+- synonym: Two
+  examples: |
+    - two
+- synonym: six
+  examples: |
+    - six o'clock
+- synonym: All
+  examples: |
+    - all
+- synonym: Four o'clock
+  examples: |
+    - four o'clock
+- synonym: Dinner with my sister
+  examples: |
+    - dinner with my sister
+>>>>>>> Stashed changes
 - lookup: date
   examples: |
     - monday
@@ -210,7 +343,6 @@ nlu:
     - december
     - in two days
     - in ten days
-
 - lookup: time
   examples: |
     - six o'clock
@@ -224,7 +356,6 @@ nlu:
     - tomorrow morning at seven
     - at six a.m
     - seven p.m
-
 - lookup: reception_time
   examples: |
     - six o'clock
@@ -238,7 +369,16 @@ nlu:
     - at six a.m
     - seven p.m
     - at five ten
+<<<<<<< Updated upstream
 
+=======
+    - the last
+    - the last one
+    - last
+    - first
+    - first one
+    - previous
+>>>>>>> Stashed changes
 - lookup: name_appointment
   examples: |
     - doctor
@@ -256,6 +396,7 @@ nlu:
     - groceries
     - birthday
     - party
+<<<<<<< Updated upstream
     - the last
     - the last one
     - last
@@ -263,6 +404,8 @@ nlu:
     - first one
     - previous
 
+=======
+>>>>>>> Stashed changes
 - lookup: quantity_msg
   examples: |
     - all
@@ -284,7 +427,6 @@ nlu:
     - three last
     - six last
     - five last
-
 - lookup: contact
   examples: |
     - dad

@@ -1,109 +1,70 @@
-version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- confirm:
-    use_entities: true
+- goodbye
+- stop
+- write_new_msg_content
+- write_new_msg
+- confirm
+- greet
+- bot_challenge
 - decline:
     use_entities: []
-- find_msg:
-    use_entities: true
-- write_new_msg:
-    use_entities: true
-- delete_msg:
-    use_entities: true
-- do_I_have_new_msg:
-    use_entities: true
-- change_voicemail_msg:
-    use_entities: true
-- archive_email:
-    use_entities: true
-- call_contact:
-    use_entities: true
-- schedule_appointment:
-    use_entities: true
-- modify_appointment:
-    use_entities: true
-- can_you_repeat:
-    use_entities: true
-- cancel_appointment:
-    use_entities: true
-- get_appointment_memo:
-    use_entities: true
-- add_to_contact_list:
-    use_entities: true
-- thank_you:
-    use_entities: true
+- find_msg
+- delete_msg
+- do_I_have_new_msg
+- change_voicemail_msg
+- archive_email
+- call_contact
+- schedule_appointment
+- modify_appointment
+- can_you_repeat
+- cancel_appointment
+- get_appointment_memo
+- add_to_contact_list
+- thank_you
 entities:
-- contact
-- contact_calling
-- contact_to_call
-- reception_time
-- medium_comm
-- message
-- quantity_msg
 - archive
-- name_apppointment
+- contact
 - date
-- time
+- medium_comm
+- name_appointment
+- name_apppointment
 - new_date
 - new_time
 - new_voicemail_msg
-- name_appointment
+- quantity_msg
+- reception_time
+- time
 slots:
   contact:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  message:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: '---'
-    auto_fill: true
-    influence_conversation: true
-  time:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: now
-    auto_fill: true
-    influence_conversation: true
-  medium_comm:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: all
-    auto_fill: true
-    influence_conversation: true
-  reception_time:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  new_voicemail_msg:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  contact_calling:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  name_appointment:
-    type: rasa.shared.core.slots.TextSlot
-    initial_value: null
-    auto_fill: true
+    type: text
     influence_conversation: true
   date:
-    type: rasa.shared.core.slots.TextSlot
+    type: text
     initial_value: Today
-    auto_fill: true
+    influence_conversation: true
+  medium_comm:
+    type: text
+    initial_value: all
+    influence_conversation: true
+  message:
+    type: text
+    initial_value: '---'
+    influence_conversation: true
+  name_appointment:
+    type: text
+    influence_conversation: true
+  new_voicemail_msg:
+    type: text
+    influence_conversation: true
+  reception_time:
+    type: text
+    influence_conversation: true
+  time:
+    type: text
+    initial_value: now
     influence_conversation: true
 responses:
   utter_greet:
@@ -199,8 +160,12 @@ responses:
   - text: Could you please precise the object for this email?
   - text: What is the email's object please?
 actions:
-- action_confirm_new_msg
-- action_sending_new_msg
+- action_confirm_new_msg_contact_medium
+- action_confirm_new_msg_content
 - action_feedback_msg_not_sent
-forms: {}
-e2e_actions: []
+- action_sending_new_msg
+- utter_feedback_msg_sent
+- utter_goodbye
+- utter_greet
+- utter_what_message
+version: '2.0'
