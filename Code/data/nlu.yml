@@ -103,6 +103,10 @@ nlu:
     - [Chandler]{"entity": "contact", "value": "Chandler"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - write a [text]{"entity": "medium_comm", "value": "SMS"}
+    - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - send a [text]{"entity": "medium_comm", "value": "SMS"}
 
 - intent: write_new_msg_content
   examples: |
@@ -200,10 +204,10 @@ nlu:
 
 - intent: contact_calling # false intent sent by .py file when incomming call, not from the user
   examples: |
-    - Lattecannofee iiyama [Julie]{"entity": "contact", "value": "Julie"}
-    - Lattecannofee iiyama [Mom]{"entity": "contact", "value": "Mom"}
-    - Lattecannofee iiyama [Mike]{"entity": "contact", "value": "Mike"}
-    - Lattecannofee iiyama [Sister]{"entity": "contact", "value": "Sister"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Julie]{"entity": "contact", "value": "Julie"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
 
 - lookup: time
   examples: |

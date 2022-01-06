@@ -47,6 +47,8 @@ intents:
     use_entities: true
 - thank_you:
     use_entities: true
+- nlu_fallback:
+    use_entities: true
 entities:
 - contact
 - reception_time
@@ -162,14 +164,14 @@ responses:
   - text: Okay, it has been modified.
   utter_ask_name_appointment:
   - text: What is the name of the appointment you are referring to?
-  - text: I am sorry, what is the name of the appointment you are talking about?
+  - text: What is the name of the appointment you are talking about?
   - text: Could you please tell me the name of the appointment you have just mentionned?
   - text: Could you please precise the name of the appointment you are talking about?
   - text: What is the appointment's name please?
   utter_reschedule_when:
   - text: When would you like to reschedule this appointment?
   - text: Can you specify when you would like to reschedule this appointment?
-  - text: I am sorry, could you tell me when you would like this appoint to be rescheduled?
+  - text: Could you tell me when you would like this appoint to be rescheduled?
   - text: Could you please tell me when you would like it to be rescheduled?
   utter_contact_not_found:
   - text: I am sorry, I could not find this contact in your contact list.
@@ -215,6 +217,10 @@ responses:
   - text: Are you sure you want me to call {contact}?
   - text: Shall I call {contact}?
   - text: You want to make a call to {contact}, is that right?
+  utter_dont_understand:
+  - text: I am sorry, I did not understand what you wanted.
+  - text: I did not get that, I apologize.
+  - text: Sorry, I did not get what you wanted me to do.
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content

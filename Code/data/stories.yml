@@ -2,49 +2,21 @@ version: "2.0"
 
 stories:
 
-- story: write new SMS deny user give up
+- story: 1 - Write new msg deny user # OK
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg_contact_medium
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: write new Email deny user give up
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: Lucas
-    - time: now
-    - medium_comm: Email
-  - action: action_confirm_new_msg_contact_medium
-  - intent: decline
-  - action: action_feedback_msg_not_sent
-
-- story: write new SMS deny user give up 2
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: mom
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: decline
-  - action: action_feedback_msg_not_sent
-
-- story: write new Discord deny user give up 2
+- story: 2 - Write new msg deny user # OK
   steps:
   - intent: write_new_msg
     entities: 
     - contact: dad
-    - time: now
     - medium_comm: Discord
   - action: action_confirm_new_msg_contact_medium
   - intent: confirm
@@ -54,12 +26,11 @@ stories:
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: write new SMS confirmation user
+- story: 3 - Write new msg confirmation user # OK
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg_contact_medium
   - intent: confirm
@@ -70,17 +41,13 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new SMS contact missing confirmation user
+- story: 4 - Write new msg confirmation user with time # NOK
   steps:
   - intent: write_new_msg
     entities: 
-    - contact: null
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg_contact_medium
-  - intent: write_new_msg
-    entities: 
-    - contact: dad
+    - contact: Julie
+    - time: at two p.m.
+    - medium_comm: Email
   - action: action_confirm_new_msg_contact_medium
   - intent: confirm
   - action: utter_what_message
@@ -90,12 +57,10 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new Mail contact missing confirmation user
+- story: 5 - Write new msg Contact missing confirmation user # Mostly OK
   steps:
   - intent: write_new_msg
     entities: 
-    - contact: null
-    - time: now
     - medium_comm: Email
   - action: action_confirm_new_msg_contact_medium
   - intent: write_new_msg
@@ -110,13 +75,41 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new message medium missing confirmation user
+- story: 6 - Write new msg Contact missing decline user
   steps:
+  - intent: write_new_msg
+    entities: 
+    - medium_comm: SMS
+  - action: action_confirm_new_msg_contact_medium
+  - intent: write_new_msg
+    entities: 
+    - contact: Mike
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+
+- story: 7 - Write new msg Contact missing decline user
+  steps:
+  - intent: write_new_msg
+    entities: 
+    - medium_comm: Discord
+  - action: action_confirm_new_msg_contact_medium
   - intent: write_new_msg
     entities: 
     - contact: Lucas
-    - time: now
-    - medium_comm: all
+  - action: action_confirm_new_msg_contact_medium
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+
+- story: 8 - Write new message medium missing confirmation user # OK
+  steps:
+  - intent: write_new_msg
+    entities: 
+    - contact: Mom
   - action: action_confirm_new_msg_contact_medium
   - intent: write_new_msg
     entities: 
@@ -130,109 +123,39 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: write new message medium missing confirmation user 2
+- story: 9 - Write new message medium missing decline user
   steps:
   - intent: write_new_msg
     entities: 
-    - contact: Ramos
-    - time: now
-    - medium_comm: all
-  - action: action_confirm_new_msg_contact_medium
-  - intent: write_new_msg
-    entities: 
-    - medium_comm: Email
-  - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new message medium & contact missing confirmation user
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: null
-    - time: now
-    - medium_comm: all
+    - contact: Sister
   - action: action_confirm_new_msg_contact_medium
   - intent: write_new_msg
     entities: 
     - medium_comm: SMS
   - action: action_confirm_new_msg_contact_medium
-  - intent: write_new_msg
-    entities: 
-    - contact: mom
-  - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
+  - intent: decline
+  - action: action_feedback_msg_not_sent
 
-- story: write new mail confirmation user
+- story: 10 - Write new message medium & contact missing confirmation user # OK
   steps:
   - intent: write_new_msg
-    entities: 
-    - contact: Julie
-    - time: now
-    - medium_comm: Email
   - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new SMS confirmation user 2
-  steps:
+  - intent: write_new_msg
+    entities: 
+    - medium_comm: SMS
+  - action: action_confirm_new_msg_contact_medium
   - intent: write_new_msg
     entities: 
     - contact: dad
-    - time: now
-    - medium_comm: SMS
   - action: action_confirm_new_msg_contact_medium
   - intent: confirm
   - action: utter_what_message
   - intent: write_new_msg_content
   - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: write new Email confirmation user 2
-  steps:
-  - intent: write_new_msg
-    entities: 
-    - contact: Anais
-    - time: now
-    - medium_comm: Email
-  - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: incoming call decline
-  steps:
-  - intent: contact_calling
-    entities: 
-    - contact: Dad
-  - action: utter_incoming_call
   - intent: decline
-  - action: utter_decline_call
-  - action: action_reset_contact
+  - action: action_feedback_msg_not_sent
 
-- story: incoming call decline 2
+- story: 11 - Incoming call decline # OK
   steps:
   - intent: contact_calling
     entities: 
@@ -242,19 +165,18 @@ stories:
   - action: utter_decline_call
   - action: action_reset_contact
 
-- story: incoming call decline and write msg
+- story: 12 - Incoming call decline and write msg # OK
   steps:
   - intent: contact_calling
     entities: 
-    - contact: Dad
+    - contact: Sister
   - action: utter_incoming_call
   - intent: decline
   - action: utter_decline_call
   - action: action_reset_contact
   - intent: write_new_msg
     entities: 
-    - contact: Mom
-    - time: now
+    - contact: Sister
     - medium_comm: SMS
   - action: action_confirm_new_msg_contact_medium
   - intent: confirm
@@ -265,30 +187,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: incoming call decline and write msg 2
-  steps:
-  - intent: contact_calling
-    entities: 
-    - contact: Mike
-  - action: utter_incoming_call
-  - intent: decline
-  - action: utter_decline_call
-  - action: action_reset_contact
-  - intent: write_new_msg
-    entities: 
-    - contact: Mike
-    - time: now
-    - medium_comm: SMS
-  - action: action_confirm_new_msg_contact_medium
-  - intent: confirm
-  - action: utter_what_message
-  - intent: write_new_msg_content
-  - action: action_confirm_new_msg_content
-  - intent: confirm
-  - action: action_sending_new_msg
-  - action: utter_feedback_msg_sent
-
-- story: incoming call confirm
+- story: 13 - Incoming call confirm # OK
   steps:
   - intent: contact_calling
     entities: 
@@ -298,47 +197,17 @@ stories:
   - action: utter_confirm_call
   - action: action_reset_contact
 
-- story: incoming call confirm 2
-  steps:
-  - intent: contact_calling
-    entities: 
-    - contact: Lucas
-  - action: utter_incoming_call
-  - intent: confirm
-  - action: utter_confirm_call
-  - action: action_reset_contact
-
-- story: calling mom confirm
+- story: 14 - Making a call confirm # OK
   steps:
   - intent: call_contact
     entities: 
-    - contact: Mom
+    - contact: Maxence
   - action: utter_confirm_call_contact
   - intent: confirm
   - action: utter_confirm_call
   - action: action_reset_contact
 
-- story: calling Margot confirm
-  steps:
-  - intent: call_contact
-    entities: 
-    - contact: Margot
-  - action: utter_confirm_call_contact
-  - intent: confirm
-  - action: utter_confirm_call
-  - action: action_reset_contact
-
-- story: calling dad decline
-  steps:
-  - intent: call_contact
-    entities: 
-    - contact: Dad
-  - action: utter_confirm_call_contact
-  - intent: decline
-  - action: utter_feedback_call_cancelled
-  - action: action_reset_contact
-
-- story: calling Ramos decline
+- story: 15 - Making a call decline # OK
   steps:
   - intent: call_contact
     entities: 

@@ -28,3 +28,7 @@ rules:
   steps:
   - intent: contact_calling
   - action: utter_incoming_call
+- rule: When chatbot doesn't understand user, it apologizes
+  steps:
+  - intent: nlu_fallback
+  - action: utter_dont_understand
