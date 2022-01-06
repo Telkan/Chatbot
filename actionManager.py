@@ -78,18 +78,12 @@ def find_message(medium, contact, date, datetype=0, usertype="all"):
                 return messagesFound
             rk += 1
 
-
-msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")
-print(msg)
-msg = find_message(SMS_medium, "Lucas", "03/01/2022", datetype=1, usertype="contact")
-print(msg)
-msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="user")
-print(msg)
-msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="contact")
-print(msg)
-msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="all")
-print(msg)
-
+class MessageObj:   # an object to represent a message, would be great it this was generally used
+    def __init__(self, txt, sender, medium, date):
+        self.text = txt
+        self.sender = sender
+        self.medium = medium
+        self.date = date
 
 class  ActionManagerObject:
     def __init__(self, chat_manager):
@@ -101,17 +95,31 @@ class  ActionManagerObject:
 
         pass
     
-    def add_message(self, args):
+    def add_message(self, msg):
         # here we have add message logic, db-related etc.
 
-        # code for contacting CM
-        # TODO use self.cm to contact chat manager
-        pass
+        #TODO add to db
 
-    def lookup_event(self, args)
+        # code for contacting CM
+        self.cm.handle_action_manager_msg(msg.medium, msg.sender)
+
+    def lookup_event(self, args):
         # lookup event db
         pass
 
-    def add_event(self, args)
+    def add_event(self, args):
         # add event to db
         pass
+
+
+if __name__ == "__main__":
+    msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")
+    print(msg)
+    msg = find_message(SMS_medium, "Lucas", "03/01/2022", datetype=1, usertype="contact")
+    print(msg)
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="user")
+    print(msg)
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="contact")
+    print(msg)
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="all")
+    print(msg)

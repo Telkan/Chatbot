@@ -8,6 +8,7 @@ class ChatManager:
         pass
 
     def textToSpeech(self, outputText):
+        print('saying: ' + outputText)  # for illustration
         """
         tts = gTTS(outputText)
         tts.save('temp.mp3')
@@ -40,17 +41,30 @@ class ChatManager:
             return "Could not request results"  
         """
 
-    def handle_action_manager_msg(self, msg, medium, sender, date):
+    def handle_action_manager_msg(self, medium, sender):
         # read the msg out loud and send it to chatbot
+
+        # TODO send message to chatbot
+        msg = "New {} from {}".format(medium, sender)
+
+        # speech 
+        self.textToSpeech(msg)
         pass                                                          
     
+
 # test from local file
-from actionManager import ActionManagerObject
+import os, sys
+sys.path.insert(1, os.getcwd()) 
+import actionManager 
 #from CHATBOT.actionManager import ActionManagerObject
 if __name__ == "__main__":
     CM = ChatManager() # create chat manager obj
 
-    AM = ActionManagerObject(CM) # create action manager obj
+    AM = actionManager.ActionManagerObject(CM) # create action manager obj
+
+    textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
+
+    AM.add_message(textFromAlex) 
 
 
 
