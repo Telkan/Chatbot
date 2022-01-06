@@ -1,3 +1,4 @@
+from inspect import _empty
 import speech_recognition as sr  
 from gtts import gTTS
 from playsound import playsound
@@ -39,19 +40,23 @@ class ChatManager:
             return "ERR-DontWork"                              
 
     def sendToChatbot(self, textToSend):                
-        self.chatMessage = {"sender": "Gael", "message": textToSend}
+        self.chatMessage = {"sender": "NewGael2", "message": textToSend}
         response = requests.post(self.api_url, json=self.chatMessage)
         print(response.json())
         return response.json()
 
     def startComProgram(self):
+        print(self.sendToChatbot("/restart"))
         while True:
             message = self.listenForVoice()
             if "ERR" in message:
-                continue  
+                self.textToSpeech("I'm sorry, I didn't get that")    
+                continue
             answer = self.sendToChatbot(message)
-            print(type(answer[0]["text"]))
-            self.textToSpeech(answer[0]["text"])
+            if answer != []:
+                self.textToSpeech(answer[0]["text"])
+            else:
+                self.textToSpeech("I don't know what to say")
 
                               
 chat = ChatManager()
