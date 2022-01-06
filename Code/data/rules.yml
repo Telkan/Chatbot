@@ -19,4 +19,16 @@ rules:
 - rule: Launch confirm new msg action anytime user shows intent write_new_msg
   steps:
   - intent: write_new_msg
-  - action: action_confirm_new_msg
+  - action: action_confirm_new_msg_contact_medium
+- rule: Launch confirm new msg content action anytime user shows intent write_new_msg_content
+  steps:
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+- rule: Each time the user receives a call, the chatbot informs the user
+  steps:
+  - intent: contact_calling
+  - action: utter_incoming_call
+- rule: When chatbot doesn't understand user, it apologizes
+  steps:
+  - intent: nlu_fallback
+  - action: utter_dont_understand

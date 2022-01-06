@@ -1,70 +1,107 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- goodbye
-- stop
-- write_new_msg_content
-- write_new_msg
-- confirm
-- greet
-- bot_challenge
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- confirm:
+    use_entities: true
 - decline:
     use_entities: []
-- find_msg
-- delete_msg
-- do_I_have_new_msg
-- change_voicemail_msg
-- archive_email
-- call_contact
-- schedule_appointment
-- modify_appointment
-- can_you_repeat
-- cancel_appointment
-- get_appointment_memo
-- add_to_contact_list
-- thank_you
+- find_msg:
+    use_entities: true
+- write_new_msg:
+    use_entities: true
+- write_new_msg_content:
+    use_entities: true
+- delete_msg:
+    use_entities: true
+- do_I_have_new_msg:
+    use_entities: true
+- change_voicemail_msg:
+    use_entities: true
+- archive_email:
+    use_entities: true
+- contact_calling:
+    use_entities: true
+- call_contact:
+    use_entities: true
+- schedule_appointment:
+    use_entities: true
+- modify_appointment:
+    use_entities: true
+- can_you_repeat:
+    use_entities: true
+- cancel_appointment:
+    use_entities: true
+- get_appointment_memo:
+    use_entities: true
+- add_to_contact_list:
+    use_entities: true
+- thank_you:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
 entities:
-- archive
 - contact
-- date
+- reception_time
 - medium_comm
-- name_appointment
+- quantity_msg
+- archive
 - name_apppointment
+- date
+- time
 - new_date
 - new_time
 - new_voicemail_msg
-- quantity_msg
-- reception_time
-- time
+- name_appointment
 slots:
   contact:
-    type: text
-    influence_conversation: true
-  date:
-    type: text
-    initial_value: Today
-    influence_conversation: true
-  medium_comm:
-    type: text
-    initial_value: all
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
     influence_conversation: true
   message:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
     initial_value: '---'
-    influence_conversation: true
-  name_appointment:
-    type: text
-    influence_conversation: true
-  new_voicemail_msg:
-    type: text
-    influence_conversation: true
-  reception_time:
-    type: text
+    auto_fill: true
     influence_conversation: true
   time:
-    type: text
+    type: rasa.shared.core.slots.TextSlot
     initial_value: now
+    auto_fill: true
+    influence_conversation: true
+  medium_comm:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: all
+    auto_fill: true
+    influence_conversation: true
+  reception_time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  new_voicemail_msg:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  name_appointment:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  date:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: Today
+    auto_fill: true
     influence_conversation: true
 responses:
   utter_greet:
@@ -127,14 +164,14 @@ responses:
   - text: Okay, it has been modified.
   utter_ask_name_appointment:
   - text: What is the name of the appointment you are referring to?
-  - text: I am sorry, what is the name of the appointment you are talking about?
+  - text: What is the name of the appointment you are talking about?
   - text: Could you please tell me the name of the appointment you have just mentionned?
   - text: Could you please precise the name of the appointment you are talking about?
   - text: What is the appointment's name please?
   utter_reschedule_when:
   - text: When would you like to reschedule this appointment?
   - text: Can you specify when you would like to reschedule this appointment?
-  - text: I am sorry, could you tell me when you would like this appoint to be rescheduled?
+  - text: Could you tell me when you would like this appoint to be rescheduled?
   - text: Could you please tell me when you would like it to be rescheduled?
   utter_contact_not_found:
   - text: I am sorry, I could not find this contact in your contact list.
@@ -159,13 +196,36 @@ responses:
   - text: Could you please tell me what to put as object of the email?
   - text: Could you please precise the object for this email?
   - text: What is the email's object please?
+  utter_incoming_call:
+  - text: Hey, {contact} is calling you. Do you want to take the call?
+  - text: You have an incoming call from {contact}, do you want to take it?
+  - text: Do you want to take a call from {contact}?
+  utter_confirm_call:
+  - text: Call with {contact}...
+  - text: Currently in call with {contact}...
+  - text: Ongoing call with {contact}...
+  utter_decline_call:
+  - text: Call from {contact} refused.
+  - text: You refused the call from {contact}.
+  - text: Ok, the call from {contact} was refused.
+  utter_feedback_call_cancelled:
+  - text: No worries, I haven't called {contact}.
+  - text: Okay, call to {contact} cancelled.
+  - text: Alright, mission calling {contact} aborted.
+  utter_confirm_call_contact:
+  - text: Can you confirm that you want to call {contact}?
+  - text: Are you sure you want me to call {contact}?
+  - text: Shall I call {contact}?
+  - text: You want to make a call to {contact}, is that right?
+  utter_dont_understand:
+  - text: I am sorry, I did not understand what you wanted.
+  - text: I did not get that, I apologize.
+  - text: Sorry, I did not get what you wanted me to do.
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content
-- action_feedback_msg_not_sent
 - action_sending_new_msg
-- utter_feedback_msg_sent
-- utter_goodbye
-- utter_greet
-- utter_what_message
-version: '2.0'
+- action_feedback_msg_not_sent
+- action_reset_contact
+forms: {}
+e2e_actions: []
