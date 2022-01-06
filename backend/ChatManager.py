@@ -24,7 +24,7 @@ class ChatManager:
         """
         pass
     def listenForVoice(self):
-        """
+        """  
         r = sr.Recognizer()                                                                                   
         with sr.Microphone() as source:                                                                       
             print("Speak:")                                                                                   
@@ -51,12 +51,12 @@ class ChatManager:
         self.textToSpeech(msg)
         pass                                                          
     
-
-# test from local file
+# in order to get access to actionManager.py in parent dir.
 import os, sys
 sys.path.insert(1, os.getcwd()) 
 import actionManager 
-#from CHATBOT.actionManager import ActionManagerObject
+
+# run local test
 if __name__ == "__main__":
     CM = ChatManager() # create chat manager obj
 

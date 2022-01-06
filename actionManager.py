@@ -98,7 +98,7 @@ class  ActionManagerObject:
     def add_message(self, msg):
         # here we have add message logic, db-related etc.
 
-        #TODO add to db
+        #TODO add msg to db
 
         # code for contacting CM
         self.cm.handle_action_manager_msg(msg.medium, msg.sender)
