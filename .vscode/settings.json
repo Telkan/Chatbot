@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/Users/swebent/miniconda3/envs/rasa2_2021/bin/python",
+    "python.linting.pylintPath": "venv/bin/pylint",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}

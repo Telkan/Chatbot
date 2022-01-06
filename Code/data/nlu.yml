@@ -1,0 +1,335 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: confirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - answer
+    - perfect
+    - alright
+    - great
+    - ok
+    - exact
+    - exactly
+    - read it
+
+- intent: decline
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - not now
+    - I don't want
+    - later
+    - don't
+
+- intent: thank_you
+  examples: |
+    - thanks
+    - thank you
+    - many thanks
+    - thank you so much
+
+- intent: find_msg
+  examples: |
+    - what did [mom]{"entity": "contact", "value": "Mom"} say ?
+    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
+    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
+    - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
+    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
+    - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
+    - Can I listen to [Lucas]{"entity": "contact", "value": "Lucas"}'s' [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
+
+- intent: write_new_msg
+  examples: |
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
+    - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
+    - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
+    - Can you write a [discord]{"entity": "medium_comm", "value": "Discord"} message for me ?
+    - I need you to write a message
+    - to [Mom]{"entity": "contact", "value": "Mom"}
+    - [Lucas]{"entity": "contact", "value": "Lucas"}
+    - [Mike]{"entity": "contact", "value": "Mike"}
+    - [Mom]{"entity": "contact", "value": "Mom"}
+    - [Sister]{"entity": "contact", "value": "Sister"}
+    - [Paolo]{"entity": "contact", "value": "Paolo"}
+    - [Chandler]{"entity": "contact", "value": "Chandler"}
+    - by [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - write a [text]{"entity": "medium_comm", "value": "SMS"}
+    - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - send a [text]{"entity": "medium_comm", "value": "SMS"}
+    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
+
+- intent: write_new_msg_content
+  examples: |
+    - I'm on my way
+    - I am here
+    - Hi, how are you ?
+    - How you doin' ?
+    - see you soon
+    - I am going to the grocery store
+    - I am coming home
+    - Buy me a pizza
+    - I need my keys
+    - Help me please
+    - I am going to my meeting
+    - I will be home later
+    - I am not coming home tonight
+    - I am sorry I can't take your call right now
+    - Sorry, I will call you back
+    - I will call you back as soon as I can
+
+
+- intent: delete_msg
+  examples: |
+    - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+    - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
+    - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
+    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Can you remove it please ?
+    - Delete this message
+    - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
+    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
+    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
+
+- intent: do_I_have_new_msg
+  examples: |
+    - Do I have new [messages]{"entity": "medium_comm"} ?
+    - Do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
+    - Do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
+    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
+    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
+
+- intent: change_voicemail_msg
+  examples: |
+    - I want to change my voicemail message
+    - I would like to record another voicemail message
+    - I would like to change my answering machine message
+    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
+    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can]{"entity": "new_voicemail_msg", "value": "It's Bruce, leave a message after the bip, I'll call you back as soon as I can"}
+
+- intent: archive_email
+  examples: |
+    - Can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
+    - Can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
+    - Can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
+
+- intent: call_contact
+  examples: |
+    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"}?
+    - I want to call [Julie]{"entity": "contact", "value": "Julie"}
+    - I have to make a call to [Lucas]{"entity": "contact", "value": "Lucas"}
+    - Ring [Mike]{"entity": "contact", "value": "Mike"}
+    - Could you ring my [mom]{"entity": "contact", "value": "Mom"}?
+    - Make a call to [Julie]{"entity": "contact", "value": "Julie"}
+    - Phone [mom]{"entity": "contact", "value": "Mom"}
+    - Make a phone call to [Mike]{"entity": "contact", "value": "Mike"}
+
+- intent: schedule_appointment
+  examples: |
+    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
+    - Can you add a new appointment in my agenda please ?
+    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
+    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
+    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
+    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
+    - [Next week]{"entity": "date", "value": "Next week"}
+    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
+    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
+    - at [eleven]{"entity": "time", "value": "Eleven"}
+    - [two]{"entity": "time", "value": "Two"}
+
+- intent: modify_appointment
+  examples: |
+    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
+    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
+    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
+
+- intent: cancel_appointment
+  examples: |
+    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
+    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
+
+- intent: get_appointment_memo
+  examples: |
+    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
+    - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
+
+- intent: contact_calling # false intent sent by .py file when incomming call, not from the user
+  examples: |
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Julie]{"entity": "contact", "value": "Julie"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
+
+- lookup: time
+  examples: |
+    - one o'clock
+    - two o'clock
+    - three o'clock
+    - four o'clock
+    - five o'clock
+    - six o'clock
+    - seven o'clock
+    - eight o'clock
+    - nine o'clock
+    - ten o'clock
+    - eleven o'clock
+    - midnight
+    - twelve o'clock
+    - noon
+    - at one
+    - at two
+    - at three
+    - at four
+    - at five
+    - at six
+    - at seven
+    - at eight
+    - at nine
+    - at ten
+    - at eleven
+    - at twelve
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - tomorrow morning at seven
+    - at six a.m
+    - seven p.m
+
+
+- lookup: contact
+  examples: |
+    - dad
+    - brother
+    - grandma
+    - grandpa
+    - Margot
+    - Gaël
+    - Alexander
+    - Anaïs
+    - Clément
+    - Maxence
+    - Raphaël
+    - Aurélien
+    - Rémi
+    - Oualid
+    - Hugo
+    - Libio
+    - Kim
+    - Pierre
+    - Ramos
+    - Dorianne
+
+- lookup: date
+  examples: |
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    - today
+    - yesterday
+    - tomorrow
+    - next week
+    - newt month
+    - january
+    - february
+    - march
+    - april
+    - may
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - december
+    - in two days
+    - two days ago
+    - three days ago
+    - four days ago
+    - five days ago
+    - a week ago
+    - in ten days
+
+- lookup: quantity_msg
+  examples: |
+    - all
+    - one
+    - two
+    - three
+    - four
+    - five
+    - six
+    - seven
+    - eight
+    - nine
+    - ten
+    - eleven
+    - twelve
+    - twenty
+    - thirty
+    - fifty
+    - three last
+    - six last
+    - five last
