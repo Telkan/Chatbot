@@ -82,7 +82,7 @@ nlu:
     - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
     - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
     - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
-    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
+    - Can you play [dad]{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}'s ?
     - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
     - Can I listen to [Lucas]’s{"entity": "contact", "value": "Lucas"} [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
 
@@ -98,6 +98,9 @@ nlu:
     - [Lucas]{"entity": "contact", "value": "Lucas"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
+    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
 
 - intent: write_new_msg_content
   examples: |
@@ -105,15 +108,21 @@ nlu:
     - I am here
     - Hi, how are you ?
     - How you doin' ?
-    - Hello
     - see you soon
     - I am going to the grocery store
-    - buy a pizza
+    - I am coming home
+    - Buy me a pizza
     - I need my keys
+    - Help me please
+    - I am going to my meeting
+    - I will be home later
+    - I am not coming home tonight
+    - I have a meeting this afternoon
 
 - intent: delete_msg
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
+    - Could you delete the messages from [Mike]{"entity": "contact", "value": "Mike"} on [discord]{"entity": "medium_comm", "value": "Discord"}
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
     - Could you move the [two last]{"entity": "reception_time", "value": "two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
@@ -129,6 +138,8 @@ nlu:
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
+    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
 
 - intent: change_voicemail_msg
   examples: |
@@ -146,8 +157,8 @@ nlu:
 
 - intent: call_contact
   examples: |
-    - Call [Julie]{"entity": "contact_to_call", "value": "Julie"} please
-    - Could you call my [mom]{"entity": "contact_to_call", "value": "Mom"} ?
+    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Could you call my [mom]{"entity": "contact", "value": "Mom"} ?
     - I want to call
     - I have to make a call
     - Call
@@ -181,11 +192,6 @@ nlu:
   examples: |
     - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
-
-- intent: add_to_contact_list
-  examples: |
-    - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
-    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "Email"} list.
 
 - regex: message
   examples: |
@@ -348,6 +354,7 @@ nlu:
 - lookup: contact
   examples: |
     - dad
+    - me
     - brother
     - grandma
     - grandpa

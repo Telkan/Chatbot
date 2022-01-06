@@ -7,16 +7,55 @@ stories:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
-  - action: action_confirm_new_msg 
+  - action: action_confirm_new_msg_contact_medium
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: delete messages
+- story: write new SMS deny user give up 2
   steps:
-  - intent: delete_msg
+  - intent: write_new_msg
     entities: 
-    - quantity_msg: five last
-  - action: utter_feedback_msg_deleted
+    - contact: mom
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+
+- story: write new SMS confirmation user
+  steps:
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new SMS confirmation user 2
+  steps:
+  - intent: write_new_msg
+    entities: 
+    - contact: dad
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg_contact_medium
+  - intent: confirm
+  - action: utter_what_message
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent

@@ -47,8 +47,6 @@ intents:
     use_entities: true
 entities:
 - contact
-- contact_calling
-- contact_to_call
 - reception_time
 - medium_comm
 - quantity_msg
@@ -68,7 +66,7 @@ slots:
     influence_conversation: true
   message:
     type: rasa.shared.core.slots.TextSlot
-    initial_value: --
+    initial_value: ---
     auto_fill: true
     influence_conversation: true
   time:
@@ -200,7 +198,8 @@ responses:
   - text: Could you please precise the object for this email?
   - text: What is the email's object please?
 actions:
-- action_confirm_new_msg
+- action_confirm_new_msg_contact_medium
+- action_confirm_new_msg_content
 - action_sending_new_msg
 - action_feedback_msg_not_sent
 forms: {}

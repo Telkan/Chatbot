@@ -19,4 +19,9 @@ rules:
 - rule: Launch confirm new msg action anytime user shows intent write_new_msg
   steps:
   - intent: write_new_msg
-  - action: action_confirm_new_msg
+  - action: action_confirm_new_msg_contact_medium
+- rule: Launch confirm new msg content action anytime user shows intent write_new_msg_content
+  steps:
+  - intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+
