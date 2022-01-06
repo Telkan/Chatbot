@@ -89,3 +89,21 @@ msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="cont
 print(msg)
 msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="all")
 print(msg)
+
+
+class  ActionManagerObject:
+    def __init__(self, chat_manager):
+        self.cm = chat_manager
+        pass
+
+    def lookup_message(self,args):
+        # here we have the lookup function
+
+        pass
+
+    def add_message(self, args):
+        # here we have add message logic, db-related etc.
+
+        # code for contacting CM
+        # TODO use self.cm to contact chat manager
+        pass
