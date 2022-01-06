@@ -2,32 +2,918 @@ version: "2.0"
 
 stories:
 
-- story: write new sms deny user
+- story: write new SMS deny user give up
   steps:
   - intent: write_new_msg
     entities: 
     - contact: mom
-    - message: hello i’m on my way
+    - message: hello I'm on my way
     - time: now
     - medium_comm: SMS
   - action: action_confirm_new_msg 
   - intent: decline
-  - action: utter_feedback_msg_not_sent
+  - action: action_feedback_msg_not_sent
 
-- story: write new sms confirmation user
+- story: delete messages
+  steps:
+  - intent: delete_msg
+    entities: 
+    - quantity_msg: five last
+  - action: utter_feedback_msg_deleted
+
+- story: write new SMS deny user
+  steps:
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - message: hello I'm on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
+  - intent: decline
+  - action: action_feedback_msg_not_sent
+  - intent: write_new_msg
+    entities: 
+    - contact: mom
+    - message: hello I'm in the hallway
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg 
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: search old SMS
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old SMS deny read
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: confirm
+  - action: utter_write
+
+- story: search old SMS contact missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: null
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - intent: find_msg
+  entities:
+    - contact: Moi
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old SMS message missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: dad
+    - message: ---
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - intent: find_msg
+  entities:
+    - contact: dad
+    - message: please do not go further because I love you
+    - time: yesterday
+    - medium_comm: SMS
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old SMS medium missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: dad
+    - message: hello
+    - time: today
+    - medium_comm: all
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: write new SMS confirmation user
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new sms deny user give up
   steps:
   - intent: write_new_msg
     entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: decline
+  - action: utter_feedback_msg_not_sent
+
+- story: write new SMS deny user
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+  - intent: decline
+  - action: utter_feedback_msg_not_sent
+  - action: utter_what_message
+  - intent: write_new_msg
+     entities : 
 	- contact: mom
 	- message: hello i’m on my way
-	- time: now
+	- time : now
+	- medium_comm: SMS
+- action: utter_confirm_new_msg 
+    entities :  
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
+	- medium_comm: SMS
+  - intent: decline
+  - action : utter_feedback_msg_not_sent
+  - action: utter_what_message 
+  - intent: write_new_msg
+     entities : 
+	- contact: mom
+	- message: hello i’m on my way
+	- time : now
 	- medium_comm: SMS
   - action: utter_confirm_new_msg 
-    entities:  
-    - contact: mom
+    entities :  
+	- contact: mom
 	- message: hello i’m on my way
-	- time: now
+	- time : now
 	- medium_comm: SMS
   - intent: confirm
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
+  entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_send
+
+- story: write new SMS contact missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: null
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new SMS message missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: ---
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new SMS programmation message
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello it is me mario
+    - time: At 2pm
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new SMS contact and message missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: null
+    - message: ---
+    - time: now
+    - medium_comm: SMS
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: you are not my mom dad
+    - time: now
+    - medium_comm: SMS
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: delete SMS
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+  - action: utter_confirm_delete_msg
+  - intent: confirm
+  - action: utter_feedback_msg_deleted
+
+- story: delete SMS deny
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: decline
+ - action: utter_feedback_msg_not_deleted
+ - intent: delete_msg
+ entities:
+    - contact: mom
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: confirm
+ - action: utter_feedback_msg_deleted
+
+- story: delete SMS contact missing
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: null
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: confirm
+  - action: action_deleting_message
+  - action: utter_feedback_msg_deleted
+
+- story: delete SMS missing reception time
+  steps:
+  - intent: delete_msg
+     entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: SMS
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: confirm
+  - action: action_deleting_message
+  - action: utter_feedback_msg_deleted
+
+- story: do I have new SMS
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: SMS
+    - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- story: do I have new SMS missing contact
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: SMS
+    - contact: null
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- story: do I have new SMS no new message
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: SMS
+    - contact: mom
+  - action: utter_inform_new_msg
+
+- story: do I have new no medium
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: all
+    - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+  - intent: thank_you
+  - action: utter_you_are_welcome
+
+- story: do I have new SMS decline reading
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+      - medium_comm: SMS
+      - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: confirm
+  - action: utter_show
+
+- story: do I have new SMS decline showing
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+      - medium_comm: SMS
+      - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: decline
+
+- story: search old vocal message
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: ---
+    - time: yesterday
+    - medium_comm: voicemail
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old vocal message deny read
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: ---
+    - time: yesterday
+    - medium_comm: voicemail
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: decline
+
+- story: search old vocal message contact missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: null
+    - message: ---
+    - time: yesterday
+    - medium_comm: voicemail
+  - action: utter_old_msg
+  - intent: find_msg
+  entities:
+    - contact: Moi
+    - message: ---
+    - time: yesterday
+    - medium_comm: voicemail
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: change voicemail
+  steps:
+  - intent: change_voicemail_msg
+  entities:
+    - new_voicemail_msg: hello it is me, mario
+ - action: utter_confirm_voicemail_msg
+ - intent: confirm
+ - action: utter_feedback_voicemail_changed
+
+- story: change voicemail give up
+  steps:
+  - intent: change_voicemail_msg
+  entities:
+    - new_voicemail_msg: hello it is me, mario
+  - action: utter_confirm_voicemail_msg
+  - intent: decline
+
+- story: change voicemail decline
+  steps:
+  - intent: change_voicemail_msg
+  entities:
+    - new_voicemail_msg: hello it is me, mario
+  - action: utter_confirm_voicemail_msg
+  - intent: decline
+  - intent: change_voicemail_msg
+  entities:
+    - new_voicemail_msg: hello it is me, luigi
+  - action: utter_confirm_voicemail_msg
+  - intent: confirm
+  - action: utter_feedback_voicemail_changed
+
+- story: delete vocal message
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: voicemail
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: confirm
+ - action: utter_feedback_msg_deleted
+
+- story: delete vocal message deny
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: voicemail
+    - quantity_msg: one
+  - action: utter_confirm_delete_msg
+ - intent: decline
+ - action: utter_feedback_msg_not_deleted
+ - intent: delete_msg
+ entities:
+    - contact: mom
+    - reception_time: today
+    - medium_comm: voicemail
+    - quantity_msg: one
+  - action: utter_confirm_delete_msg
+  - intent: confirm
+  - action: utter_feedback_msg_deleted
+
+- story: delete vocal message contact missing
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: null
+    - reception_time: today
+    - medium_comm: voicemail
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: delete_msg
+ entities:
+   - contact: mister
+   - reception_time: today
+   - medium_comm: voicemail
+   - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: confirm
+ - action: utter_feedback_msg_deleted
+
+- story: delete vocal message medium missing
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: madam
+    - reception_time: today
+    - medium_comm: null
+    - quantity_msg: null
+ - action: utter_confirm_delete_msg
+ - intent: delete_msg
+ entities:
+   - contact: mister
+   - reception_time: yesterday
+   - medium_comm: voicemail
+   - quantity_msg: all
+ - action: utter_confirm_delete_msg
+ - intent: confirm
+ - action: utter_feedback_msg_deleted
+
+- story: do I have new voicemail
+ steps:
+ - intent: do_I_have_new_msg
+ entities:
+   - medium_comm: voicemail
+   - contact: mom
+ - action: utter_inform_new_msg
+ - action: utter_should_I_read
+ - intent: confirm
+ - action: utter_read
+
+- story: do I have new voicemail missing contact
+ steps:
+ - intent: do_I_have_new_msg
+ entities:
+   - medium_comm: voicemail
+   - contact: null
+ - action: utter_inform_new_msg
+ - action: utter_should_I_read
+ - intent: confirm
+ - action: utter_read
+
+- story: do I have new voicemail no new message
+ steps:
+ - intent: do_I_have_new_msg
+ entities:
+   - medium_comm: voicemail
+   - contact: mom
+ - action: utter_inform_new_msg
+
+- story: do I have new voicemail decline reading
+ steps:
+ - intent: do_I_have_new_msg
+ entities:
+     - medium_comm: voicemail
+     - contact: mom
+ - action: utter_inform_new_msg
+ - action: utter_should_I_read
+ - intent: decline
+
+- story: search old email
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old email deny read
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: stalker
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: confirm
+  - action: utter_write
+
+- story: search old email contact missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: null
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - intent: find_msg
+  entities:
+    - contact: Moi
+    - message: please stay because I love you
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: search old email message missing
+  steps:
+  - intent: find_msg
+  entities:
+    - contact: dad
+    - message: ---
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - intent: find_msg
+  entities:
+    - contact: dad
+    - message: please do not go further because I love you
+    - time: yesterday
+    - medium_comm: email
+  - action: utter_old_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: delete email
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+  - action: utter_confirm_delete_msg
+  - intent: confirm
+  - action: utter_feedback_msg_deleted
+
+- story: delete email deny
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: decline
+ - action: utter_feedback_msg_not_deleted
+ - intent: delete_msg
+ entities:
+    - contact: mom
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+ - action: utter_confirm_delete_msg
+ - intent: confirm
+ - action: utter_feedback_msg_deleted
+
+- story: delete email contact missing
+  steps:
+  - intent: delete_msg
+  entities:
+    - contact: null
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: delete_msg
+  entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: confirm
+  - action: action_deleting_message
+  - action: utter_feedback_msg_deleted
+
+- story: delete email missing reception time
+  steps:
+  - intent: delete_msg
+     entities:
+    - contact: dad
+    - reception_time: today
+    - medium_comm: email
+    - quantity_msg: one
+  - action: action_confirm_delete_msg
+  - intent: confirm
+  - action: action_deleting_message
+  - action: utter_feedback_msg_deleted
+
+- story: write new email confirmation user
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: mom
+    - message: hello i am on my way
+    - time: now
+    - medium_comm: email
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new email deny user give up
+  steps:
+  - intent: write_new_msg
+    entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: decline
+  - action: utter_feedback_msg_not_sent
+
+- story: write new email deny user
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: email
+  - action: utter_confirm_new_msg
+  - intent: decline
+  - action: utter_feedback_msg_not_sent
+  - action: utter_what_message
+  - intent: write_new_msg
+  entities:
+    - contact: mom
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: email
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_send
+
+- story: write new email contact missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: null
+    - message: hello i am on my way
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello i am on my way
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new email message missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: ---
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello i’m on my way
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new email programmation message
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: hello it is me mario
+    - time: At 2pm
+    - medium_comm: email
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: write new email contact and message missing
+  steps:
+  - intent: write_new_msg
+  entities:
+    - contact: null
+    - message: ---
+    - time: now
+    - medium_comm: email
+  - action: action_confirm_new_msg
+  - intent: write_new_msg
+  entities:
+    - contact: dad
+    - message: you are not my mom dad
+    - time: now
+    - medium_comm: email
+  - action: utter_confirm_new_msg
+  - intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: do I have new email
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: email
+    - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: do I have new email missing contact
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: email
+    - contact: null
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: utter_read
+
+- story: do I have new email no new message
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+    - medium_comm: email
+    - contact: mom
+  - action: utter_inform_new_msg
+
+- story: do I have new email decline reading
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+      - medium_comm: email
+      - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: confirm
+  - action: utter_show
+
+- story: do I have new email decline showing
+  steps:
+  - intent: do_I_have_new_msg
+  entities:
+      - medium_comm: email
+      - contact: mom
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: decline
+
+- story: archive email
+  steps:
+  - intent: archive_email
+  entities:
+      - contact: mom
+      - message: you have an internship congrats
+      - time: today
+  - action: utter_feedback_archive_email

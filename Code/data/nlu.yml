@@ -89,13 +89,15 @@ nlu:
 - intent: write_new_msg
   examples: |
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"} and tell him [Please, buy some wine for wednesday]{"entity": "message", "value": "Please, buy some wine for wednesday"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - I need you to write a message
     - Please, say to [Maxime]{"entity": "contact", "value": "Maxime"} that [I have to go to the grocery store tonight]{"entity": "message", "value": "I have to go to the grocery store tonight"}
     - Send [I need you to do something for me]{"entity": "message", "value": "I need you to do something for me"}
-    - To [Mom]{"entity": "contact", "value": "Mom"}
+    - say [hello I'm on wy way]{"entity": "message", "value":"hello I'm on my way"}
+    - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
     - by [SMS]{"entity": "medium_comm", "value": "SMS"}
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"} to say [hello I'm on my way]{"entity": "message", "value":"hello I'm on my way"}
@@ -105,18 +107,19 @@ nlu:
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
     - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
     - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
-    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
+    - Could you move the [two last]{"entity": "reception_time", "value": "two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
     - Can you remove it please ?
     - Delete this message
     - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
-    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
+    - Delete the [three last]{"entity": "quantity_msg", "value": "three last"} messages
+    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
 
 - intent: do_I_have_new_msg
   examples: |
     - do I have new [messages]{"entity": "medium_comm"} ?
     - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
     - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
-    - Did I get any new {text}{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
 
 - intent: change_voicemail_msg
   examples: |
@@ -173,4 +176,134 @@ nlu:
 - intent: add_to_contact_list
   examples: |
     - Add the contact who [called]{"entity": "medium_comm", "value": "Call"} me [an hour ago]{"entity": "time", "value": "An hour ago"}
-    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "mail"} list.
+    - Add the contact [Sabrina@gmail.com]{"entity": "contact", "value": "Sabrina@gmail.com"} to my [mailing]{"entity": "medium_comm", "value": "Email"} list.
+
+- regex: message
+  examples: |
+    - .*
+
+- lookup: date
+  examples: |
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    - today
+    - yesterday
+    - tomorrow
+    - next week
+    - newt month
+    - january
+    - february
+    - march
+    - april
+    - may
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - december
+    - in two days
+    - in ten days
+
+- lookup: time
+  examples: |
+    - six o'clock
+    - ten o'clock
+    - at nine
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - tomorrow morning at seven
+    - at six a.m
+    - seven p.m
+
+- lookup: reception_time
+  examples: |
+    - six o'clock
+    - ten o'clock
+    - at nine
+    - tonight
+    - morning
+    - afternoon
+    - at eight tonight
+    - tonight at nine
+    - at six a.m
+    - seven p.m
+    - at five ten
+
+- lookup: name_appointment
+  examples: |
+    - doctor
+    - dentist
+    - work
+    - dinner with my family
+    - ice skating
+    - golf
+    - free time
+    - exam
+    - project
+    - date
+    - meeting
+    - hairdresser
+    - groceries
+    - birthday
+    - party
+    - the last
+    - the last one
+    - last
+    - first
+    - first one
+    - previous
+
+- lookup: quantity_msg
+  examples: |
+    - all
+    - one
+    - two
+    - three
+    - four
+    - five
+    - six
+    - seven
+    - eight
+    - nine
+    - ten
+    - eleven
+    - twelve
+    - twenty
+    - thirty
+    - fifty
+    - three last
+    - six last
+    - five last
+
+- lookup: contact
+  examples: |
+    - dad
+    - brother
+    - grandma
+    - grandpa
+    - Margot
+    - Gaël
+    - Alexander
+    - Anaïs
+    - Clément
+    - Maxence
+    - Raphaël
+    - Aurélien
+    - Rémi
+    - Oualid
+    - Hugo
+    - Libio
+    - Kim
+    - Pierre
+    - Ramos
+    - Dorianne
