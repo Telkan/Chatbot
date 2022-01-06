@@ -93,6 +93,8 @@ nlu:
     - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
     - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
+    - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
+    - Can you write a [discord]{"entity": "medium_comm", "value": "Discord"} message for me ?
     - I need you to write a message
     - to [Mom]{"entity": "contact", "value": "Mom"}
     - [Lucas]{"entity": "contact", "value": "Lucas"}
@@ -107,6 +109,9 @@ nlu:
     - write a [text]{"entity": "medium_comm", "value": "SMS"}
     - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
     - send a [text]{"entity": "medium_comm", "value": "SMS"}
+    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
 
 - intent: write_new_msg_content
   examples: |
@@ -138,13 +143,16 @@ nlu:
     - Delete this message
     - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
     - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
+    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
 
 - intent: do_I_have_new_msg
   examples: |
-    - do I have new [messages]{"entity": "medium_comm"} ?
-    - do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
-    - do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
+    - Do I have new [messages]{"entity": "medium_comm"} ?
+    - Do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
+    - Do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
+    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
+    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
 
 - intent: change_voicemail_msg
   examples: |
@@ -156,9 +164,9 @@ nlu:
 
 - intent: archive_email
   examples: |
-    - can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
-    - can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
-    - can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
+    - Can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
+    - Can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
+    - Can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
 
 - intent: call_contact
   examples: |
@@ -211,18 +219,41 @@ nlu:
 
 - lookup: time
   examples: |
+    - one o'clock
+    - two o'clock
+    - three o'clock
+    - four o'clock
+    - five o'clock
     - six o'clock
+    - seven o'clock
+    - eight o'clock
+    - nine o'clock
     - ten o'clock
+    - eleven o'clock
+    - midnight
+    - twelve o'clock
+    - noon
+    - at one
+    - at two
+    - at three
+    - at four
+    - at five
+    - at six
+    - at seven
+    - at eight
     - at nine
+    - at ten
+    - at eleven
+    - at twelve
     - tonight
     - morning
     - afternoon
     - at eight tonight
     - tonight at nine
     - tomorrow morning at seven
-    - at six a.m.
-    - seven p.m.
-    - at two p.m.
+    - at six a.m
+    - seven p.m
+
 
 - lookup: contact
   examples: |
@@ -247,3 +278,58 @@ nlu:
     - Ramos
     - Dorianne
 
+- lookup: date
+  examples: |
+    - monday
+    - tuesday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    - today
+    - yesterday
+    - tomorrow
+    - next week
+    - newt month
+    - january
+    - february
+    - march
+    - april
+    - may
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - december
+    - in two days
+    - two days ago
+    - three days ago
+    - four days ago
+    - five days ago
+    - a week ago
+    - in ten days
+
+- lookup: quantity_msg
+  examples: |
+    - all
+    - one
+    - two
+    - three
+    - four
+    - five
+    - six
+    - seven
+    - eight
+    - nine
+    - ten
+    - eleven
+    - twelve
+    - twenty
+    - thirty
+    - fifty
+    - three last
+    - six last
+    - five last
