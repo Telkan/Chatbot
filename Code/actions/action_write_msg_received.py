@@ -23,7 +23,10 @@ class ActionWriteMsgReceived(Action):
         contact = tracker.get_slot('contact')
         medium_comm = tracker.get_slot('medium_comm')
         
-        msg = "Ok, I am showing you the message from " + str(contact) + " sent through " + str(medium_comm)
+        msg = "Ok, I am showing you the message from " + str(contact) + " sent through " + str(medium_comm) #TODO
+
+        if(str(medium_comm)=="Voicemail"):
+            msg = "Sorry, I cannot show a vocal message on screen."
 
         dispatcher.utter_message(text=msg)
-        return [SlotSet("contact", "null"),SlotSet("medium_comm", "all")]
+        return []

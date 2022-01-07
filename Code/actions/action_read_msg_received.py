@@ -23,7 +23,7 @@ class ActionReadMsgReceived(Action):
         contact = tracker.get_slot('contact')
         medium_comm = tracker.get_slot('medium_comm')
         
-        msg = "Ok, I am reading the message from " + str(contact) + " sent through " + str(medium_comm)
+        msg = "Ok, I am reading the message from " + str(contact) + " sent through " + str(medium_comm) #TODO
 
         dispatcher.utter_message(text=msg)
-        return [SlotSet("contact", "null"),SlotSet("medium_comm", "all")]
+        return []

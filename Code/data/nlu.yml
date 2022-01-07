@@ -76,16 +76,6 @@ nlu:
     - many thanks
     - thank you so much
 
-- intent: find_msg
-  examples: |
-    - what did [mom]{"entity": "contact", "value": "Mom"} say ?
-    - Could you tell me what is [Maxime]{"entity": "contact", "value": "Maxime"}'s [last]{"entity": "reception_time", "value": "Last"} [SMS]{"entity": "medium_comm", "value": "SMS"} ?
-    - Can you find the [email]{"entity": "medium_comm", "value": "Email"} that [Alex]{"entity": "contact", "value": "Alex"} sent me [today]{"entity": "reception_time", "value": "Today"} ?
-    - Who [call]{"entity": "medium_comm", "value": "Call"} me [yesterday]{"entity": "reception_time", "value": "Yesterday"} ?
-    - Can you play [dad]'s{"entity": "contact", "value": "Dad"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"} ?
-    - Read me the [last]{"entity": "reception_time", "value": "Last"} [text]{"entity": "medium_comm", "value": "SMS"} that [Mom]{"entity": "contact", "value": "Mom"} sent
-    - Can I listen to [Lucas]{"entity": "contact", "value": "Lucas"}'s' [vocal message]{"entity": "medium_comm", "value": "vocal message"} please?
-
 - intent: write_new_msg
   examples: |
     - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
@@ -132,18 +122,15 @@ nlu:
     - Sorry, I will call you back
     - I will call you back as soon as I can
 
-
-- intent: delete_msg
+- intent: can_you_repeat
   examples: |
-    - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
-    - delete the [emails]{"entity": "medium_comm", "value": "Email"} from [last month]{"entity": "reception_time", "value": "Last month"}
-    - go to my [voicemail]{"entity": "medium_comm", "value": "Voicemail"} and delete [all] the messages {"entity": "quantity_msg", "value": "All"}
-    - Could you move the [two last]{"entity": "reception_time", "value": "Two last"} [emails]{"entity": "medium_comm", "value": "Email"} in the bin ?
-    - Can you remove it please ?
-    - Delete this message
-    - Can you delete the messages from [Margot]{"entity": "contact", "value": "Margot"}
-    - Delete the [three last]{"entity": "quantity_msg", "value": "Three last"} messages
-    - Delete [five]{"entity": "quantity_msg", "value": "five"} messages
+    - Could you repeat the message please?
+    - Repeat please
+    - Can you repeat?
+    - Repeat
+    - Again
+    - Can you say it again?
+    - Could you tell it again?
 
 - intent: do_I_have_new_msg
   examples: |
@@ -153,20 +140,6 @@ nlu:
     - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
     - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
     - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
-
-- intent: change_voicemail_msg
-  examples: |
-    - I want to change my voicemail message
-    - I would like to record another voicemail message
-    - I would like to change my answering machine message
-    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
-    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can]{"entity": "new_voicemail_msg", "value": "It's Bruce, leave a message after the bip, I'll call you back as soon as I can"}
-
-- intent: archive_email
-  examples: |
-    - Can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
-    - Can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
-    - Can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
 
 - intent: call_contact
   examples: |
@@ -212,7 +185,7 @@ nlu:
 
 - intent: contact_calling # false intent sent by .py file when incomming call, not from the user
   examples: |
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Julie]{"entity": "contact", "value": "Julie"}
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther]{"entity": "contact", "value": "Gunther"}
     - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
     - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
     - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
@@ -224,7 +197,10 @@ nlu:
     - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Monica]{"entity": "contact", "value": "Monica"}
     - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Joey]{"entity": "contact", "value": "Joey"}
     - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Rachel]{"entity": "contact", "value": "Rachel"} 
-    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Phoebe]{"entity": "contact", "value": "Phoebe"} 
+    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Phoebe]{"entity": "contact", "value": "Phoebe"}
+    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Janice]{"entity": "contact", "value": "Janice"}
+    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Richard]{"entity": "contact", "value": "Richard"}
+
 
 - lookup: time
   examples: |
