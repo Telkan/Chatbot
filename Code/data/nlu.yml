@@ -217,6 +217,15 @@ nlu:
     - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
     - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
 
+- intent: new_msg_received # false intent sent by .py file when incoming message, not from the user
+  examples: |
+    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Ross]{"entity": "contact", "value": "Ross"} 
+    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Chandler]{"entity": "contact", "value": "Chandler"} 
+    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Monica]{"entity": "contact", "value": "Monica"}
+    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Joey]{"entity": "contact", "value": "Joey"}
+    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Rachel]{"entity": "contact", "value": "Rachel"} 
+    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Phoebe]{"entity": "contact", "value": "Phoebe"} 
+
 - lookup: time
   examples: |
     - one o'clock

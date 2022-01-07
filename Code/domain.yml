@@ -49,6 +49,8 @@ intents:
     use_entities: true
 - nlu_fallback:
     use_entities: true
+- new_msg_received:
+    use_entities: true
 entities:
 - contact
 - reception_time
@@ -221,11 +223,22 @@ responses:
   - text: I am sorry, I did not understand what you wanted.
   - text: I did not get that, I apologize.
   - text: Sorry, I did not get what you wanted me to do.
+  utter_inform_new_msg:
+  - text: You received a message through {medium_comm} from {contact}.
+  - text: You just got a message through {medium_comm} from {contact}.
+  - text: The contact {contact} just sent you a message through {medium_comm}.
+  utter_do_nothing:
+  - text: Alright, I won't read nor show you the message from {contact}.
+  - text: Okay, I won't read it nor show it to you. The message from {contact} is saved though.
+  - text: Sure, I won't do anything about the message from {contact}.
+
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content
 - action_sending_new_msg
 - action_feedback_msg_not_sent
 - action_reset_contact
+- action_read_msg_received
+- action_write_msg_received
 forms: {}
 e2e_actions: []
