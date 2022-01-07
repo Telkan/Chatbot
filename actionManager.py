@@ -116,13 +116,11 @@ def find_message(medium, contact, date, datetype=1, usertype="all"):
                 return messagesFound
             rk += 1
         myfile.close()
+        
 
-class MessageObj:   # an object to represent a message, would be great it this was generally used
-    def __init__(self, txt, sender, medium, date):
-        self.text = txt
-        self.sender = sender
-        self.medium = medium
-        self.date = date
+def add_message():
+    pass
+
 
 class  ActionManagerObject:
     def __init__(self, chat_manager):

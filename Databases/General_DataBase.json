@@ -1,0 +1,194 @@
+{
+    "SMS_History": [
+        {
+            "contactname": "voicemail",
+            "mobilenumber": "123",
+            "messages": [
+                {
+                    "date": "05/01/2022, 15:01:34",
+                    "from": "voicemail",
+                    "text": "You have 1 unread message from mom"
+                }
+            ]
+        },
+        {
+            "contactname": "mom",
+            "mobilenumber": "0612345678",
+            "messages": [
+                {
+                    "date": "02/01/2022, 09:04:52",
+                    "from": "mom",
+                    "text": "Howdoyoudoaspaceplease?"
+                },
+                {
+                    "date": "04/01/2022, 01:12:14",
+                    "from": "mom",
+                    "text": "Where are you?"
+                },
+                {
+                    "date": "04/01/2022, 12:54:48",
+                    "from": "mom",
+                    "text": "I can't find my phone, can you call me?"
+                },
+                {
+                    "date": "04/01/2022, 12:56:12",
+                    "from": "user",
+                    "text": "You have it in your hand mom"
+                }
+            ]
+        },
+        {
+            "contactname": "Razmo",
+            "mobilenumber": "01.23.45.67.89",
+            "messages": [
+                {
+                    "date": "05/01/2022, 15:15:53",
+                    "from": "Razmo",
+                    "text": "Yoyoyoyoyoyoyo"
+                },
+                {
+                    "date": "05/01/2022, 15:16:02",
+                    "from": "Razmo",
+                    "text": "I'm a ratz doing rap"
+                },
+                {
+                    "date": "05/01/2022, 15:17:13",
+                    "from": "user",
+                    "text": "Don't say \"A fond les bananes\" plz"
+                }
+            ]
+        },
+        {
+            "contactname": "Lucas",
+            "mobilenumber": "07.77.46.52.46",
+            "messages": [
+                {
+                    "date": "02/01/2022, 08:35:46",
+                    "from": "Lucas",
+                    "text": "Here's my phonenumber."
+                },
+                {
+                    "date": "03/01/2022, 23:02:06",
+                    "from": "Lucas",
+                    "text": "This is an important scheduled message, try to catch it"
+                },
+                {
+                    "date": "05/01/2022, 15:17:15",
+                    "from": "user",
+                    "text": "Can you create the SMS Database plz?"
+                },
+                {
+                    "date": "05/01/2022, 15:18:48",
+                    "from": "Lucas",
+                    "text": "No."
+                },
+                {
+                    "date": "05/01/2022, 15:18:48",
+                    "from": "Lucas",
+                    "text": "Haha, I'm kidding, I created it yesterday :)"
+                }
+            ]
+        }
+    ],
+    "discord_History": [
+        {
+            "contactname": "voicemail",
+            "mobilenumber": "null",
+            "messages": [
+                {
+                    "date": "05/01/2022, 15:01:34",
+                    "from": "voicemail",
+                    "text": "You have 1 unread message from mom"
+                }
+            ]
+        }
+    ],
+    "calls_History": [
+        {
+            "contactname": "random",
+            "mobilenumber": "",
+            "messages": [
+                {
+                    "date": "06/01/2022, 10:00",
+                    "from": "random",
+                    "text": "random1.mp3"
+                },
+                "random2.mp3",
+                "07/01/2022, 11:00",
+                "random3.mp3",
+                "08/01/2022, 12:00"
+            ]
+        },
+        {
+            "contactname": "Boss",
+            "mobilenumber": "06.00.00.00.00",
+            "messages": [
+                {
+                    "date": "09/01/2022, 13:00",
+                    "from": "Boss",
+                    "text": "boss.mp3"
+                }
+            ]
+        },
+        {
+            "contactname": "dad",
+            "mobilenumber": "06.33.33.33.33",
+            "messages": [
+                {
+                    "date": "10/01/2022, 14:00",
+                    "from": "dad",
+                    "text": "dad.mp3"
+                }
+            ]
+        },
+        {
+            "contactname": "mom",
+            "mobilenumber": "06.44.44.44.44",
+            "messages": [
+                {
+                    "date": "11/01/2022, 15:00",
+                    "from": "mom",
+                    "text": "mom.mp3"
+                }
+            ]
+        }
+    ], 
+    "voicemail_History": [
+        {
+            "contactname": "Voicemail",
+            "mobilenumber": "123",
+            "messages": [
+                {
+                    "date": "",
+                    "from": "Voicemail",
+                    "text": "welcome.mp3",
+                    "text_before": ""
+                }
+            ]
+        },
+        {
+            "contactname": "boss",
+            "mobilenumber": "06.00.00.00.00",
+            "messages": [
+                {
+                    "date": "05/01/2022, 10:00",
+                    "from": "Boss",
+                    "text": "boss.mp3",
+                    "text_before": "boss_voicemail.mp3"
+                }
+            ]
+        },
+        {
+            "contactname": "mom",
+            "mobilenumber": "06.44.44.44.44",
+            "messages": [
+                {
+                    "date": "05/01/2022, 9:30",
+                    "from": "mom",
+                    "text": "mom.mp3",
+                    "text_before": "mom_before.mp3"
+                }
+            ]
+        }
+    ]
+}
