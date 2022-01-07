@@ -1,15 +1,14 @@
 """SEND_MESSAGES.PY
-This file is a function to send a message (message) in the Chatbot discord server from a 
-personnal account. 
+This file is a function to send a message (message) in the Chatbot discord server from a
+personnal account.
 """
-
-
+#blablabla
 import requests
 
 
 def send_msg(message):
 	payload = {
-		'content' : message 
+		'content' : message
 	}
 
 	header = {
