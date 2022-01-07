@@ -7,11 +7,13 @@ import json
 # Pour la V1 -- API
 # Informer d'une nouvelle arrivée de message
 
-SMS_file = "DataBases/SMS_DataBase.json"
-VM_file = "DataBases/VM_DataBase.json"
+SMS_DB = "Databases/SMS/SMS_DataBase.json"
+VM_DB = "Databases/Voicemails/Voicemail_DataBase.json"
+CALLS_DB = "Databases/Calls/Calls_DataBase.json"
 
 SMS_medium = "SMS"
 VM_medium = "VOICEMAIL"
+CALLS_medium = "CALLS"
 
 
 def dateInInterval(date1, date2):
@@ -40,12 +42,12 @@ def sameDates(date1, date2):
     return day1 == day2 and month1 == month2 and year1 == year2
 
 
-def find_message(medium, contact, date, datetype=0, usertype="all"):
+def find_message(medium, contact, date, datetype=1, usertype="all"):
     # Datetype = 0 ==> +-1h
     # Datetype = 1 ==> All day
-    # Usertype = "contact", "user", "default"
+    # Usertype = "contact", "user", "all"
     if medium == SMS_medium:
-        myfile = open(SMS_file, 'r+')
+        myfile = open(SMS_DB, 'r+')
         data = json.load(myfile)
         rk = 0
         messagesFound = []
@@ -77,6 +79,43 @@ def find_message(medium, contact, date, datetype=0, usertype="all"):
                 myfile.close()
                 return messagesFound
             rk += 1
+        myfile.close()
+    if medium == VM_medium:
+        myfile = open(VM_DB, 'r+')
+        data = json.load(myfile)
+        rk = 0
+        messagesFound = []
+        for oneContact in data["voicemail_History"]:
+            if oneContact['contactname'] == contact:
+                for struct in data["voicemail_History"][rk]['messages']:
+                    if datetype == 0:
+                        if dateInInterval(struct['date'], date):
+                            messagesFound.append(struct['text_before'] + "/" + struct['text'])
+                    if datetype == 1:
+                        if sameDates(struct['date'], date):
+                            messagesFound.append(struct['text_before'] + "/" + struct['text'])
+                myfile.close()
+                return messagesFound
+            rk += 1
+        myfile.close()
+    if medium == CALLS_medium:
+        myfile = open(CALLS_DB, 'r+')
+        data = json.load(myfile)
+        rk = 0
+        messagesFound = []
+        for oneContact in data["calls_History"]:
+            if oneContact['contactname'] == contact:
+                for struct in data["calls_History"][rk]['messages']:
+                    if datetype == 0:
+                        if dateInInterval(struct['date'], date):
+                            messagesFound.append(struct['text'])
+                    if datetype == 1:
+                        if sameDates(struct['date'], date):
+                            messagesFound.append(struct['text'])
+                myfile.close()
+                return messagesFound
+            rk += 1
+        myfile.close()
 
 class MessageObj:   # an object to represent a message, would be great it this was generally used
     def __init__(self, txt, sender, medium, date):
@@ -115,11 +154,20 @@ class  ActionManagerObject:
 if __name__ == "__main__":
     msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")
     print(msg)
-    msg = find_message(SMS_medium, "Lucas", "03/01/2022", datetype=1, usertype="contact")
+    msg = find_message(SMS_medium, "Lucas", "03/01/2022", usertype="contact")
     print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="user")
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="user")
     print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="contact")
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="contact")
     print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", datetype=1, usertype="all")
+    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="all")
     print(msg)
+
+    msg = find_message(VM_medium, "mom", "05/01/2022")
+    print(msg)
+    
+    msg = find_message(CALLS_medium, "mom", "06/01/2022")
+    print(msg)
+    msg = find_message(CALLS_medium, "mom", "11/01/2022")
+    print(msg)
+    
