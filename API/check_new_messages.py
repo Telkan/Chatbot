@@ -1,8 +1,11 @@
+"""CHECK_NEW_MESSAGES.PY
+This file is checking if there is a new message sent to the Chatbot Discord server, and returns 
+it as a string
+"""
+
 import discord
 import requests
 import os
-
-from rasa_connection import curl_request
 from dotenv import load_dotenv
 
 #Load Discord Bot Token
@@ -19,14 +22,9 @@ async def on_ready():
 async def on_message(message):
 	#Verify that the User is not the Bot itself
 	if message.author != client.user:
+		
+		#print(message.content)
+		return message.content
 
-		#Use curl_request Function (located in rasa_connection.py)
-		answers = curl_request(message.content, str(message.author))
-
-		#Insert all Respons into one String so we can return it into the Discord Channel
-		end_response = " \n ".join((answers))
-
-		#Return the message in a Discord Channel
-		return await message.channel.send(f'{message.author.mention} ' + end_response)
 
 client.run(token)
