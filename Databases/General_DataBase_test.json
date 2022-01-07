@@ -88,6 +88,22 @@
                     "text": "Haha, I'm kidding, I created it yesterday :)"
                 }
             ]
+        },
+        {
+            "contactname": "Alex",
+            "mobilenumber": "074392345",
+            "messages": [
+                {
+                    "date": "07/01/2022, 16:52:04",
+                    "from": "Alex",
+                    "text": "get back!"
+                },
+                {
+                    "date": "07/01/2022, 16:55:55",
+                    "from": "Alex",
+                    "text": "get back!"
+                }
+            ]
         }
     ],
     "DISCORD_History": [
@@ -99,6 +115,22 @@
                     "date": "05/01/2022, 15:01:34",
                     "from": "voicemail",
                     "text": "You have 1 unread message from mom"
+                }
+            ]
+        },
+        {
+            "contactname": "Alex",
+            "mobilenumber": "074392345",
+            "messages": [
+                {
+                    "date": "07/01/2022, 16:52:04",
+                    "from": "Alex",
+                    "text": "get back!"
+                },
+                {
+                    "date": "07/01/2022, 16:55:55",
+                    "from": "Alex",
+                    "text": "get back!"
                 }
             ]
         }
@@ -148,7 +180,7 @@
                 }
             ]
         }
-    ], 
+    ],
     "VOICEMAIL_History": [
         {
             "contactname": "Voicemail",
@@ -157,7 +189,7 @@
                 {
                     "date": "",
                     "from": "Voicemail",
-                    "text": "Databases/Calls/welcome.mp3"
+                    "text": "Databases/Voicemails/welcome.mp3"
                 }
             ]
         },
@@ -168,7 +200,7 @@
                 {
                     "date": "05/01/2022, 10:00",
                     "from": "Boss",
-                    "text": "Databases/Calls/boss.mp3"
+                    "text": "Databases/Voicemails/boss.mp3"
                 }
             ]
         },
@@ -179,7 +211,7 @@
                 {
                     "date": "05/01/2022, 9:30",
                     "from": "mom",
-                    "text": "Databases/Calls/mom.mp3"
+                    "text": "Databases/Voicemails/mom.mp3"
                 }
             ]
         }

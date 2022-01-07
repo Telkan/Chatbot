@@ -1,5 +1,7 @@
 import json
-
+import threading
+import socket
+from datetime import datetime
 # Pour la V0 -- simulation
 # Trouver un message d'un certain medium/contact
 # Trouver un message d'un certain medium/contact a une date donnée
@@ -10,10 +12,12 @@ import json
 SMS_DB = "Databases/SMS/SMS_DataBase.json"
 VM_DB = "Databases/Voicemails/Voicemail_DataBase.json"
 CALLS_DB = "Databases/Calls/Calls_DataBase.json"
+GENERAL_DB = "Databases/General_DataBase_test.json"
 
 SMS_medium = "SMS"
 VM_medium = "VOICEMAIL"
 CALLS_medium = "CALLS"
+DISCORD_medium = "DISCORD"
 
 
 def dateInInterval(date1, date2):
@@ -117,9 +121,46 @@ def find_message(medium, contact, date, datetype=1, usertype="all"):
             rk += 1
         myfile.close()
         
+def add_message(medium, date, sender, text, phone='null', generate_date=False):
+    
+    if generate_date:   # if we want to create the date of the new msg to add
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y, %H:%M:%S")
+        date = dt_string
+    
+    if medium == VM_medium or medium == CALLS_medium:
+        if medium == VM_medium: text = 'Databases/Voicemails/' + text
 
-def add_message():
-    pass
+        else: text = 'Databases/Calls/' + text
+
+    with open(GENERAL_DB, 'r+') as file:
+        file_data = json.load(file)
+
+        active_db = medium + '_History'     # if its an sms, we work in the sms_db index of the DB
+
+        size = len(file_data[active_db])
+
+        new_msg = { 'date':date,
+                    'from':sender,
+                    'text':text}
+
+        for i in range(size):
+            if file_data[active_db][i]["contactname"] == sender:
+                file_data[active_db][i]["messages"].append(new_msg)
+                break
+            if i + 1 == size: #contact doesnt exist in db
+                new_contact = {
+                        "contactname": sender,
+                        "mobilenumber": phone,
+                        "messages": [new_msg]}
+                
+                file_data[active_db].append(new_contact)
+                break
+                
+        # Sets file's current position at offset.
+        file.seek(0)
+        # convert back to json.
+        json.dump(file_data, file, indent=4)
 
 
 class  ActionManagerObject:
@@ -127,18 +168,29 @@ class  ActionManagerObject:
         self.cm = chat_manager
         pass
 
+    def message_listener(self):
+        sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+
+        sock.bind(('127.0.0.1', 44444))    # setup server
+
+        while True:
+            msg_bytes, address = self.sock.recvfrom(1024)
+            print(msg_bytes.decode('utf-8'))
+
+
     def lookup_message(self,args):
         # here we have the lookup function
 
         pass
     
-    def add_message(self, msg):
+    def add_message(self, medium, date, sender, text, phone='null'):
         # here we have add message logic, db-related etc.
 
         #TODO add msg to db
+        add_message(medium, date, sender, text, phone)
 
         # code for contacting CM
-        self.cm.handle_action_manager_msg(msg.medium, msg.sender)
+        self.cm.handle_action_manager_msg(medium, contact)
 
     def lookup_event(self, args):
         # lookup event db
@@ -150,6 +202,10 @@ class  ActionManagerObject:
 
 
 if __name__ == "__main__":
+    add_message(SMS_medium,'null','Alex','get back!','074392345',True)
+    add_message(DISCORD_medium,'null','Alex','get back!','074392345',True)
+    
+    """
     msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")
     print(msg)
     msg = find_message(SMS_medium, "Lucas", "03/01/2022", usertype="contact")
@@ -168,4 +224,4 @@ if __name__ == "__main__":
     print(msg)
     msg = find_message(CALLS_medium, "mom", "11/01/2022")
     print(msg)
-    
+    """
