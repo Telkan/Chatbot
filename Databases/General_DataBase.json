@@ -111,12 +111,18 @@
                 {
                     "date": "06/01/2022, 10:00",
                     "from": "random",
-                    "text": "random1.mp3"
+                    "text": "Calls/random1.mp3"
                 },
-                "random2.mp3",
-                "07/01/2022, 11:00",
-                "random3.mp3",
-                "08/01/2022, 12:00"
+                {
+                    "date": "07/01/2022, 11:00",
+                    "from": "random",
+                    "text": "Calls/random2.mp3"
+                },
+                {
+                    "date": "08/01/2022, 12:00",
+                    "from": "random",
+                    "text": "Calls/random3.mp3"
+                }
             ]
         },
         {
@@ -126,7 +132,7 @@
                 {
                     "date": "09/01/2022, 13:00",
                     "from": "Boss",
-                    "text": "boss.mp3"
+                    "text": "Calls/boss.mp3"
                 }
             ]
         },
@@ -137,7 +143,7 @@
                 {
                     "date": "10/01/2022, 14:00",
                     "from": "dad",
-                    "text": "dad.mp3"
+                    "text": "Calls/dad.mp3"
                 }
             ]
         },
@@ -148,7 +154,7 @@
                 {
                     "date": "11/01/2022, 15:00",
                     "from": "mom",
-                    "text": "mom.mp3"
+                    "text": "Calls/mom.mp3"
                 }
             ]
         }
@@ -161,7 +167,7 @@
                 {
                     "date": "",
                     "from": "Voicemail",
-                    "text": "welcome.mp3",
+                    "text": "Voicemails/welcome.mp3",
                     "text_before": ""
                 }
             ]
@@ -173,8 +179,8 @@
                 {
                     "date": "05/01/2022, 10:00",
                     "from": "Boss",
-                    "text": "boss.mp3",
-                    "text_before": "boss_voicemail.mp3"
+                    "text": "Voicemails/boss.mp3",
+                    "text_before": "Voicemails/boss_voicemail.mp3"
                 }
             ]
         },
@@ -185,8 +191,8 @@
                 {
                     "date": "05/01/2022, 9:30",
                     "from": "mom",
-                    "text": "mom.mp3",
-                    "text_before": "mom_before.mp3"
+                    "text": "Voicemails/mom.mp3",
+                    "text_before": "Voicemails/mom_before.mp3"
                 }
             ]
         }

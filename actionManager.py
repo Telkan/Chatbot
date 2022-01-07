@@ -90,10 +90,10 @@ def find_message(medium, contact, date, datetype=1, usertype="all"):
                 for struct in data["voicemail_History"][rk]['messages']:
                     if datetype == 0:
                         if dateInInterval(struct['date'], date):
-                            messagesFound.append(struct['text_before'] + "/" + struct['text'])
+                            messagesFound.append(struct['text_before'] + "&" + struct['text'])
                     if datetype == 1:
                         if sameDates(struct['date'], date):
-                            messagesFound.append(struct['text_before'] + "/" + struct['text'])
+                            messagesFound.append(struct['text_before'] + "&" + struct['text'])
                 myfile.close()
                 return messagesFound
             rk += 1
