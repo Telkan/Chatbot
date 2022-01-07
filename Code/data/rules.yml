@@ -32,3 +32,7 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_dont_understand
+- rule: schedule an appointment
+  steps:
+  - intent: schedule_appointment
+  - action: action_confirm_new_appointment

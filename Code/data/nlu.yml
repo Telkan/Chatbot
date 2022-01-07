@@ -132,7 +132,6 @@ nlu:
     - Sorry, I will call you back
     - I will call you back as soon as I can
 
-
 - intent: delete_msg
   examples: |
     - delete my [last]{"entity": "reception_time", "value": "Last"} [voicemail]{"entity": "medium_comm", "value": "Voicemail"}
@@ -154,20 +153,6 @@ nlu:
     - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
     - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
 
-- intent: change_voicemail_msg
-  examples: |
-    - I want to change my voicemail message
-    - I would like to record another voicemail message
-    - I would like to change my answering machine message
-    - Change my voicemail message to [It's Emma, leave a message after the bip]{"entity": "new_voicemail_msg", "value": "It's Emma, leave a message after the bip"}
-    - Could you change my voicemail message to [It's Bruce, leave a message after the bip, I'll call you back as soon as I can]{"entity": "new_voicemail_msg", "value": "It's Bruce, leave a message after the bip, I'll call you back as soon as I can"}
-
-- intent: archive_email
-  examples: |
-    - Can you archive my [last]{"entity": "reception_time", "value": "Last"} email in the folder [internship]{"entity": "archive", "value": "Internship"} ?
-    - Can you archive every emails from [Julie]{"entity": "contact", "value": "Julie"} in [UPSSITECH]{"entity": "archive", "value": "UPSSITECH"}
-    - Can you save the [first]{"entity": "reception_time", "value": "First"} email in [work]{"entity": "archive", "value": "Work"}
-
 - intent: call_contact
   examples: |
     - Call [Julie]{"entity": "contact", "value": "Julie"} please
@@ -182,32 +167,43 @@ nlu:
 
 - intent: schedule_appointment
   examples: |
-    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
+    - Schedule an appointment for the [dentist](name_appointment) [tuesday](date) at [ten a.m](time)
     - Can you add a new appointment in my agenda please ?
-    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
-    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
-    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
-    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
-    - [Next week]{"entity": "date", "value": "Next week"}
-    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
-    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
-    - at [eleven]{"entity": "time", "value": "Eleven"}
-    - [two]{"entity": "time", "value": "Two"}
+    - Could you add an appointment [in five days(date)
+    - I have a date [tomorrow](date) [evening at eight](time)
+    - Add an appointment [in two hours](time)
+    - Set an appointment for [friday](date)
+    - [Next week](date)
+    - [tomorrow](date)
+    - [friday](date)
+    - The name is [Max's birthday](name_appointment)
+    - [Birthday party](name_appointment)
+    - at [eleven](time)
+    - [two](time)
+    - [five](time)
 
 - intent: modify_appointment
   examples: |
-    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
-    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
-    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
+    - Can you move [tuesday](date) appointment [wednesday](date)?
+    - Can you change my [dentist](name_appointment)'s appointment to [six o'clock](time)?
+    - Can you change the appointment with my [doctor](name_appointment)to [Monday](date) at [ten a.m.](time) ?
 
 - intent: cancel_appointment
   examples: |
-    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
-    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
+    - Cancel [all](quantity_msg) my appointments for [tuesday](date)
+    - Cancel my [four o'clock](time) appointment.
+    - Cancel the appointment named [dentist](name_appointment)
+    - Cancel the appointment schedule [friday](date) at [five](time).
+    - Delete [all](quantity_msg) my appointments for [today](date)
+    - Delete my [five o'clock](time) appointment.
+    - Delete the appointment named [cinema](name_appointment)
+    - Annul the appointment schedule [wednesday](date) at [four](time).
+    - Annul the appointment named [birthday](name_appointment)
+    - Annul the appointment schedule [thursday](date) at [four](time).
 
 - intent: get_appointment_memo
   examples: |
-    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
+    - Remind me my [today](date)'s appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
 
 - intent: contact_calling # false intent sent by .py file when incomming call, not from the user

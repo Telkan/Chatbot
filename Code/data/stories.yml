@@ -216,3 +216,51 @@ stories:
   - intent: decline
   - action: utter_feedback_call_cancelled
   - action: action_reset_contact
+
+- story: 16 - Setting an appointment # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: dentist 
+    - date: tuesday
+    - time: at two
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 17 - Setting an appointment decline # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: doctor
+    - date: monday
+    - time: nine
+  - action: action_confirm_new_appointment
+  - intent: decline
+  - action: utter_feedback_appointment_decline
+  - action: action_reset_appointment
+
+- story: 18 - Delete an appointment # 
+  steps: 
+  - intent: cancel_appointment
+    entities: 
+    - name_appointment: cinema 
+    - date: monday
+    - time: five
+  - action: utter_confirm_delete_appointment
+  - intent: confirm
+  - action: utter_feedback_delete_appointment
+  - action: action_reset_appointment
+
+- story: 19 - Delete an appointment decline # 
+  steps: 
+  - intent: cancel_appointment
+    entities: 
+    - name_appointment: doctor
+    - date: monday
+    - time: nine
+  - action: utter_confirm_delete_appointment
+  - intent: decline
+  - action: utter_feedback_delete_appointment_decline
+  - action: action_reset_appointment

@@ -27,8 +27,6 @@ intents:
     use_entities: true
 - change_voicemail_msg:
     use_entities: true
-- archive_email:
-    use_entities: true
 - contact_calling:
     use_entities: true
 - call_contact:
@@ -54,7 +52,6 @@ entities:
 - reception_time
 - medium_comm
 - quantity_msg
-- archive
 - name_apppointment
 - date
 - time
@@ -168,11 +165,26 @@ responses:
   - text: Could you please tell me the name of the appointment you have just mentionned?
   - text: Could you please precise the name of the appointment you are talking about?
   - text: What is the appointment's name please?
+  utter_feedback_appointment_confirm:
+  - text: Done, I set the appointment {name_appointment} {date} {time}.
+  utter_feedback_appointment_decline:
+  - text: No worries, it has been deleted.
+  - text: Sure, it has been cancelled.
   utter_reschedule_when:
   - text: When would you like to reschedule this appointment?
   - text: Can you specify when you would like to reschedule this appointment?
   - text: Could you tell me when you would like this appoint to be rescheduled?
   - text: Could you please tell me when you would like it to be rescheduled?
+  utter_confirm_delete_appointment:
+  - text: Are you sure you want to delete the appointment {name_appointment} {date} {time} ?
+  - text: You want to delete the appointment {name_appointment} {date} {time}, right ?
+  utter_feedback_delete_appointment:
+  - text: Sure, it's done.
+  - text: The appointment has been deleted.
+  - text: I have deleted the appointment.
+  utter_feedback_delete_appointment_decline:
+  - text: No worries, I haven't deleted it.
+  - text: Okay, it hasn't been deleted.
   utter_contact_not_found:
   - text: I am sorry, I could not find this contact in your contact list.
   - text: I am sorry, this contact seems to be invalid.
@@ -227,5 +239,7 @@ actions:
 - action_sending_new_msg
 - action_feedback_msg_not_sent
 - action_reset_contact
+- action_confirm_new_appointment
+- action_reset_appointment
 forms: {}
 e2e_actions: []
