@@ -21,6 +21,7 @@ DISCORD_medium = "DISCORD"
 
 ACTION_MANAGER_SERVER_PORT = 44444
 
+DATABASE_LOCK = threading.Lock()
 
 def dateInInterval(date1, date2):
     # date format : "05/01/2022, 15:01:34"
@@ -125,9 +126,11 @@ def find_message(medium, contact, date, datetype=1, usertype="all"):
         
 
 """ DONT USE this func outside of this file! look at bottom actionManagerObject below instead """
-def add_message(medium, date, sender, text, phone='null', generate_date=False):
+def add_message(medium='', date='', sender='', text='', phone='null'):
+
+    if medium == '' or sender == '' or text == '': return False # fail check, abort call
     
-    if generate_date:   # if we want to create the date of the new msg to add
+    if date == '':   # if we want to create the date of the new msg to add
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y, %H:%M:%S")
         date = dt_string
@@ -165,25 +168,27 @@ def add_message(medium, date, sender, text, phone='null', generate_date=False):
         file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent=4)
+        return True
+
+
+def api_message_listener():
+    sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+
+    sock.bind(('127.0.0.1', ACTION_MANAGER_SERVER_PORT))    # setup server
+
+    while True:
+        """ PROTOCOL for sending API messages to this listener          """
+        """ msg: 'medium*created_time*sender*phone_nr*message_text'     """
+        """ ex:  'DISCORD*01/01/2022, 12:00:00*Alex*null*Hello all!'    """
+
+        msg_bytes, address = self.sock.recvfrom(1024)
+        print(msg_bytes.decode('utf-8'))
 
 
 class  ActionManagerObject:
     def __init__(self, chat_manager):
         self.cm = chat_manager
-        pass
-
-    def message_listener(self):
-        sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-
-        sock.bind(('127.0.0.1', ACTION_MANAGER_SERVER_PORT))    # setup server
-
-        while True:
-            """ PROTOCOL for sending API messages to this listener          """
-            """ msg: 'medium*created_time*sender*phone_nr*message_text'     """
-            """ ex:  'DISCORD*01/01/2022, 12:00:00*Alex*null*Hello all!'    """
-            msg_bytes, address = self.sock.recvfrom(1024)
-            print(msg_bytes.decode('utf-8'))
-
+        pass        
 
     def lookup_message(self,args):
         # here we have the lookup function
@@ -194,7 +199,9 @@ class  ActionManagerObject:
         # here we have add message logic, db-related etc.
 
         # add msg to db
-        add_message(medium, date, sender, text, phone)
+        if not add_message(medium, date, sender, text, phone):
+            print('ActionManagerObj: Failed to add new message to db. Abort Chatmanager call.')
+            return
 
         # code for contacting CM
         self.cm.handle_action_manager_msg(medium, contact)
@@ -207,10 +214,13 @@ class  ActionManagerObject:
         # add event to db
         pass
 
+    def send_message():
+        pass
+
 
 if __name__ == "__main__":
-    add_message(SMS_medium,'null','Alex','get back!','074392345',True)
-    add_message(DISCORD_medium,'null','Alex','get back!','074392345',True)
+    add_message(medium=SMS_medium, sender='Alex', text='get back!', phone='074392345')
+    add_message(medium=DISCORD_medium, sender='Alex', text='get back!', phone='074392345')
     
     """
     msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")

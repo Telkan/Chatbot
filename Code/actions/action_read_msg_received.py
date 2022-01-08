@@ -12,6 +12,10 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
+#added by alex, not sure of working
+import actionManager
+import ChatManager
+
 class ActionReadMsgReceived(Action):
 
      def name(self) -> Text:
@@ -22,8 +26,11 @@ class ActionReadMsgReceived(Action):
 
         contact = tracker.get_slot('contact')
         medium_comm = tracker.get_slot('medium_comm')
+
+        with actionManager.DATABASE_LOCK:
+            text = ChatManager.AM.lookup_message(contact, medium_comm): # untested, will talk with luca when we can.
         
-        msg = "Ok, I am reading the message from " + str(contact) + " sent through " + str(medium_comm) #TODO
+        msg = "Ok, I am reading the message from " + str(contact) + " sent through " + str(medium_comm) + ". " + text #TODO
 
         dispatcher.utter_message(text=msg)
         return []

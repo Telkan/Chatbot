@@ -6,7 +6,9 @@ import requests
 import os, sys
 import actionManager 
 
-
+# global scope for other functions
+CM = ChatManager() # create chat manager obj
+AM = actionManager.ActionManagerObject(CM) # create action manager obj
 
 
 class ChatManager:

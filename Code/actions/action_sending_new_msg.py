@@ -12,6 +12,9 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
+#added by alex, not sure of working
+import actionManager
+import ChatManager
 
 class ActionSendingNewMsg(Action):
 
@@ -30,6 +33,11 @@ class ActionSendingNewMsg(Action):
             msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + "." #TODO
         else:
             msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + " at " + time + "." #TODO
+        
+        # not sure if we have functionality to send messages at specific times :S, or I understand something wrong
+        with actionManager.DATABASE_LOCK:
+            ChatManager.AM.send_message(medium_comm, contact, message) # function declared but not implemented
+
 
         dispatcher.utter_message(text=msg)
         
