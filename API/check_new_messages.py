@@ -7,6 +7,9 @@ import discord
 import requests
 import os
 from dotenv import load_dotenv
+import socket
+
+ACTION_MANAGER_SERVER_PORT = 44444
 
 #Load Discord Bot Token
 load_dotenv()
@@ -20,11 +23,26 @@ async def on_ready():
 #Wait for a new Message
 @client.event
 async def on_message(message):
+	
 	#Verify that the User is not the Bot itself
 	if message.author != client.user:
 		
-		#print(message.content)
+		sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM) # socket
+
+		#msg: 'medium*created_time*sender*phone_nr*message_text'    
+		medium = 'DISCORD*'
+		created_time = message.created_time + '*'
+		sender = message.author.name + '*'
+		phone_nr = 'null*'
+		message_text = message.content
+
+		msg = medium + created_time + sender + phone_nr + message_text
+		addr = ('127.0.0.1', 44444)
+		sock.sendto(msg, addr)
+
 		return message.content
+	else:
+		pass
 
 
 client.run(token)

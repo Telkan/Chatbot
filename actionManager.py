@@ -19,6 +19,8 @@ VM_medium = "VOICEMAIL"
 CALLS_medium = "CALLS"
 DISCORD_medium = "DISCORD"
 
+ACTION_MANAGER_SERVER_PORT = 44444
+
 
 def dateInInterval(date1, date2):
     # date format : "05/01/2022, 15:01:34"
@@ -45,7 +47,7 @@ def sameDates(date1, date2):
     year2 = date2[6:10]
     return day1 == day2 and month1 == month2 and year1 == year2
 
-
+""" DONT USE this func outside of this file! look at bottom actionManagerObject below instead """
 def find_message(medium, contact, date, datetype=1, usertype="all"):
     # Datetype = 0 ==> +-1h
     # Datetype = 1 ==> All day
@@ -121,6 +123,8 @@ def find_message(medium, contact, date, datetype=1, usertype="all"):
             rk += 1
         myfile.close()
         
+
+""" DONT USE this func outside of this file! look at bottom actionManagerObject below instead """
 def add_message(medium, date, sender, text, phone='null', generate_date=False):
     
     if generate_date:   # if we want to create the date of the new msg to add
@@ -171,9 +175,12 @@ class  ActionManagerObject:
     def message_listener(self):
         sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
-        sock.bind(('127.0.0.1', 44444))    # setup server
+        sock.bind(('127.0.0.1', ACTION_MANAGER_SERVER_PORT))    # setup server
 
         while True:
+            """ PROTOCOL for sending API messages to this listener          """
+            """ msg: 'medium*created_time*sender*phone_nr*message_text'     """
+            """ ex:  'DISCORD*01/01/2022, 12:00:00*Alex*null*Hello all!'    """
             msg_bytes, address = self.sock.recvfrom(1024)
             print(msg_bytes.decode('utf-8'))
 
@@ -186,7 +193,7 @@ class  ActionManagerObject:
     def add_message(self, medium, date, sender, text, phone='null'):
         # here we have add message logic, db-related etc.
 
-        #TODO add msg to db
+        # add msg to db
         add_message(medium, date, sender, text, phone)
 
         # code for contacting CM
