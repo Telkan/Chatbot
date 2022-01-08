@@ -23,5 +23,5 @@ class ActionResetContact(Action):
 
         contact = tracker.get_slot('contact')
         
-        return [SlotSet("contact", "null")]
+        return [SlotSet("contact", "null"),SlotSet("medium_comm", "all")]
 

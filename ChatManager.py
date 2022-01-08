@@ -10,8 +10,6 @@ import actionManager
 
 
 class ChatManager:
-    def __init__(self):
-        pass
 
     def __init__(self) -> None:
         self.api_url = "http://localhost:5005/webhooks/rest/webhook"
@@ -64,7 +62,7 @@ class ChatManager:
             print("Could not request results; {0}".format(e))    
             return "ERR-DontWork"                              
     
-    def handle_action_manager_msg(self, medium, sender):
+    def handle_action_manager_msg(self, medium, sender): # TIME
         # read the msg out loud and send it to chatbot
 
 

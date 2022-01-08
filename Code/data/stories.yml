@@ -216,3 +216,57 @@ stories:
   - intent: decline
   - action: utter_feedback_call_cancelled
   - action: action_reset_contact
+
+- story: 16 - Incoming msg confirm read 
+  steps:
+  - intent: new_msg_received
+    entities:
+    - medium_comm: SMS
+    - contact: Joey
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: action_read_msg_received
+  - action: action_reset_contact
+
+- story: 17 - Incoming msg confirm read + repeat
+  steps:
+  - intent: new_msg_received
+    entities:
+    - medium_comm: SMS
+    - contact: Phoebe
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: confirm
+  - action: action_read_msg_received
+  - intent: can_you_repeat
+  - action: action_read_msg_received
+  - action: action_reset_contact
+
+- story: 18 - Incoming msg confirm write
+  steps:
+  - intent: new_msg_received
+    entities:
+    - medium_comm: Email
+    - contact: Mike
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: confirm
+  - action: action_write_msg_received 
+  - action: action_reset_contact
+
+- story: 19 - Incoming msg confirm don't read nor write
+  steps:
+  - intent: new_msg_received
+    entities:
+    - medium_comm: Discord
+    - contact: Monica
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - intent: decline
+  - action: utter_should_I_show
+  - intent: decline
+  - action: utter_do_nothing
+  - action: action_reset_contact 

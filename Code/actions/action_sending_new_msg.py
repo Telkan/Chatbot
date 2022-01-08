@@ -27,9 +27,9 @@ class ActionSendingNewMsg(Action):
         time = tracker.get_slot("time")
 
         if(time=="now"): # not a programmed message
-            msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + "."
+            msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + "." #TODO
         else:
-            msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + " at " + time + "."
+            msg = "Message : \"" + message + "\" sending to " + contact + " through " + medium_comm + " at " + time + "." #TODO
 
         dispatcher.utter_message(text=msg)
         
