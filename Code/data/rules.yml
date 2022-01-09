@@ -41,3 +41,11 @@ rules:
   - intent: new_msg_received
   - action: utter_inform_new_msg
   - action: utter_should_I_read
+- rule: schedule an appointment
+  steps:
+  - intent: schedule_appointment
+  - action: action_confirm_new_appointment
+- rule: cancel an appointment
+  steps:
+  - intent: cancel_appointment
+  - action: action_confirm_delete_appointment

@@ -155,32 +155,53 @@ nlu:
 
 - intent: schedule_appointment
   examples: |
-    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
-    - Can you add a new appointment in my agenda please ?
-    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
-    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
-    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
-    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
-    - [Next week]{"entity": "date", "value": "Next week"}
-    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
-    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
-    - at [eleven]{"entity": "time", "value": "Eleven"}
-    - [two]{"entity": "time", "value": "Two"}
+    - Schedule an appointment for the [dentist](name_appointment) [tuesday](date) at [ten a.m](time)
+    - Schedule an appointment to the [cinema](name_appointment) [friday](date) at [six p.m](time)
+    - Schedule an appointment with my [doctor](name_appointment) [wednesday](date) at [four thirty p.m](time)
+    - Add an appointment with my [lawyer](name_appointment) [thursday](date) at [three](time)
+    - Set an appointment for a [work meeting](name_appointment) [the day after tomorrow](date) at [nine a.m](time)
+    - Can you add a new appointment in my agenda [tomorrow](date) please ?
+    - Set an appointment for [friday](date)
+    - Could you add an appointment [in five days](date)
+    - I have a date [tomorrow](date) [evening at eight](time)
+    - Add an appointment [in two hours](time)
+    - Could you add an appointment to the [hairdresser](name_appointment)?
+    - Can you set an appointment to [get vaccinated](name_appointment) please?
+    - [Next week](date)
+    - [tomorrow](date)
+    - [friday](date)
+    - on [thursday](date)
+    - The name is [Max's birthday](name_appointment)
+    - [Birthday party](name_appointment)
+    - Set it to [Cinema with June](name_appointment)
+    - [Opera](name_appointment)
+    - at [eleven](time)
+    - [two](time)
+    - at [ten a.m](time)
+    - [five p.m](time)
 
-- intent: modify_appointment
+- intent: modify_appointment # TODO can't work cause date used twice... split in different intent, you say which appointment you want to modify, then second intent to choose when
   examples: |
-    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
-    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
-    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
+    - Can you move [tuesday](date) appointment [wednesday](date)?
+    - Can you change my [dentist](name_appointment)'s appointment to [six o'clock](time)?
+    - Can you change the appointment with my [doctor](name_appointment)to [Monday](date) at [ten a.m.](time) ?
 
 - intent: cancel_appointment
   examples: |
-    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
-    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
+    - Can you cancel [all](quantity_msg) my appointments for [tuesday](date)
+    - Cancel my [four o'clock](time) appointment.
+    - Cancel the appointment named [dentist](name_appointment)
+    - Could you cancel the appointment scheduled [friday](date) at [five](time).
+    - Can you delete [all](quantity_msg) my appointments for [today](date)
+    - Could you delete my [five o'clock](time) appointment.
+    - Delete the appointment named [cinema](name_appointment)
+    - Can you remove the appointment of [wednesday](date) at [four](time).
+    - Could you remove the appointment named [birthday](name_appointment)
+    - Remove the appointment scheduled [thursday](date) at [four](time).
 
 - intent: get_appointment_memo
   examples: |
-    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
+    - Remind me my [today]{"entity": "date", "value": "Today"}'s' appointment
     - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
 
 - intent: contact_calling # false intent sent by .py file when incomming call, not from the user
@@ -207,9 +228,6 @@ nlu:
     - one o'clock
     - two o'clock
     - three o'clock
-    - four o'clock
-    - five o'clock
-    - six o'clock
     - seven o'clock
     - eight o'clock
     - nine o'clock
@@ -220,7 +238,6 @@ nlu:
     - noon
     - at one
     - at two
-    - at three
     - at four
     - at five
     - at six
@@ -228,15 +245,14 @@ nlu:
     - at eight
     - at nine
     - at ten
-    - at eleven
     - at twelve
     - tonight
     - morning
     - afternoon
     - at eight tonight
-    - tonight at nine
     - tomorrow morning at seven
     - at six a.m
+    - at six p.m
     - seven p.m
 
 
@@ -265,18 +281,9 @@ nlu:
 
 - lookup: date
   examples: |
-    - monday
-    - tuesday
-    - wednesday
-    - thursday
-    - friday
     - saturday
     - sunday
-    - today
-    - yesterday
-    - tomorrow
-    - next week
-    - newt month
+    - next month
     - january
     - february
     - march
@@ -290,12 +297,11 @@ nlu:
     - november
     - december
     - in two days
-    - two days ago
-    - three days ago
-    - four days ago
-    - five days ago
-    - a week ago
     - in ten days
+    - monday first of october
+    - thursday twenty sixth of january
+    - friday the fifteenth
+    - the second of may
 
 - lookup: quantity_msg
   examples: |
@@ -318,3 +324,5 @@ nlu:
     - three last
     - six last
     - five last
+
+# TODO ADD LOOKUP TABLE FOR NAME_APPOINTMENT
