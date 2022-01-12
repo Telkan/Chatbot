@@ -190,10 +190,11 @@ class  ActionManagerObject:
         self.cm = chat_manager
         pass        
 
-    def lookup_message(self,args):
+    def lookup_message(self,contact, medium):
         # here we have the lookup function
+        print('AM: looking up message using:' + contact + medium)
 
-        pass
+        return 'THIS IS A MESSAGE'
     
     def add_message(self, medium, date, sender, text, phone='null'):
         # here we have add message logic, db-related etc.

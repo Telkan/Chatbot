@@ -6,9 +6,6 @@ import requests
 import os, sys
 import actionManager 
 
-# global scope for other functions
-CM = ChatManager() # create chat manager obj
-AM = actionManager.ActionManagerObject(CM) # create action manager obj
 
 
 class ChatManager:
@@ -107,11 +104,16 @@ class ChatManager:
             answer = self.sendToChatbot(message)
             self.textToSpeech(answer)
                               
-sys.path.insert(1, os.getcwd()) 
+#sys.path.insert(1, os.getcwd()) 
 
 if __name__ == "__main__":
-    CM = ChatManager() # create chat manager obj
-    AM = actionManager.ActionManagerObject(CM) # create action manager obj
+    #CM = ChatManager() # create chat manager obj
+    #AM = actionManager.ActionManagerObject(CM) # create action manager obj
     #textFromAlex = actionManager.MessageObj('Hi baby!', 'Alex', 'SMS', 'Friday 13th')
     #AM.add_message(textFromAlex) 
-    CM.startComProgram()
+    #CM.startComProgram()
+    pass
+
+# global scope for other functions
+CM = ChatManager() # create chat manager obj
+AM = actionManager.ActionManagerObject(CM) # create action manager obj
