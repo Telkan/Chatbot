@@ -56,13 +56,16 @@ class ChatManager:
     
     def handle_action_manager_msg(self, medium, sender): # TIME
         # read the msg out loud and send it to chatbot
-        answer = self.sendToChatbot("THE PROTOCOL THAT  WE DECIDE I DON'T REMEMBER SORRY") # TODO create a message using the medium and sender
+        print('CM: in handle action func in CM with info:')
+        print('CM: medium:',medium, '__sender:',sender)
+
+        #answer = self.sendToChatbot("THE PROTOCOL THAT  WE DECIDE I DON'T REMEMBER SORRY") # TODO create a message using the medium and sender
 
         #msg = "New {} from {}".format(medium, sender)
         # TODO send message to chatbot
         
         # speech 
-        self.textToSpeech(answer)
+        #self.textToSpeech(answer)
         pass                                                          
 
     def startComProgram(self):
@@ -70,6 +73,7 @@ class ChatManager:
         Main loop of the program, only start this, it takes care of everything, pinky promise :)
         """
         #print(self.sendToChatbot("/restart"))
+        print('CM: starting Alexa...')
         self.api.run(host="localhost") 
 
 

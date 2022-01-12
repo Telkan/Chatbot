@@ -171,20 +171,6 @@ def add_message(medium='', date='', sender='', text='', phone='null'):
         return True
 
 
-def api_message_listener():
-    sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-
-    sock.bind(('127.0.0.1', ACTION_MANAGER_SERVER_PORT))    # setup server
-
-    while True:
-        """ PROTOCOL for sending API messages to this listener          """
-        """ msg: 'medium*created_time*sender*phone_nr*message_text'     """
-        """ ex:  'DISCORD*01/01/2022, 12:00:00*Alex*null*Hello all!'    """
-
-        msg_bytes, address = self.sock.recvfrom(1024)
-        print(msg_bytes.decode('utf-8'))
-
-
 class  ActionManagerObject:
     def __init__(self, chat_manager):
         self.cm = chat_manager
@@ -201,11 +187,11 @@ class  ActionManagerObject:
 
         # add msg to db
         if not add_message(medium, date, sender, text, phone):
-            print('ActionManagerObj: Failed to add new message to db. Abort Chatmanager call.')
+            print('AM: Failed to add new message to db. Abort Chatmanager call.')
             return
 
         # code for contacting CM
-        self.cm.handle_action_manager_msg(medium, contact)
+        self.cm.handle_action_manager_msg(medium, sender)
 
     def lookup_event(self, args):
         # lookup event db
@@ -215,31 +201,34 @@ class  ActionManagerObject:
         # add event to db
         pass
 
-    def send_message():
+    def send_message(self, medium, contact):
         pass
 
 
-if __name__ == "__main__":
-    add_message(medium=SMS_medium, sender='Alex', text='get back!', phone='074392345')
-    add_message(medium=DISCORD_medium, sender='Alex', text='get back!', phone='074392345')
-    
-    """
-    msg = find_message(SMS_medium, "Lucas", "03/01/2022, 23:00:00", datetype=0, usertype="user")
-    print(msg)
-    msg = find_message(SMS_medium, "Lucas", "03/01/2022", usertype="contact")
-    print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="user")
-    print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="contact")
-    print(msg)
-    msg = find_message(SMS_medium, "Razmo", "05/01/2022", usertype="all")
-    print(msg)
 
-    msg = find_message(VM_medium, "mom", "05/01/2022")
-    print(msg)
-    
-    msg = find_message(CALLS_medium, "mom", "06/01/2022")
-    print(msg)
-    msg = find_message(CALLS_medium, "mom", "11/01/2022")
-    print(msg)
-    """
+#""" FUNCTION WHICH WILL RECIEVE MESSAGES """
+def api_message_listener(AM):
+
+    print('AM_server:--==AM server LIVE==--')
+
+    sock = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM )
+
+    sock.bind(('127.0.0.1', ACTION_MANAGER_SERVER_PORT))    # setup server
+
+    while True:
+        # PROTOCOL for sending API messages to this listener         
+        # ex incoming msg: DISCORD*null*swebent*null*abo hi
+        msg_bytes, address = sock.recvfrom(1024)
+        msg = msg_bytes.decode("utf-8")
+        els = msg.split('*')
+
+        if len(els)!=5: continue
+        print('in AM server:', els)
+        with DATABASE_LOCK:
+            AM.add_message(els[0], '' if els[1]=='null' else els[1], els[2], els[4])
+        return
+
+if __name__ == "__main__":
+    #add_message(medium=SMS_medium, sender='Alex', text='get back!', phone='074392345')
+    #add_message(medium=DISCORD_medium, sender='Alex', text='get back!', phone='074392345')
+    pass

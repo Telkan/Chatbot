@@ -133,6 +133,22 @@
                     "text": "get back!"
                 }
             ]
+        },
+        {
+            "contactname": "swebent",
+            "mobilenumber": "null",
+            "messages": [
+                {
+                    "date": "12/01/2022, 18:03:00",
+                    "from": "swebent",
+                    "text": "hi baby \u2764\ufe0f"
+                },
+                {
+                    "date": "12/01/2022, 18:04:14",
+                    "from": "swebent",
+                    "text": "hi again baby \u2764\ufe0f"
+                }
+            ]
         }
     ],
     "CALLS_History": [
