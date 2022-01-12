@@ -5,17 +5,62 @@ from playsound import playsound
 import requests
 import os, sys
 import actionManager 
+from flask import Flask,request
 
 
+def sendToChatbot(textToSend:str)->str:                
+        """
+        Send textToSend and return the answer
+        """
+        chatMessage = {"sender": "User", "message": textToSend}
+        response = requests.post("http://localhost:5005/webhooks/rest/webhook", json=chatMessage)
+        return response.json()
 
 
 class ChatManager:
-    def __init__(self):
-        pass
-
+    api = Flask(__name__)
     def __init__(self) -> None:
         self.api_url = "http://localhost:5005/webhooks/rest/webhook"
         pass
+
+
+    @api.route('/', methods=['POST'])
+    def post_catchAll():
+        shouldEnd = False
+        print(request.json)
+        if request.json["session"]["new"] == True: 
+            text = "What can I do for you?"
+            sendToChatbot("/restart")
+
+        elif request.json["request"]["intent"]["name"] == "AMAZON.StopIntent":
+            text = "Alright see ya"
+            shouldEnd = True
+
+        else:
+            text = request.json["request"]["intent"]["slots"]["text"]["value"]  
+            text = sendToChatbot(text)
+            text = text[0]["text"]
+        return {
+                    "version": "1.0",
+                    "sessionAttributes": {"status": "test"},
+                    "response": {
+                        "outputSpeech": {
+                            "type": "PlainText",
+                            "text": text,
+                            "playBehavior": "REPLACE_ENQUEUED",
+                        },
+                        "reprompt": {
+                            "outputSpeech": {
+                                "type": "PlainText",
+                                "text": "Oh gosh darn it, please answer me!",
+                                "playBehavior": "REPLACE_ENQUEUED",
+                            }
+                        },
+                        "shouldEndSession": shouldEnd,
+                    },
+                }
+
+    
     
 
     def textToSpeech(self,outputText):
@@ -90,9 +135,10 @@ class ChatManager:
         """
         Main loop of the program, only start this, it takes care of everything, pinky promise :)
         """
-        print(self.sendToChatbot("/restart"))
-        while True:
-            message = self.listenForVoice()
+        #print(self.sendToChatbot("/restart"))
+        self.api.run(host="localhost") 
+        """while True:
+            #message = self.listenForVoice()
             if "ERR" in message:
                 self.textToSpeech("I'm sorry, I didn't get that")    
                 continue
@@ -105,8 +151,9 @@ class ChatManager:
                     return
             
             answer = self.sendToChatbot(message)
-            self.textToSpeech(answer)
-                              
+            #self.textToSpeech(answer)
+        """
+
 sys.path.insert(1, os.getcwd()) 
 
 if __name__ == "__main__":
