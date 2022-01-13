@@ -41,7 +41,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 4 - Write new msg confirmation user with time # NOK
+- story: 4 - Write new msg confirmation user with time # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -57,7 +57,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 5 - Write new msg Contact missing confirmation user # Mostly OK
+- story: 5 - Write new msg Contact missing confirmation user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -75,7 +75,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 6 - Write new msg Contact missing decline user
+- story: 6 - Write new msg Contact missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -92,7 +92,7 @@ stories:
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: 7 - Write new msg Contact missing decline user
+- story: 7 - Write new msg Contact missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -123,7 +123,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 9 - Write new message medium missing decline user
+- story: 9 - Write new message medium missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -217,7 +217,7 @@ stories:
   - action: utter_feedback_call_cancelled
   - action: action_reset_contact
 
-- story: 16 - Incoming msg confirm read 
+- story: 16 - Incoming msg confirm read # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -229,7 +229,7 @@ stories:
   - action: action_read_msg_received
   - action: action_reset_contact
 
-- story: 17 - Incoming msg confirm read + repeat
+- story: 17 - Incoming msg confirm read + repeat #PB WITH REPEAT
   steps:
   - intent: new_msg_received
     entities:
@@ -243,7 +243,7 @@ stories:
   - action: action_read_msg_received
   - action: action_reset_contact
 
-- story: 18 - Incoming msg confirm write
+- story: 18 - Incoming msg confirm write # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -257,7 +257,7 @@ stories:
   - action: action_write_msg_received 
   - action: action_reset_contact
 
-- story: 19 - Incoming msg confirm don't read nor write
+- story: 19 - Incoming msg confirm don't read nor write # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -271,7 +271,7 @@ stories:
   - action: utter_do_nothing
   - action: action_reset_contact 
 
-- story: 20 - Setting an appointment confirm
+- story: 20 - Setting an appointment confirm # OK
   steps: 
   - intent: schedule_appointment
     entities: 
@@ -283,7 +283,7 @@ stories:
   - action: utter_feedback_appointment_confirm
   - action: action_reset_appointment
 
-- story: 21 - Setting an appointment decline
+- story: 21 - Setting an appointment decline # OK
   steps: 
   - intent: schedule_appointment
     entities: 
@@ -295,7 +295,10 @@ stories:
   - action: utter_feedback_appointment_decline
   - action: action_reset_appointment
 
-- story: 22 - Delete an appointment confirm
+# ADD STORY MISSING INFO NEW APPOINTMENT AND CANCEL APPOINTMENT
+# CHANGE ORDER TIME/DATE
+
+- story: 22 - Delete an appointment confirm # OK
   steps: 
   - intent: cancel_appointment
     entities: 

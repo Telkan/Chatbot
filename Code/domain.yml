@@ -25,8 +25,6 @@ intents:
     use_entities: true
 - schedule_appointment:
     use_entities: true
-- modify_appointment:
-    use_entities: true
 - can_you_repeat:
     use_entities: true
 - cancel_appointment:
@@ -43,13 +41,9 @@ entities:
 - contact
 - reception_time
 - medium_comm
-- quantity_msg
 - name_apppointment
 - date
 - time
-- new_date
-- new_time
-- name_appointment
 slots:
   contact:
     type: rasa.shared.core.slots.TextSlot
@@ -114,14 +108,14 @@ responses:
   - text: Do you want me to read it aloud?
   - text: Shall I read it to you?
   - condition:
-        - type: slot
-          name: medium_comm
-          value: Voicemail
+    - name: medium_comm
+      type: slot
+      value: Voicemail
     text: Do you want to hear it?
   - condition:
-        - type: slot
-          name: medium_comm
-          value: Voicemail
+    - name: medium_comm
+      type: slot
+      value: Voicemail
     text: Would you like to listen to it?
   utter_should_I_show:
   - text: Should I show it on the screen?
@@ -149,11 +143,6 @@ responses:
   - text: No worries, I haven't scheduled anything.
   - text: Don't worry, it has not been programmed.
   - text: Okay, mission aborted, no new appointment has been added.
-  utter_reschedule_when:
-  - text: When would you like to reschedule this appointment?
-  - text: Can you specify when you would like to reschedule this appointment?
-  - text: Could you tell me when you would like this appoint to be rescheduled?
-  - text: Could you please tell me when you would like it to be rescheduled?
   utter_feedback_delete_appointment:
   - text: Sure, it's done. Appointment {name_appointment} deleted.
   - text: The appointment {name_appointment} has been deleted.
@@ -201,7 +190,6 @@ responses:
   - text: Alright, I won't read nor show you the message from {contact}.
   - text: Okay, I won't read it nor show it to you. The message from {contact} is saved though.
   - text: Sure, I won't do anything about the message from {contact}.
-
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content
@@ -213,5 +201,6 @@ actions:
 - action_confirm_new_appointment
 - action_confirm_delete_appointment
 - action_reset_appointment
+- action_give_memo_appointment
 forms: {}
 e2e_actions: []

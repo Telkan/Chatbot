@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,14 +28,12 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: confirm
   examples: |
     - yes
@@ -54,7 +50,8 @@ nlu:
     - exact
     - exactly
     - read it
-
+    - YES
+    - yep
 - intent: decline
   examples: |
     - no
@@ -68,41 +65,47 @@ nlu:
     - I don't want
     - later
     - don't
-
+    - nothing
 - intent: thank_you
   examples: |
     - thanks
     - thank you
     - many thanks
     - thank you so much
-
 - intent: write_new_msg
   examples: |
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
-    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
-    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
+    - write an [SMS](medium_comm) to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS](medium_comm) to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.](time)
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike](contact)
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact) [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
     - Can you write a [discord]{"entity": "medium_comm", "value": "Discord"} message for me ?
     - I need you to write a message
-    - to [Mom]{"entity": "contact", "value": "Mom"}
-    - [Lucas]{"entity": "contact", "value": "Lucas"}
-    - [Mike]{"entity": "contact", "value": "Mike"}
-    - [Mom]{"entity": "contact", "value": "Mom"}
-    - [Sister]{"entity": "contact", "value": "Sister"}
-    - [Paolo]{"entity": "contact", "value": "Paolo"}
-    - [Chandler]{"entity": "contact", "value": "Chandler"}
-    - by [SMS]{"entity": "medium_comm", "value": "SMS"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - to [Mom](contact)
+    - [Lucas](contact)
+    - [Mike](contact)
+    - [Mom](contact)
+    - [Sister](contact)
+    - [Paolo](contact)
+    - [Chandler](contact)
+    - by [SMS](medium_comm)
+    - write an [SMS](medium_comm) to [Mom](contact)
+    - write an [SMS](medium_comm)
     - write a [text]{"entity": "medium_comm", "value": "SMS"}
-    - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - send an [SMS](medium_comm)
     - send a [text]{"entity": "medium_comm", "value": "SMS"}
-    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
-    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
-    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
-
+    - Send a message to [Tom](contact) via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy](contact)
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel](contact)
+    - send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact)
+    - write a message
+    - write to [Mom](contact)
+    - write an [email]{"entity": "medium_comm", "value": "Email"}
+    - send a [text]{"entity": "medium_comm", "value": "SMS"} to [Clément](contact)
+    - write a message to [Dad](contact) through [mail](medium_comm)
+    - write an [SMS](medium_comm) to [mom]{"entity": "contact", "value": "Mom"}
+    - To [Anaïs](contact)
 - intent: write_new_msg_content
   examples: |
     - I'm on my way
@@ -121,7 +124,12 @@ nlu:
     - I am sorry I can't take your call right now
     - Sorry, I will call you back
     - I will call you back as soon as I can
-
+    - I have my keys
+    - I will call you back in ten
+    - i am coming
+    - I need my book
+    - I need help
+    - I am on my way
 - intent: can_you_repeat
   examples: |
     - Could you repeat the message please?
@@ -131,28 +139,22 @@ nlu:
     - Again
     - Can you say it again?
     - Could you tell it again?
-
-- intent: do_I_have_new_msg
-  examples: |
-    - Do I have new [messages]{"entity": "medium_comm"} ?
-    - Do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
-    - Do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
-    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
-    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
-    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
-
 - intent: call_contact
   examples: |
-    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Call [Julie](contact) please
     - Could you call my [mom]{"entity": "contact", "value": "Mom"}?
-    - I want to call [Julie]{"entity": "contact", "value": "Julie"}
-    - I have to make a call to [Lucas]{"entity": "contact", "value": "Lucas"}
-    - Ring [Mike]{"entity": "contact", "value": "Mike"}
+    - I want to call [Julie](contact)
+    - I have to make a call to [Lucas](contact)
+    - Ring [Mike](contact)
     - Could you ring my [mom]{"entity": "contact", "value": "Mom"}?
-    - Make a call to [Julie]{"entity": "contact", "value": "Julie"}
+    - Make a call to [Julie](contact)
     - Phone [mom]{"entity": "contact", "value": "Mom"}
-    - Make a phone call to [Mike]{"entity": "contact", "value": "Mike"}
-
+    - Make a phone call to [Mike](contact)
+    - call [Mom](contact)
+    - Call [Mike](contact)
+    - Call [Sister](contact)
+    - Call [Clément](contact)
+    - Call [Julie](contact)
 - intent: schedule_appointment
   examples: |
     - Schedule an appointment for the [dentist](name_appointment) [tuesday](date) at [ten a.m](time)
@@ -179,13 +181,6 @@ nlu:
     - [two](time)
     - at [ten a.m](time)
     - [five p.m](time)
-
-- intent: modify_appointment # TODO can't work cause date used twice... split in different intent, you say which appointment you want to modify, then second intent to choose when
-  examples: |
-    - Can you move [tuesday](date) appointment [wednesday](date)?
-    - Can you change my [dentist](name_appointment)'s appointment to [six o'clock](time)?
-    - Can you change the appointment with my [doctor](name_appointment)to [Monday](date) at [ten a.m.](time) ?
-
 - intent: cancel_appointment
   examples: |
     - Can you cancel [all](quantity_msg) my appointments for [tuesday](date)
@@ -198,31 +193,75 @@ nlu:
     - Can you remove the appointment of [wednesday](date) at [four](time).
     - Could you remove the appointment named [birthday](name_appointment)
     - Remove the appointment scheduled [thursday](date) at [four](time).
-
 - intent: get_appointment_memo
   examples: |
-    - Remind me my [today]{"entity": "date", "value": "Today"}'s' appointment
-    - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
-
-- intent: contact_calling # false intent sent by .py file when incomming call, not from the user
+    - Can you remind me my appointments for today?
+    - Can I have a reminder of my appointments please?
+    - Could you remind me my appointments for the day?
+    - Do I have any appointments today?
+    - What are my appointments?
+    - Do I have anything planned today?
+    - Can you give me a memo of my incoming appointments?
+    - Do I have something scheduled today?
+    - Do I have something to do today?
+    - What are my plans for today?
+    - Have I got something particular to do today?
+    - Do I have somewhere to go?
+    - Do I have somewhere to be today?
+- intent: contact_calling
   examples: |
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther]{"entity": "contact", "value": "Gunther"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
-
-- intent: new_msg_received # false intent sent by .py file when incoming message, not from the user
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister](contact)
+    - Lattecannofee [Monica](contact)
+    - Lattecannofee [Chandler](contact)
+    - Lattecannofee [Mom](contact)
+    - Lattecannofee [Julie](contact)
+    - Lattecannofee iiyama Mom
+- intent: new_msg_received
   examples: |
-    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Ross]{"entity": "contact", "value": "Ross"} 
-    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Chandler]{"entity": "contact", "value": "Chandler"} 
-    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Monica]{"entity": "contact", "value": "Monica"}
-    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Joey]{"entity": "contact", "value": "Joey"}
-    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Rachel]{"entity": "contact", "value": "Rachel"} 
-    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Phoebe]{"entity": "contact", "value": "Phoebe"}
-    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Janice]{"entity": "contact", "value": "Janice"}
-    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Richard]{"entity": "contact", "value": "Richard"}
-
-
+    - Blablabloblo Bamiclader [SMS](medium_comm) Blablabloblo Bamiclader [Ross](contact)
+    - Blablabloblo Bamiclader [Email](medium_comm) Blablabloblo Bamiclader [Chandler](contact)
+    - Blablabloblo Bamiclader [Discord](medium_comm) Blablabloblo Bamiclader [Monica](contact)
+    - Blablabloblo Bamiclader [SMS](medium_comm) Blablabloblo Bamiclader [Joey](contact)
+    - Blablabloblo Bamiclader [Email](medium_comm) Blablabloblo Bamiclader [Rachel](contact)
+    - Blablabloblo Bamiclader [Discord](medium_comm) Blablabloblo Bamiclader [Phoebe](contact)
+    - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Janice](contact)
+    - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Richard](contact)
+- synonym: Sister
+  examples: |
+    - sister
+    - sis
+- synonym: Mom
+  examples: |
+    - mom
+    - mama
+    - mommy
+    - mum
+- synonym: Email
+  examples: |
+    - email
+    - emails
+    - mail
+- synonym: SMS
+  examples: |
+    - text
+- synonym: Tonight at nine
+  examples: |
+    - tonight at nine
+- synonym: Discord
+  examples: |
+    - discord
+- synonym: Voicemail
+  examples: |
+    - voicemail
+- synonym: Today
+  examples: |
+    - today
+- synonym: Dinner with my sister
+  examples: |
+    - dinner with my sister
 - lookup: time
   examples: |
     - one o'clock
@@ -254,11 +293,8 @@ nlu:
     - at six a.m
     - at six p.m
     - seven p.m
-
-
 - lookup: contact
   examples: |
-    - dad
     - brother
     - grandma
     - grandpa
@@ -278,7 +314,6 @@ nlu:
     - Pierre
     - Ramos
     - Dorianne
-
 - lookup: date
   examples: |
     - saturday
@@ -302,27 +337,3 @@ nlu:
     - thursday twenty sixth of january
     - friday the fifteenth
     - the second of may
-
-- lookup: quantity_msg
-  examples: |
-    - all
-    - one
-    - two
-    - three
-    - four
-    - five
-    - six
-    - seven
-    - eight
-    - nine
-    - ten
-    - eleven
-    - twelve
-    - twenty
-    - thirty
-    - fifty
-    - three last
-    - six last
-    - five last
-
-# TODO ADD LOOKUP TABLE FOR NAME_APPOINTMENT

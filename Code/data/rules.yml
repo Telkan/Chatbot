@@ -41,11 +41,15 @@ rules:
   - intent: new_msg_received
   - action: utter_inform_new_msg
   - action: utter_should_I_read
-- rule: schedule an appointment
+- rule: User wants to schedule an appointment, we check
   steps:
   - intent: schedule_appointment
   - action: action_confirm_new_appointment
-- rule: cancel an appointment
+- rule: User wants to cancel an appointment, we check
   steps:
   - intent: cancel_appointment
   - action: action_confirm_delete_appointment
+- rule: Each time user asks for appointment memo, it is given to him
+  steps:
+  - intent: get_appointment_memo
+  - action: action_give_memo_appointment
