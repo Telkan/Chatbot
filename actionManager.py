@@ -16,6 +16,7 @@ from API.send_messages import send_msg
 # VM_DB = "Databases/Voicemails/Voicemail_DataBase.json"
 # CALLS_DB = "Databases/Calls/Calls_DataBase.json"
 GENERAL_DB = "Databases/General_DataBase_test.json"
+GENERAL_DB_api = "Code/Databases/General_DataBase_test.json"
 GENERAL_EVENT_DB = "Databases/General_event_DataBase_test.json"
 
 SMS_medium = "SMS"
@@ -180,8 +181,11 @@ def find_message(medium, contact, date='', datetype=1, usertype="all", last=0):
 """ DONT USE this func outside of this file! look at bottom actionManagerObject below instead """
 
 
-def add_message(medium='', date='', sender='', text='', fromUser=False, phone='null'):
+def add_message(medium='', sender='', text='', date='',  phone='null', fromUser=False, api_insert=False):
     if medium == '' or sender == '' or text == '': return False  # fail check, abort call
+
+    file_location = GENERAL_DB_api if api_insert else GENERAL_DB
+
 
     if date == '':  # if we want to create the date of the new msg to add
         now = datetime.now()
@@ -195,7 +199,7 @@ def add_message(medium='', date='', sender='', text='', fromUser=False, phone='n
         else:
             text = 'Databases/Calls/' + text
 
-    with open(GENERAL_DB, 'r+') as file:
+    with open(file_location, 'r+') as file:
         file_data = json.load(file)
 
         active_db = medium + '_History'  # if its an sms, we work in the sms_db index of the DB
@@ -286,15 +290,15 @@ class ActionManagerObject:
         # here we have the lookup function
         return find_message(medium.upper(), contact, date, datetype, usertype, last)
 
-    def add_message(self, medium, sender, text, date='', phone='null', fromUser=False):
+    def add_message(self, medium, sender, text, date='', phone='null', fromUser=False, api_insert=False):
         # here we have add message logic, db-related etc.
-        medium = medium.upper()
+        print('AM: in add db')
 
         # add msg to db
-        if not add_message(medium, date, sender, text, phone, fromUser):
+        if not add_message(medium, sender, text, date, phone, fromUser, api_insert):
             print('AM: Failed to add new message to db. Abort Chatmanager call.')
             return
-
+        print('AM: msg added')
         if not fromUser:  # code for contacting CM
             self.cm.handle_action_manager_msg(medium, sender)
 
@@ -309,8 +313,11 @@ class ActionManagerObject:
 
     def send_message(self, medium, contact, text):
         medium = medium.upper()
+        medium = medium.replace(' ','')
+        print("medium in 'SMS'", 'SMS' in medium)
+        print("medium == 'SMS'", 'SMS' == medium)
 
-        self.add_message(medium, '', contact, text, '18', fromUser=True)
+        self.add_message(medium, contact, text, fromUser=True)
 
         if DISCORD_medium in medium:
             # send_msg(text)
@@ -319,7 +326,8 @@ class ActionManagerObject:
             except:
                 print('AM: sending discord msg failed.')
 
-        # elif SMS_medium in medium:
+        elif SMS_medium in medium:
+            pass
 
         elif VM_medium in medium:
             pass
@@ -347,7 +355,7 @@ def api_message_listener(AM):
         if len(els) != 5: continue
         print('in AM server:', els)
         with DATABASE_LOCK:
-            AM.add_message(els[0], '' if els[1] == 'null' else els[1], els[2], els[4])
+            AM.add_message(els[0], els[2], els[4], api_insert=True)
         return
 
 

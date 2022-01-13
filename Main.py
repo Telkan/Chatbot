@@ -8,11 +8,13 @@ import time
 CM = ChatManager.ChatManager()                              # create chat manager obj
 AM = actionManager.ActionManagerObject(CM)      # create action manager obj
 
-am_server_thread = Thread(target=actionManager.api_message_listener, args=[AM])
-am_server_thread.start()
+if __name__ == "__main__":
+    am_server_thread = Thread(target=actionManager.api_message_listener, args=[AM])
+    am_server_thread.start()
 
-alexa_thread = Thread(target=CM.startComProgram, args=[])   
-alexa_thread.start()
-time.sleep(10)
-AM.add_message( 'DISCORD', date='', 'swebent', 'hi baby, how are you?', phone='null', fromUser=False):
-#DiscordAPI.start()
+    alexa_thread = Thread(target=CM.startComProgram, args=[])   
+    alexa_thread.start()
+    time.sleep(10)
+    AM.add_message( 'DISCORD',  'Alexander', 'you never get your money', phone='null', fromUser=False, api_insert=True)
+    #DiscordAPI.start()
+

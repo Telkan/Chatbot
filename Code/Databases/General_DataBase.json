@@ -88,32 +88,6 @@
                     "text": "Haha, I'm kidding, I created it yesterday :)"
                 }
             ]
-        },
-        {
-            "contactname": "Alex",
-            "mobilenumber": "074392345",
-            "messages": [
-                {
-                    "date": "07/01/2022, 16:52:04",
-                    "from": "Alex",
-                    "text": "get back!"
-                },
-                {
-                    "date": "07/01/2022, 16:55:55",
-                    "from": "Alex",
-                    "text": "get back!"
-                },
-                {
-                    "date": "13/01/2022, 16:27:21",
-                    "from": "user",
-                    "text": "get back!"
-                },
-                {
-                    "date": "13/01/2022, 16:28:03",
-                    "from": "user",
-                    "text": "testing"
-                }
-            ]
         }
     ],
     "DISCORD_History": [
@@ -125,94 +99,6 @@
                     "date": "05/01/2022, 15:01:34",
                     "from": "voicemail",
                     "text": "You have 1 unread message from mom"
-                }
-            ]
-        },
-        {
-            "contactname": "Alex",
-            "mobilenumber": "074392345",
-            "messages": [
-                {
-                    "date": "07/01/2022, 16:52:04",
-                    "from": "Alex",
-                    "text": "get back!"
-                },
-                {
-                    "date": "07/01/2022, 16:55:55",
-                    "from": "Alex",
-                    "text": "get back!"
-                },
-                {
-                    "date": "13/01/2022, 16:28:03",
-                    "from": "user",
-                    "text": "testing2"
-                }
-            ]
-        },
-        {
-            "contactname": "swebent",
-            "mobilenumber": "null",
-            "messages": [
-                {
-                    "date": "12/01/2022, 18:03:00",
-                    "from": "swebent",
-                    "text": "hi baby \u2764\ufe0f"
-                },
-                {
-                    "date": "12/01/2022, 18:04:14",
-                    "from": "swebent",
-                    "text": "hi again baby \u2764\ufe0f"
-                },
-                {
-                    "date": "13/01/2022, 20:23:07",
-                    "from": "user",
-                    "text": "hi baby, how are you?"
-                },
-                {
-                    "date": "13/01/2022, 23:52:12",
-                    "from": "swebent",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "13/01/2022, 23:59:47",
-                    "from": "swebent",
-                    "text": "you never get your money"
-                }
-            ]
-        },
-        {
-            "contactname": "Alexander",
-            "mobilenumber": "null",
-            "messages": [
-                {
-                    "date": "14/01/2022, 00:02:29",
-                    "from": "Alexander",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "14/01/2022, 00:03:38",
-                    "from": "Alexander",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "14/01/2022, 00:08:46",
-                    "from": "Alexander",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "14/01/2022, 00:11:38",
-                    "from": "Alexander",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "14/01/2022, 00:13:12",
-                    "from": "Alexander",
-                    "text": "you never get your money"
-                },
-                {
-                    "date": "14/01/2022, 00:14:23",
-                    "from": "Alexander",
-                    "text": "you never get your money"
                 }
             ]
         }
@@ -262,7 +148,7 @@
                 }
             ]
         }
-    ],
+    ], 
     "VOICEMAIL_History": [
         {
             "contactname": "Voicemail",
@@ -271,7 +157,7 @@
                 {
                     "date": "",
                     "from": "Voicemail",
-                    "text": "Databases/Voicemails/welcome.mp3"
+                    "text": "Databases/Calls/welcome.mp3"
                 }
             ]
         },
@@ -282,7 +168,7 @@
                 {
                     "date": "05/01/2022, 10:00",
                     "from": "Boss",
-                    "text": "Databases/Voicemails/boss.mp3"
+                    "text": "Databases/Calls/boss.mp3"
                 }
             ]
         },
@@ -293,7 +179,7 @@
                 {
                     "date": "05/01/2022, 9:30",
                     "from": "mom",
-                    "text": "Databases/Voicemails/mom.mp3"
+                    "text": "Databases/Calls/mom.mp3"
                 }
             ]
         }

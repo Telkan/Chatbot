@@ -1,0 +1,16 @@
+{
+    "events": [
+        {
+            "name_event": "pub with friends",
+            "date": "20/01/2022, 16:00:00"
+        },
+        {
+            "name_event": "cinema 50 shades of grey",
+            "date": "21/01/2022, 21:00:00"
+        },
+        {
+            "name_event": "test",
+            "date": "12/01/2021, 20:00:00"
+        }
+    ]
+}

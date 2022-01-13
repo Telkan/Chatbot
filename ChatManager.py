@@ -1,6 +1,6 @@
 import requests
 from flask import Flask,request
-
+rasaAnswer = ""
 
 def sendToChatbot(textToSend:str)->str:                
         """
@@ -19,6 +19,9 @@ class ChatManager:
 
     @api.route('/', methods=['POST'])
     def post_catchAll():
+
+        global rasaAnswer
+
         shouldEnd = False
         if request.json["session"]["new"] == True: 
             text = "What can I do for you?"
@@ -28,6 +31,16 @@ class ChatManager:
             text = "Alright see ya"
             shouldEnd = True
 
+        elif rasaAnswer != "":
+            text = ""
+            i = 0
+            try:
+                while True:
+                    text += rasaAnswer[i]["text"]+"."
+                    i+=1     
+            except:
+                pass
+            rasaAnswer = ""
         else:
             usertext = request.json["request"]["intent"]["slots"]["text"]["value"]  
             if "exit" in usertext or "stop" in usertext:
@@ -73,15 +86,15 @@ class ChatManager:
 
         # new message incoming
         msg = 'Blablabloblo Bamiclader {} Blablabloblo Bamiclader {}'.format(medium, sender) # protocol for new message
-
-        sendToChatbot(msg) 
+        global rasaAnswer
+        rasaAnswer = sendToChatbot(msg) 
 
     def handle_call(self, contact):
         print('CM: in call function')
 
         msg = 'Lattecannofee iiyama Lattecannofee iiyama willywonka {}'.format(contact)
-
-        sendToChatbot(msg)
+        global rasaAnswer
+        rasaAnswer = sendToChatbot(msg)
 
 
     def startComProgram(self):
