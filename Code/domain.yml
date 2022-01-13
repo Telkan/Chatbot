@@ -43,7 +43,6 @@ entities:
 - date
 - time
 - name_appointment
-- quantity_msg
 slots:
   contact:
     type: rasa.shared.core.slots.TextSlot

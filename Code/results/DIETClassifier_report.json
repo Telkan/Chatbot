@@ -1,16 +1,9 @@
 {
-  "name_appointment": {
+  "quantity_msg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 21,
-    "confused_with": {}
-  },
-  "medium_comm": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 30,
+    "support": 2,
     "confused_with": {}
   },
   "time": {
@@ -20,13 +13,6 @@
     "support": 36,
     "confused_with": {}
   },
-  "date": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 24,
-    "confused_with": {}
-  },
   "contact": {
     "precision": 1.0,
     "recall": 1.0,
@@ -34,11 +20,25 @@
     "support": 47,
     "confused_with": {}
   },
-  "quantity_msg": {
+  "medium_comm": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2,
+    "support": 30,
+    "confused_with": {}
+  },
+  "date": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 24,
+    "confused_with": {}
+  },
+  "name_appointment": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 21,
     "confused_with": {}
   },
   "micro avg": {
