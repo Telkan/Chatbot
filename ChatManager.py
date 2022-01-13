@@ -2,7 +2,6 @@ import requests
 from flask import Flask,request
 
 
-
 def sendToChatbot(textToSend:str)->str:                
         """
         Send textToSend and return the answer
@@ -73,7 +72,7 @@ class ChatManager:
         print('CM: medium:',medium, '  sender:',sender)
 
         # new message incoming
-        msg = 'Blablabloblo Bamiclader ' + medium + ' Blablabloblo Bamiclader ' + sender # protocol for new message
+        msg = 'Blablabloblo Bamiclader {} Blablabloblo Bamiclader {}'.format(medium, sender) # protocol for new message
 
         sendToChatbot(msg) 
 
