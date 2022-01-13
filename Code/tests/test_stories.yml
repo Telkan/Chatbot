@@ -1,91 +1,314 @@
 #### This file contains tests to evaluate that your bot behaves as expected.
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
-stories:
-- story: happy path 1
+- story: Test 1 - Write new msg deny user
   steps:
   - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: sad path 1
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
-
-- story: sad path 3
-  steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+      send an [SMS](medium_comm) to [Chandler](contact)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
   - user: |
       no
-    intent: deny
-  - action: utter_goodbye
+    intent: decline
+  - action: action_feedback_msg_not_sent
 
-- story: say goodbye
+- story: Test 2 - Write new msg deny user
   steps:
   - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+     send an [email](medium_comm) to [Libio](contact)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_what_message
+  - user: |
+      Buy me a castle
+    intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - user: |
+      no
+    intent: decline
+  - action: action_feedback_msg_not_sent
 
-- story: bot challenge
+- story: Test 3 - Write new msg confirmation user
   steps:
   - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+      send a [Discord](medium_comm) message to [Lucas](contact)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_what_message
+  - user: |
+      I will be there soon
+    intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - user: |
+      yes
+    intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: Test 4 - Write new msg confirmation user with time
+  steps:
+  - user: |
+      write a [text](medium_comm) to [Thomas](contact) at [three p.m](time)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_what_message
+  - user: |
+      How are you?
+    intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - user: |
+      yes
+    intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: Test 5 - Write new msg Contact missing confirmation user
+  steps:
+  - user: |
+      write an [email](medium_comm)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      to [Jack](contact)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_what_message
+  - user: |
+      I need my book
+    intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - user: |
+      yes
+    intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: Test 8 - Write new msg Contact missing confirmation user
+  steps:
+  - user: |
+      write a message to [Emily](contact)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      [sms](medium_comm)
+    intent: write_new_msg
+  - action: action_confirm_new_msg_contact_medium
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_what_message
+  - user: |
+      I found my keys
+    intent: write_new_msg_content
+  - action: action_confirm_new_msg_content
+  - user: |
+      yep
+    intent: confirm
+  - action: action_sending_new_msg
+  - action: utter_feedback_msg_sent
+
+- story: Test 11 - Incoming call confirm 
+  steps:
+  - user: |
+      call [Ghostbusters](contact)
+    intent: call_contact
+  - action: utter_incoming_call
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_confirm_call
+  - action: action_reset_contact
+
+- story: Test 13 - Incoming call confirm
+  steps:
+  - user: |
+      call [Susan](contact)
+    intent: call_contact
+  - action: utter_incoming_call
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_confirm_call
+  - action: action_reset_contact
+
+- story: Test 14 - Making a call confirm
+  steps:
+  - user: |
+      call [Rose](contact)
+    intent: call_contact
+  - action: utter_confirm_call_contact
+  - user: |
+      no
+    intent: decline
+  - action: utter_feedback_call_cancelled
+  - action: action_reset_contact
+
+- story: Test 15 - Making a call and decline
+  steps:
+  - user: |
+      call [Monica](contact)
+    intent: call_contact
+  - action: utter_confirm_call_contact
+  - user: |
+      no
+    intent: decline
+  - action: utter_feedback_call_cancelled
+  - action: action_reset_contact
+
+- story: Test 16 - Incoming msg confirm read
+  steps:
+  - user: |
+      blablabloblo bamiclader [SMS](medium_comm) blablabloblo bamiclader [Jordan](contact)
+    intent: new_msg_received
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - user: |
+      yes
+    intent: confirm
+  - action: action_read_msg_received
+  - action: utter_do_I_repeat
+  - user: |
+      no
+    intent: decline
+  - action: action_reset_contact
+
+- story: Test 17 - Incoming msg confirm read + repeat
+  steps:
+  - user: |
+      blablabloblo bamiclader [Discord](medium_comm) blablabloblo bamiclader [Emily](contact)
+    intent: new_msg_received
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - user: |
+      yes
+    intent: confirm
+  - action: action_read_msg_received
+  - action: utter_do_I_repeat
+  - user: |
+      yes
+    intent: confirm
+  - action: action_read_msg_received
+  - action: action_reset_contact
+
+- story: Test 18 - Incoming msg confirm read + repeat
+  steps:
+  - user: |
+      blablabloblo bamiclader [SMS](medium_comm) blablabloblo bamiclader [Richard](contact)
+    intent: new_msg_received
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - user: |
+      no
+    intent: decline
+  - action: utter_should_I_show
+  - user: |
+      yes
+    intent: confirm
+  - action: action_write_msg_received 
+  - action: action_reset_contact
+
+- story: Test 19 - Incoming msg confirm don't read nor write
+  steps:
+  - user: |
+      blablabloblo bamiclader [SMS](medium_comm) blablabloblo bamiclader [Geralt](contact)    
+    intent: new_msg_received
+  - action: utter_inform_new_msg
+  - action: utter_should_I_read
+  - user: |
+      no
+    intent: decline
+  - action: utter_should_I_show
+  - user: |
+      no
+    intent: decline
+  - action: utter_do_nothing
+  - action: action_reset_contact
+
+- story: Test 20 - Setting an appointment 
+  steps: 
+  - user: |
+      Set an appointment to the [hairdresser](name_appointment) for [tomorrow](date) at [nine a.m](time)
+    intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - user: |
+      ok
+    intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: Test 22 - Delete an appointment confirm
+  steps: 
+  - user: |
+      Delete the appointment named [cinema](name_appointment) [wednesday](date) [at three](time)
+    intent: cancel_appointment
+  - action: action_confirm_delete_appointment
+  - user: |
+      exactly
+    intent: confirm
+  - action: utter_feedback_delete_appointment
+  - action: action_reset_appointment
+
+- story: Test 23 - Delete an appointment decline
+  steps: 
+  - user: |
+      Can you remove the appointment named [interview](name_appointment) of [monday](date) at [six](time) 
+    intent: cancel_appointment
+  - action: action_confirm_delete_appointment
+  - user: |
+      don't
+    intent: decline
+  - action: utter_feedback_delete_appointment_decline
+  - action: action_reset_appointment
+
+- story: Test 24 - Setting an appointment name, date and time missing # OK
+  steps: 
+  - user: |
+      Set an appointment
+    intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - user: |
+      lunch with friends
+    intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - user: |
+      on monday
+    intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - user: |
+      at three p.m
+    intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - user: |
+      yes
+    intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: Test 29 - Get memo appointment
+  steps:
+  - user: |
+      Hello!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Do I have any appointments today?
+    intent: get_appointment_memo
+  - action: action_give_memo_appointment
+  - user: |
+      thank you so much!
+    intent: thank_you
+  - action: utter_you_are_welcome
+
+
