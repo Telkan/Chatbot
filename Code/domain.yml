@@ -106,16 +106,6 @@ responses:
   - text: Should I read it aloud?
   - text: Do you want me to read it aloud?
   - text: Shall I read it to you?
-  - condition:
-    - name: medium_comm
-      type: slot
-      value: Voicemail
-    text: Do you want to hear it?
-  - condition:
-    - name: medium_comm
-      type: slot
-      value: Voicemail
-    text: Would you like to listen to it?
   utter_should_I_show:
   - text: Should I show it on the screen?
   - text: Do you want me to display it on the screen?
