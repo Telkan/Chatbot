@@ -8,6 +8,7 @@ import actionManager
 from flask import Flask,request
 
 
+
 def sendToChatbot(textToSend:str)->str:                
         """
         Send textToSend and return the answer
@@ -27,7 +28,6 @@ class ChatManager:
     @api.route('/', methods=['POST'])
     def post_catchAll():
         shouldEnd = False
-        print(request.json)
         if request.json["session"]["new"] == True: 
             text = "What can I do for you?"
             sendToChatbot("/restart")
@@ -37,9 +37,22 @@ class ChatManager:
             shouldEnd = True
 
         else:
-            text = request.json["request"]["intent"]["slots"]["text"]["value"]  
-            text = sendToChatbot(text)
-            text = text[0]["text"]
+            usertext = request.json["request"]["intent"]["slots"]["text"]["value"]  
+            if "exit" in usertext or "stop" in usertext:
+                text = "Alright see ya"
+                shouldEnd = True
+            else:
+                rasatext = sendToChatbot(usertext)
+                print(rasatext)
+                i = 0
+                text = ""
+                try:
+                    while True:
+                        text += rasatext[i]["text"]+"."
+                        i+=1     
+                except:
+                    pass
+            
         return {
                     "version": "1.0",
                     "sessionAttributes": {"status": "test"},
