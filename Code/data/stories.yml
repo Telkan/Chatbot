@@ -41,7 +41,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 4 - Write new msg confirmation user with time # NOK
+- story: 4 - Write new msg confirmation user with time # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -57,7 +57,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 5 - Write new msg Contact missing confirmation user # Mostly OK
+- story: 5 - Write new msg Contact missing confirmation user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -75,7 +75,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 6 - Write new msg Contact missing decline user
+- story: 6 - Write new msg Contact missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -92,7 +92,7 @@ stories:
   - intent: decline
   - action: action_feedback_msg_not_sent
 
-- story: 7 - Write new msg Contact missing decline user
+- story: 7 - Write new msg Contact missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -123,7 +123,7 @@ stories:
   - action: action_sending_new_msg
   - action: utter_feedback_msg_sent
 
-- story: 9 - Write new message medium missing decline user
+- story: 9 - Write new message medium missing decline user # OK
   steps:
   - intent: write_new_msg
     entities: 
@@ -217,7 +217,7 @@ stories:
   - action: utter_feedback_call_cancelled
   - action: action_reset_contact
 
-- story: 16 - Incoming msg confirm read 
+- story: 16 - Incoming msg confirm read # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -227,9 +227,11 @@ stories:
   - action: utter_should_I_read
   - intent: confirm
   - action: action_read_msg_received
+  - action: utter_do_I_repeat
+  - intent: decline
   - action: action_reset_contact
 
-- story: 17 - Incoming msg confirm read + repeat
+- story: 17 - Incoming msg confirm read + repeat # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -239,11 +241,12 @@ stories:
   - action: utter_should_I_read
   - intent: confirm
   - action: action_read_msg_received
-  - intent: can_you_repeat
+  - action: utter_do_I_repeat
+  - intent: confirm
   - action: action_read_msg_received
   - action: action_reset_contact
 
-- story: 18 - Incoming msg confirm write
+- story: 18 - Incoming msg confirm write # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -257,7 +260,7 @@ stories:
   - action: action_write_msg_received 
   - action: action_reset_contact
 
-- story: 19 - Incoming msg confirm don't read nor write
+- story: 19 - Incoming msg confirm don't read nor write # OK
   steps:
   - intent: new_msg_received
     entities:
@@ -270,3 +273,134 @@ stories:
   - intent: decline
   - action: utter_do_nothing
   - action: action_reset_contact 
+
+- story: 20 - Setting an appointment confirm # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: dentist 
+    - date: tuesday
+    - time: at two
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 21 - Setting an appointment decline # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: doctor
+    - date: monday
+    - time: nine
+  - action: action_confirm_new_appointment
+  - intent: decline
+  - action: utter_feedback_appointment_decline
+  - action: action_reset_appointment
+
+- story: 22 - Delete an appointment confirm # OK
+  steps: 
+  - intent: cancel_appointment
+    entities: 
+    - name_appointment: cinema 
+    - date: monday
+    - time: five
+  - action: action_confirm_delete_appointment
+  - intent: confirm
+  - action: utter_feedback_delete_appointment
+  - action: action_reset_appointment
+
+- story: 23 - Delete an appointment decline # OK
+  steps: 
+  - intent: cancel_appointment
+    entities: 
+    - name_appointment: doctor
+    - date: monday
+    - time: nine
+  - action: action_confirm_delete_appointment
+  - intent: decline
+  - action: utter_feedback_delete_appointment_decline
+  - action: action_reset_appointment
+
+- story: 24 - Setting an appointment name, date and time missing # OK
+  steps: 
+  - intent: schedule_appointment
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities:
+    - name_appointment: doctor
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities:
+    - date: monday
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities:
+    - time: at three
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 25 - Setting an appointment date and time missing # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: hairdresser 
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities: 
+    - date: tomorrow 
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities: 
+    - time: at four p.m 
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 26 - Setting an appointment name missing # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - date: thursday
+    - time: at ten a.m
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: cinema
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 27 - Setting an appointment time missing # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: dentist 
+    - date: tuesday
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities: 
+    - time: at four p.m 
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment
+
+- story: 28 - Setting an appointment date missing # OK
+  steps: 
+  - intent: schedule_appointment
+    entities: 
+    - name_appointment: dentist 
+    - time: at two
+  - action: action_confirm_new_appointment
+  - intent: schedule_appointment
+    entities: 
+    - date: saturday
+  - action: action_confirm_new_appointment
+  - intent: confirm
+  - action: utter_feedback_appointment_confirm
+  - action: action_reset_appointment

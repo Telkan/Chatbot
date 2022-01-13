@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,13 +15,10 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
-    - cee you later
     - good night
     - bye
     - goodbye
@@ -30,14 +26,12 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: confirm
   examples: |
     - yes
@@ -54,7 +48,8 @@ nlu:
     - exact
     - exactly
     - read it
-
+    - YES
+    - yep
 - intent: decline
   examples: |
     - no
@@ -65,51 +60,58 @@ nlu:
     - no way
     - not really
     - not now
-    - I don't want
+    - I don't want that
     - later
     - don't
-
+    - nothing
 - intent: thank_you
   examples: |
     - thanks
     - thank you
     - many thanks
     - thank you so much
-
 - intent: write_new_msg
   examples: |
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [sister]{"entity": "contact", "value": "Sister"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.]{"entity":"time", "value" : "two p.m."}
-    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike]{"entity": "contact", "value": "Mike"} 
-    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie]{"entity": "contact", "value": "Julie"} [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
+    - write an [SMS](medium_comm) to my [sister]{"entity": "contact", "value": "Sister"}
+    - write an [SMS](medium_comm) to my [mom]{"entity": "contact", "value": "Mom"} at [two p.m.](time)
+    - write an [email]{"entity": "medium_comm", "value": "Email"} to [Mike](contact)
+    - Send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact) [tonight at nine]{"entity": "time", "value": "Tonight at nine"}
     - Can you write an [email]{"entity": "medium_comm", "value": "Email"} for me ?
     - Could you write a message through [discord]{"entity": "medium_comm", "value": "Discord"} for me ?
     - Can you write a [discord]{"entity": "medium_comm", "value": "Discord"} message for me ?
     - I need you to write a message
-    - to [Mom]{"entity": "contact", "value": "Mom"}
-    - [Lucas]{"entity": "contact", "value": "Lucas"}
-    - [Mike]{"entity": "contact", "value": "Mike"}
-    - [Mom]{"entity": "contact", "value": "Mom"}
-    - [Sister]{"entity": "contact", "value": "Sister"}
-    - [Paolo]{"entity": "contact", "value": "Paolo"}
-    - [Chandler]{"entity": "contact", "value": "Chandler"}
-    - by [SMS]{"entity": "medium_comm", "value": "SMS"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"} to [Mom]{"entity": "contact", "value": "Mom"}
-    - write an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - to [Mom](contact)
+    - [Lucas](contact)
+    - [Mike](contact)
+    - [Mom](contact)
+    - [Sister](contact)
+    - [Paolo](contact)
+    - [Chandler](contact)
+    - by [SMS](medium_comm)
+    - [Email](medium_comm)
+    - write an [SMS](medium_comm) to [Mom](contact)
+    - write an [SMS](medium_comm)
     - write a [text]{"entity": "medium_comm", "value": "SMS"}
-    - send an [SMS]{"entity": "medium_comm", "value": "SMS"}
+    - send an [SMS](medium_comm)
     - send a [text]{"entity": "medium_comm", "value": "SMS"}
-    - Send a message to [Tom]{"entity": "contact", "value": "Tom"} via [discord]{"entity": "medium_comm", "value": "Discord"}
-    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy]{"entity": "contact", "value": "Andy"}
-    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel]{"entity": "contact", "value": "Rachel"}
-
+    - Send a message to [Tom](contact) via [discord]{"entity": "medium_comm", "value": "Discord"}
+    - I want to address an [email]{"entity": "medium_comm", "value": "Email"} to [Andy](contact)
+    - I need to address a [text]{"entity": "medium_comm", "value": "SMS"} to [Rachel](contact)
+    - send a [text]{"entity": "medium_comm", "value": "SMS"} to [Julie](contact)
+    - write a message
+    - write to [Mom](contact)
+    - write an [email]{"entity": "medium_comm", "value": "Email"}
+    - send a [text]{"entity": "medium_comm", "value": "SMS"} to [Clément](contact)
+    - write a message to [Dad](contact) through [mail](medium_comm)
+    - write an [SMS](medium_comm) to [mom]{"entity": "contact", "value": "Mom"}
+    - To [Anaïs](contact)
 - intent: write_new_msg_content
   examples: |
     - I'm on my way
     - I am here
-    - Hi, how are you ?
-    - How you doin' ?
-    - see you soon
+    - Hi, how are you?
+    - How you doin'?
+    - See you soon
     - I am going to the grocery store
     - I am coming home
     - Buy me a pizza
@@ -121,95 +123,147 @@ nlu:
     - I am sorry I can't take your call right now
     - Sorry, I will call you back
     - I will call you back as soon as I can
-
-- intent: can_you_repeat
-  examples: |
-    - Could you repeat the message please?
-    - Repeat please
-    - Can you repeat?
-    - Repeat
-    - Again
-    - Can you say it again?
-    - Could you tell it again?
-
-- intent: do_I_have_new_msg
-  examples: |
-    - Do I have new [messages]{"entity": "medium_comm"} ?
-    - Do I have new [emails]{"entity": "medium_comm", "value": "Email"} ?
-    - Do I have new [voicemail]{"entity": "medium_comm", "value": "Voicemail"} from my [mom]{"entity": "contact", "value": "Mom"} ?
-    - Did I get any new [text]{"entity": "medium_comm", "value": "SMS"}?
-    - Did I get any new messages on [discord]{"entity": "medium_comm", "value": "Discord"}?
-    - Check my messages on [discord]{"entity": "medium_comm", "value": "Discord"}
-
+    - I have my keys
+    - I will call you back in ten
+    - I am coming
+    - I need my book
+    - I need help
+    - I am on my way
+    - I will not be coming home
+    - I am going to save the world
+    - I failed my exams
+    - I crashed the car
+    - I broke my car
+    - Where are we meeting tonight?
+    - Are you feeling better?
+    - I am doing groceries and coming back afterwards
+    - Don't come home now, I am not there
+    - I will be there in some minutes
+    - I would like to go the river with you
+    - Tell me when are you coming
 - intent: call_contact
   examples: |
-    - Call [Julie]{"entity": "contact", "value": "Julie"} please
+    - Call [Julie](contact) please
     - Could you call my [mom]{"entity": "contact", "value": "Mom"}?
-    - I want to call [Julie]{"entity": "contact", "value": "Julie"}
-    - I have to make a call to [Lucas]{"entity": "contact", "value": "Lucas"}
-    - Ring [Mike]{"entity": "contact", "value": "Mike"}
+    - I want to call [Julie](contact)
+    - I have to make a call to [Lucas](contact)
+    - Ring [Mike](contact)
     - Could you ring my [mom]{"entity": "contact", "value": "Mom"}?
-    - Make a call to [Julie]{"entity": "contact", "value": "Julie"}
+    - Make a call to [Julie](contact)
     - Phone [mom]{"entity": "contact", "value": "Mom"}
-    - Make a phone call to [Mike]{"entity": "contact", "value": "Mike"}
-
+    - Make a phone call to [Mike](contact)
+    - call [Mom](contact)
+    - Call [Mike](contact)
+    - Call [Sister](contact)
+    - Call [Clément](contact)
+    - Call [Julie](contact)
 - intent: schedule_appointment
   examples: |
-    - Schedule an appointment for the [dentist]{"entity": "name_appointment", "value": "Dentist"} [tuesday]{"entity": "date", "value": "Tuesday"} at [ten a.m]{"entity": "time", "value": "Ten a.m"}
-    - Can you add a new appointment in my agenda please ?
-    - Could you add an appointment [in five days]{"entity": "date", "value": "In five days"}
-    - I have a date [tomorrow]{"entity": "date", "value": "Tomorrow"} [evening at eight]{"entity": "time", "value": "Evening at eight"}
-    - Add an appointment [in two hours]{"entity": "time", "value": "In two hours"}
-    - Set an appointment for [friday]{"entity": "date", "value": "Friday"}
-    - [Next week]{"entity": "date", "value": "Next week"}
-    - The name is [Max's birthday]{"entity": "name_appointment", "value": "Max's birthday"}
-    - [Birthday party]{"entity": "name_appointment", "value": "Birthday party"}
-    - at [eleven]{"entity": "time", "value": "Eleven"}
-    - [two]{"entity": "time", "value": "Two"}
-
-- intent: modify_appointment
-  examples: |
-    - Can you move [tuesday]{"entity": "date", "value": "Tuesday"} appointment [friday]{"entity": "new_date", "value": "Friday"}?
-    - Can you change my dentist's{"entity": "name_appointment", "value": "Dentist"} appointment to [six o'clock]{"entity": "new_time", "value": "six"}?
-    - Can you change the appointment with my [doctor]{"entity": "name_appointment", "value": "doctor"} to [Monday]{"entity": "new_date", "value": "Monday"} at [ten a.m.]{"entity": "new_time", "value": "ten a.m."} ?
-
+    - Schedule an appointment for the [dentist](name_appointment) [tuesday](date) at [ten a.m](time)
+    - Schedule an appointment to the [cinema](name_appointment) [friday](date) at [six p.m](time)
+    - Schedule an appointment with my [doctor](name_appointment) [wednesday](date) at [four thirty p.m](time)
+    - Add an appointment with my [lawyer](name_appointment) [thursday](date) at [three](time)
+    - Set an appointment for a [work meeting](name_appointment) [the day after tomorrow](date) at [nine a.m](time)
+    - Can you add a new appointment in my agenda [tomorrow](date) please ?
+    - Set an appointment for [friday](date)
+    - Could you add an appointment [in five days](date)
+    - I have a date [tomorrow](date) [evening at eight](time)
+    - Add an appointment [in two hours](time)
+    - Could you add an appointment to the [hairdresser](name_appointment)?
+    - Can you set an appointment to [get vaccinated](name_appointment) please?
+    - [Next week](date)
+    - [tomorrow](date)
+    - [friday](date)
+    - on [thursday](date)
+    - The name is [Max's birthday](name_appointment)
+    - [Birthday party](name_appointment)
+    - Set it to [Cinema with June](name_appointment)
+    - [Opera](name_appointment)
+    - at [eleven](time)
+    - [two](time)
+    - at [ten a.m](time)
+    - [five p.m](time)
 - intent: cancel_appointment
   examples: |
-    - Cancel [all]{"entity": "quantity_msg", "value": "All"} my appointments for [today]{"entity": "date", "value": "Today"}
-    - Cancel my [four o'clock]{"entity": "time", "value": "Four o'clock"} appointment.
-
+    - Can you cancel [all](quantity_msg) my appointments for [tuesday](date)
+    - Cancel my [four o'clock](time) appointment.
+    - Cancel the appointment named [dentist](name_appointment)
+    - Could you cancel the appointment scheduled [friday](date) at [five](time).
+    - Can you delete [all](quantity_msg) my appointments for [today](date)
+    - Could you delete my [five o'clock](time) appointment.
+    - Delete the appointment named [cinema](name_appointment)
+    - Can you remove the appointment of [wednesday](date) at [four](time).
+    - Could you remove the appointment named [birthday](name_appointment)
+    - Remove the appointment scheduled [thursday](date) at [four](time).
 - intent: get_appointment_memo
   examples: |
-    - Remind me my [today]'s {"entity": "date", "value": "Today"} appointment
-    - Can you tell me when is the [dinner with my sister]{"entity": "name_appointment", "value": "Dinner with my sister"}
-
-- intent: contact_calling # false intent sent by .py file when incomming call, not from the user
+    - Can you remind me my appointments for today?
+    - Can I have a reminder of my appointments please?
+    - Could you remind me my appointments for the day?
+    - Do I have any appointments today?
+    - What are my appointments?
+    - Do I have anything planned today?
+    - Can you give me a memo of my incoming appointments?
+    - Do I have something scheduled today?
+    - Do I have something to do today?
+    - What are my plans for today?
+    - Have I got something particular to do today?
+    - Do I have somewhere to go?
+    - Do I have somewhere to be today?
+- intent: new_msg_received
   examples: |
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther]{"entity": "contact", "value": "Gunther"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom]{"entity": "contact", "value": "Mom"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike]{"entity": "contact", "value": "Mike"}
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister]{"entity": "contact", "value": "Sister"}
-
-- intent: new_msg_received # false intent sent by .py file when incoming message, not from the user
+    - Blablabloblo Bamiclader [SMS](medium_comm) Blablabloblo Bamiclader [Ross](contact)
+    - Blablabloblo Bamiclader [Email](medium_comm) Blablabloblo Bamiclader [Chandler](contact)
+    - Blablabloblo Bamiclader [Discord](medium_comm) Blablabloblo Bamiclader [Monica](contact)
+    - Blablabloblo Bamiclader [SMS](medium_comm) Blablabloblo Bamiclader [Joey](contact)
+    - Blablabloblo Bamiclader [Email](medium_comm) Blablabloblo Bamiclader [Rachel](contact)
+    - Blablabloblo Bamiclader [Discord](medium_comm) Blablabloblo Bamiclader [Phoebe](contact)
+    - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Janice](contact)
+    - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Richard](contact)
+- intent: contact_calling
   examples: |
-    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Ross]{"entity": "contact", "value": "Ross"} 
-    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Chandler]{"entity": "contact", "value": "Chandler"} 
-    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Monica]{"entity": "contact", "value": "Monica"}
-    - Blablabloblo Bamiclader [SMS]{"entity": "medium_comm", "value": "SMS"} Blablabloblo Bamiclader [Joey]{"entity": "contact", "value": "Joey"}
-    - Blablabloblo Bamiclader [Email]{"entity": "medium_comm", "value": "Email"} Blablabloblo Bamiclader [Rachel]{"entity": "contact", "value": "Rachel"} 
-    - Blablabloblo Bamiclader [Discord]{"entity": "medium_comm", "value": "Discord"} Blablabloblo Bamiclader [Phoebe]{"entity": "contact", "value": "Phoebe"}
-    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Janice]{"entity": "contact", "value": "Janice"}
-    - Blablabloblo Bamiclader [Voicemail]{"entity": "medium_comm", "value": "Voicemail"} Blablabloblo Bamiclader [Richard]{"entity": "contact", "value": "Richard"}
-
-
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister](contact)
+- synonym: Sister
+  examples: |
+    - sister
+    - sis
+- synonym: Mom
+  examples: |
+    - mom
+    - mama
+    - mommy
+    - mum
+- synonym: Email
+  examples: |
+    - email
+    - emails
+    - mail
+- synonym: SMS
+  examples: |
+    - text
+- synonym: Tonight at nine
+  examples: |
+    - tonight at nine
+- synonym: Discord
+  examples: |
+    - discord
+- synonym: Voicemail
+  examples: |
+    - voicemail
+- synonym: Today
+  examples: |
+    - today
+- synonym: Dinner with my sister
+  examples: |
+    - dinner with my sister
 - lookup: time
   examples: |
     - one o'clock
     - two o'clock
     - three o'clock
-    - four o'clock
-    - five o'clock
-    - six o'clock
     - seven o'clock
     - eight o'clock
     - nine o'clock
@@ -220,7 +274,6 @@ nlu:
     - noon
     - at one
     - at two
-    - at three
     - at four
     - at five
     - at six
@@ -228,21 +281,17 @@ nlu:
     - at eight
     - at nine
     - at ten
-    - at eleven
     - at twelve
     - tonight
     - morning
     - afternoon
     - at eight tonight
-    - tonight at nine
     - tomorrow morning at seven
     - at six a.m
+    - at six p.m
     - seven p.m
-
-
 - lookup: contact
   examples: |
-    - dad
     - brother
     - grandma
     - grandpa
@@ -262,21 +311,102 @@ nlu:
     - Pierre
     - Ramos
     - Dorianne
-
+    - Michael
+    - Patrick
+    - Josh
+    - Jack
+    - Johnny
+    - Jenny
+    - Kelly
+    - Bob
+    - Bruno
+    - Hakim
+    - Amy
+    - Alfred
+    - Aniss
+    - Bernard
+    - Bianca
+    - Bea
+    - Celia
+    - Cameron
+    - Charles
+    - Diana
+    - Dick
+    - David
+    - Emily
+    - Eric
+    - Franck
+    - Fiona
+    - Gerard
+    - Geralt
+    - Gloria
+    - Harry
+    - Heloise
+    - Ilona
+    - Isaac
+    - Jessica
+    - Jordan
+    - Kevin
+    - Killian
+    - Kimberley
+    - Leonardo
+    - Lucie
+    - Liam
+    - Lola
+    - Margaret
+    - Matthew
+    - Mark
+    - Mona
+    - Nathan
+    - Natalie
+    - Natasha
+    - Olga
+    - Olaf
+    - Oscar
+    - Patricia
+    - Parker
+    - Quentin
+    - Qweenie
+    - Rose
+    - Rosa
+    - Robert
+    - Romeo
+    - Romuald
+    - Sarah
+    - Sofian
+    - Sauron
+    - Susan
+    - Timothee
+    - Thomas
+    - Theo
+    - Tamira
+    - Thais
+    - Tiffany
+    - Ursula
+    - Uriel
+    - Ulysse
+    - Valentine
+    - Viviane
+    - Victor
+    - William
+    - Wilfried
+    - Wyona
+    - Wanda
+    - Xavier
+    - Xena
+    - Yolanda
+    - Yvonne
+    - Yann
+    - Yvan
+    - Zoe
+    - Zack
+    - Elvis
+    - Joan
 - lookup: date
   examples: |
-    - monday
-    - tuesday
-    - wednesday
-    - thursday
-    - friday
     - saturday
     - sunday
-    - today
-    - yesterday
-    - tomorrow
-    - next week
-    - newt month
+    - next month
     - january
     - february
     - march
@@ -290,31 +420,56 @@ nlu:
     - november
     - december
     - in two days
-    - two days ago
-    - three days ago
-    - four days ago
-    - five days ago
-    - a week ago
     - in ten days
-
-- lookup: quantity_msg
+    - monday first of october
+    - thursday twenty sixth of january
+    - friday the fifteenth
+    - the second of may
+    - on monday
+    - on tuesday
+    - on wednesday
+    - on thursday
+    - on friday
+    - on saturday
+    - on sunday
+    - for monday
+    - for tuesday
+    - for wednesday
+    - for thursday
+    - for friday
+    - for saturday
+    - for sunday
+- lookup: name_appointment
   examples: |
-    - all
-    - one
-    - two
-    - three
-    - four
-    - five
-    - six
-    - seven
-    - eight
-    - nine
-    - ten
-    - eleven
-    - twelve
-    - twenty
-    - thirty
-    - fifty
-    - three last
-    - six last
-    - five last
+    - dinner with Patrick
+    - lunch with Jamie
+    - ophtalmologist
+    - eye doctor
+    - veterinary
+    - surgeon
+    - meeting with boss
+    - vet
+    - museum
+    - theater
+    - mechanic
+    - study group
+    - beautician
+    - beers with friends
+    - lunch with team
+    - lunch with friends
+    - lunch
+    - dinner
+    - breakfast
+    - research meeting
+    - meeting
+    - interview
+    - internship meeting
+    - restaurant
+    - pub
+    - concert
+    - outdoor concert
+    - festival
+    - party
+    - surprise party
+    - wedding
+    - reception

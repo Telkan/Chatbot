@@ -25,10 +25,6 @@ intents:
     use_entities: true
 - schedule_appointment:
     use_entities: true
-- modify_appointment:
-    use_entities: true
-- can_you_repeat:
-    use_entities: true
 - cancel_appointment:
     use_entities: true
 - get_appointment_memo:
@@ -43,12 +39,9 @@ entities:
 - contact
 - reception_time
 - medium_comm
-- quantity_msg
 - name_apppointment
 - date
 - time
-- new_date
-- new_time
 - name_appointment
 slots:
   contact:
@@ -113,16 +106,6 @@ responses:
   - text: Should I read it aloud?
   - text: Do you want me to read it aloud?
   - text: Shall I read it to you?
-  - condition:
-        - type: slot
-          name: medium_comm
-          value: Voicemail
-    text: Do you want to hear it?
-  - condition:
-        - type: slot
-          name: medium_comm
-          value: Voicemail
-    text: Would you like to listen to it?
   utter_should_I_show:
   - text: Should I show it on the screen?
   - text: Do you want me to display it on the screen?
@@ -141,11 +124,21 @@ responses:
   - text: Could you please tell me the name of the appointment you have just mentionned?
   - text: Could you please precise the name of the appointment you are talking about?
   - text: What is the appointment's name please?
-  utter_reschedule_when:
-  - text: When would you like to reschedule this appointment?
-  - text: Can you specify when you would like to reschedule this appointment?
-  - text: Could you tell me when you would like this appoint to be rescheduled?
-  - text: Could you please tell me when you would like it to be rescheduled?
+  utter_feedback_appointment_confirm:
+  - text: Done, I set the appointment {name_appointment} {date} {time}.
+  - text: Sure, the following appointment was set; {name_appointment} {date} {time}.
+  - text: New appointment saved. {name_appointment} {date} {time}.
+  utter_feedback_appointment_decline:
+  - text: No worries, I haven't scheduled anything.
+  - text: Don't worry, it has not been programmed.
+  - text: Okay, mission aborted, no new appointment has been added.
+  utter_feedback_delete_appointment:
+  - text: Sure, it's done. Appointment {name_appointment} deleted.
+  - text: The appointment {name_appointment} has been deleted.
+  - text: I have deleted the appointment {name_appointment}.
+  utter_feedback_delete_appointment_decline:
+  - text: No worries, I haven't deleted the appointment.
+  - text: Okay, the appointment hasn't been deleted.
   utter_what_message:
   - text: What message would you like to send?
   - text: What should I send?
@@ -186,7 +179,11 @@ responses:
   - text: Alright, I won't read nor show you the message from {contact}.
   - text: Okay, I won't read it nor show it to you. The message from {contact} is saved though.
   - text: Sure, I won't do anything about the message from {contact}.
-
+  utter_do_I_repeat:
+  - text: Should I repeat the message?
+  - text: Do you want me to repeat?
+  - text: Would you like me to repeat the message?
+  - text: Do you want me to tell it once more?
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content
@@ -195,5 +192,9 @@ actions:
 - action_reset_contact
 - action_read_msg_received
 - action_write_msg_received
+- action_confirm_new_appointment
+- action_confirm_delete_appointment
+- action_reset_appointment
+- action_give_memo_appointment
 forms: {}
 e2e_actions: []

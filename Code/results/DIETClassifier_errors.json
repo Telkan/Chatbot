@@ -1,0 +1,53 @@
+[
+  {
+    "text": "write an SMS to my mom at two p.m.",
+    "entities": [
+      {
+        "start": 9,
+        "end": 12,
+        "value": "SMS",
+        "entity": "medium_comm"
+      },
+      {
+        "start": 19,
+        "end": 22,
+        "value": "Mom",
+        "entity": "contact"
+      },
+      {
+        "start": 26,
+        "end": 34,
+        "value": "two p.m.",
+        "entity": "time"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "time",
+        "start": 23,
+        "end": 29,
+        "value": "at two",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "medium_comm",
+        "start": 9,
+        "end": 12,
+        "confidence_entity": 0.9994438290596008,
+        "value": "SMS",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "contact",
+        "start": 19,
+        "end": 22,
+        "confidence_entity": 0.9993411898612976,
+        "value": "Mom",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]
