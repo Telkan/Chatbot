@@ -1,8 +1,6 @@
 import json
 
 
-
-
 def write_json(new_data, filename='SMS_DataBase.json'):
     with open(filename, 'r+') as file:
         # First we load existing data into a dict.
