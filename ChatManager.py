@@ -57,16 +57,20 @@ class ChatManager:
     def handle_action_manager_msg(self, medium, sender): # TIME
         # read the msg out loud and send it to chatbot
         print('CM: in handle action func in CM with info:')
-        print('CM: medium:',medium, '__sender:',sender)
+        print('CM: medium:',medium, '  sender:',sender)
 
-        #answer = self.sendToChatbot("THE PROTOCOL THAT  WE DECIDE I DON'T REMEMBER SORRY") # TODO create a message using the medium and sender
+        # new message incoming
+        msg = 'Blablabloblo Bamiclader ' + medium + ' Blablabloblo Bamiclader ' + sender # protocol for new message
 
-        #msg = "New {} from {}".format(medium, sender)
-        # TODO send message to chatbot
-        
-        # speech 
-        #self.textToSpeech(answer)
-        pass                                                          
+        sendToChatbot(msg) 
+
+    def handle_call(self, contact):
+        print('CM: in call function')
+
+        msg = 'Lattecannofee iiyama Lattecannofee iiyama willywonka {}'.format(contact)
+
+        sendToChatbot(msg)
+
 
     def startComProgram(self):
         """
