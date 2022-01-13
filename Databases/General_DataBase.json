@@ -47,14 +47,9 @@
                     "text": "Yoyoyoyoyoyoyo"
                 },
                 {
-                    "date": "05/01/2022, 15:16:02",
+                    "date": "06/01/2022, 15:16:02",
                     "from": "Razmo",
                     "text": "I'm a ratz doing rap"
-                },
-                {
-                    "date": "05/01/2022, 15:17:13",
-                    "from": "user",
-                    "text": "Don't say \"A fond les bananes\" plz"
                 }
             ]
         },
@@ -83,14 +78,14 @@
                     "text": "No."
                 },
                 {
-                    "date": "05/01/2022, 15:18:48",
+                    "date": "05/01/2022, 15:18:56",
                     "from": "Lucas",
                     "text": "Haha, I'm kidding, I created it yesterday :)"
                 }
             ]
         }
     ],
-    "discord_History": [
+    "DISCORD_History": [
         {
             "contactname": "voicemail",
             "mobilenumber": "null",
@@ -103,7 +98,7 @@
             ]
         }
     ],
-    "calls_History": [
+    "CALLS_History": [
         {
             "contactname": "random",
             "mobilenumber": "",
@@ -111,17 +106,17 @@
                 {
                     "date": "06/01/2022, 10:00",
                     "from": "random",
-                    "text": "Calls/random1.mp3"
+                    "text": "Databases/Calls/random1.mp3"
                 },
                 {
                     "date": "07/01/2022, 11:00",
                     "from": "random",
-                    "text": "Calls/random2.mp3"
+                    "text": "Databases/Calls/random2.mp3"
                 },
                 {
                     "date": "08/01/2022, 12:00",
                     "from": "random",
-                    "text": "Calls/random3.mp3"
+                    "text": "Databases/Calls/random3.mp3"
                 }
             ]
         },
@@ -132,7 +127,7 @@
                 {
                     "date": "09/01/2022, 13:00",
                     "from": "Boss",
-                    "text": "Calls/boss.mp3"
+                    "text": "Databases/Calls/boss.mp3"
                 }
             ]
         },
@@ -143,7 +138,7 @@
                 {
                     "date": "10/01/2022, 14:00",
                     "from": "dad",
-                    "text": "Calls/dad.mp3"
+                    "text": "Databases/Calls/dad.mp3"
                 }
             ]
         },
@@ -154,12 +149,12 @@
                 {
                     "date": "11/01/2022, 15:00",
                     "from": "mom",
-                    "text": "Calls/mom.mp3"
+                    "text": "Databases/Calls/mom.mp3"
                 }
             ]
         }
     ], 
-    "voicemail_History": [
+    "VM_History": [
         {
             "contactname": "Voicemail",
             "mobilenumber": "123",
@@ -167,8 +162,7 @@
                 {
                     "date": "",
                     "from": "Voicemail",
-                    "text": "Voicemails/welcome.mp3",
-                    "text_before": ""
+                    "text": "Databases/Voicemails/welcome.mp3"
                 }
             ]
         },
@@ -179,8 +173,7 @@
                 {
                     "date": "05/01/2022, 10:00",
                     "from": "Boss",
-                    "text": "Voicemails/boss.mp3",
-                    "text_before": "Voicemails/boss_voicemail.mp3"
+                    "text": "Databases/Voicemails/boss.mp3"
                 }
             ]
         },
@@ -191,8 +184,7 @@
                 {
                     "date": "05/01/2022, 9:30",
                     "from": "mom",
-                    "text": "Voicemails/mom.mp3",
-                    "text_before": "Voicemails/mom_before.mp3"
+                    "text": "Databases/Voicemails/mom.mp3"
                 }
             ]
         }
