@@ -1,41 +1,6 @@
 import json
 
 
-# TO CREATE DEFAULT DATABASE
-DB_SMS = {'SMS_History': []}
-DB_SMS['SMS_History'].append({
-    'contactname': 'voicemail',
-    'mobilenumber': '123',
-    'messages': [{
-        'date': "05/01/2022, 15:01:34",
-        'from': "voicemail",
-        'text': "You have 1 unread message from mom"
-    }]
-})
-DB_SMS['SMS_History'].append({
-    'contactname': "mom",
-    'mobilenumber': '0612345678',
-    'messages':
-    [{
-        'date': "02/01/2022, 09:04:52",
-        'from': "mom",
-        'text': "Howdoyoudoaspaceplease?"
-    }, {
-        'date': "04/01/2022, 01:12:14",
-        'from': "mom",
-        'text': "Where are you?"
-    }, {
-        'date': "04/01/2022, 12:54:48",
-        'from': "mom",
-        'text': "I can't find my phone, can you call me?"
-    }, {
-        'date': "04/01/2022, 12:56:12",
-        'from': "user",
-        'text': "You have it in your hand mom"
-    }]
-})
-with open('SMS_DataBase.json', 'w', encoding='utf-8') as f:
-    json.dump(DB_SMS, f, ensure_ascii=False, indent=4)
 
 
 def write_json(new_data, filename='SMS_DataBase.json'):

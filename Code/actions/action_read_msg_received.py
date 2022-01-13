@@ -35,9 +35,10 @@ class ActionReadMsgReceived(Action):
 
         contact = tracker.get_slot('contact')
         medium_comm = tracker.get_slot('medium_comm')
-
+        
+        text = 'Error in action read message received'  # if something wrong
         with actionManager.DATABASE_LOCK:
-            text = ChatManager.AM.lookup_message(contact, medium_comm) # untested, will talk with luca when we can.
+            text = ChatManager.AM.lookup_message(medium_comm, contact, usertype=contact, last=1)
         
         msg = "Ok, I am reading the message from " + str(contact) + " sent through " + str(medium_comm) + ". " + text #TODO
 

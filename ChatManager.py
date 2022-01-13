@@ -1,7 +1,6 @@
 import requests
 from flask import Flask,request
 
-
 def sendToChatbot(textToSend:str)->str:                
         """
         Send textToSend and return the answer
