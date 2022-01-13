@@ -32,13 +32,13 @@ class ActionConfirmNewAppointment(Action):
         #print("Date: " + str(date))
         #print("Time: " + str(time))
 
-        if(str(name_appointment)=="null" or str(date)=="Today" or str(time)=="now"): #if one of the required slots was not filled
+        if(str(name_appointment)=="null" or str(name_appointment)=="None" or str(date)=="Today" or str(time)=="now"): #if one of the required slots was not filled
             if(str(name_appointment)=="null"):
                 msg = "What is the name of your appointment?"
             else:
                 if(str(date)=="Today"):
                     msg = "Which day do you want to set your appointment?"
-                if(str(time)=="now"):
+                elif(str(time)=="now"):
                     msg = "At what time?"
         else: # all mandatory slots are filled
             msg = "Can you confirm that you want to set the appointment " + str(name_appointment) + " " + str(date) + " " + str(time) +"?"

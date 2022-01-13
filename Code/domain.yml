@@ -25,8 +25,6 @@ intents:
     use_entities: true
 - schedule_appointment:
     use_entities: true
-- can_you_repeat:
-    use_entities: true
 - cancel_appointment:
     use_entities: true
 - get_appointment_memo:
@@ -44,6 +42,8 @@ entities:
 - name_apppointment
 - date
 - time
+- name_appointment
+- quantity_msg
 slots:
   contact:
     type: rasa.shared.core.slots.TextSlot
@@ -190,6 +190,11 @@ responses:
   - text: Alright, I won't read nor show you the message from {contact}.
   - text: Okay, I won't read it nor show it to you. The message from {contact} is saved though.
   - text: Sure, I won't do anything about the message from {contact}.
+  utter_do_I_repeat:
+  - text: Should I repeat the message?
+  - text: Do you want me to repeat?
+  - text: Would you like me to repeat the message?
+  - text: Do you want me to tell it once more?
 actions:
 - action_confirm_new_msg_contact_medium
 - action_confirm_new_msg_content

@@ -34,11 +34,7 @@ class ActionConfirmAppointment(Action):
         #print("Time: " + str(time))
 
         if(str(name_appointment)=="null" or str(date)=="Today"): #if one of the required slots was not filled
-            if(str(name_appointment)=="null"):
-                msg = "What is the name of the appointment you want to delete?"
-            else:
-                if(str(date)=="Today"):
-                    msg = "Which day is this appointment scheduled?"
+            msg = "Sorry, I did not understand properly. Tell me again the name and date of the appointment you want to delete please."
         else: # all mandatory slots are filled
             if(str(time)=="now"):
                 msg = "Can you confirm that you want to delete the appointment " + str(name_appointment) + " " + str(date) + "?"

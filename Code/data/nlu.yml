@@ -17,10 +17,8 @@ nlu:
     - good afternoon
 - intent: goodbye
   examples: |
-    - good afternoon
     - cu
     - good by
-    - cee you later
     - good night
     - bye
     - goodbye
@@ -62,7 +60,7 @@ nlu:
     - no way
     - not really
     - not now
-    - I don't want
+    - I don't want that
     - later
     - don't
     - nothing
@@ -90,6 +88,7 @@ nlu:
     - [Paolo](contact)
     - [Chandler](contact)
     - by [SMS](medium_comm)
+    - [Email](medium_comm)
     - write an [SMS](medium_comm) to [Mom](contact)
     - write an [SMS](medium_comm)
     - write a [text]{"entity": "medium_comm", "value": "SMS"}
@@ -110,9 +109,9 @@ nlu:
   examples: |
     - I'm on my way
     - I am here
-    - Hi, how are you ?
-    - How you doin' ?
-    - see you soon
+    - Hi, how are you?
+    - How you doin'?
+    - See you soon
     - I am going to the grocery store
     - I am coming home
     - Buy me a pizza
@@ -126,19 +125,22 @@ nlu:
     - I will call you back as soon as I can
     - I have my keys
     - I will call you back in ten
-    - i am coming
+    - I am coming
     - I need my book
     - I need help
     - I am on my way
-- intent: can_you_repeat
-  examples: |
-    - Could you repeat the message please?
-    - Repeat please
-    - Can you repeat?
-    - Repeat
-    - Again
-    - Can you say it again?
-    - Could you tell it again?
+    - I will not be coming home
+    - I am going to save the world
+    - I failed my exams
+    - I crashed the car
+    - I broke my car
+    - Where are we meeting tonight?
+    - Are you feeling better?
+    - I am doing groceries and coming back afterwards
+    - Don't come home now, I am not there
+    - I will be there in some minutes
+    - I would like to go the river with you
+    - Tell me when are you coming
 - intent: call_contact
   examples: |
     - Call [Julie](contact) please
@@ -208,17 +210,6 @@ nlu:
     - Have I got something particular to do today?
     - Do I have somewhere to go?
     - Do I have somewhere to be today?
-- intent: contact_calling
-  examples: |
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther](contact)
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom](contact)
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike](contact)
-    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister](contact)
-    - Lattecannofee [Monica](contact)
-    - Lattecannofee [Chandler](contact)
-    - Lattecannofee [Mom](contact)
-    - Lattecannofee [Julie](contact)
-    - Lattecannofee iiyama Mom
 - intent: new_msg_received
   examples: |
     - Blablabloblo Bamiclader [SMS](medium_comm) Blablabloblo Bamiclader [Ross](contact)
@@ -229,6 +220,12 @@ nlu:
     - Blablabloblo Bamiclader [Discord](medium_comm) Blablabloblo Bamiclader [Phoebe](contact)
     - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Janice](contact)
     - Blablabloblo Bamiclader [Voicemail](medium_comm) Blablabloblo Bamiclader [Richard](contact)
+- intent: contact_calling
+  examples: |
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Gunther](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mom](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Mike](contact)
+    - Lattecannofee iiyama Lattecannofee iiyama willywonka [Sister](contact)
 - synonym: Sister
   examples: |
     - sister
@@ -314,6 +311,97 @@ nlu:
     - Pierre
     - Ramos
     - Dorianne
+    - Michael
+    - Patrick
+    - Josh
+    - Jack
+    - Johnny
+    - Jenny
+    - Kelly
+    - Bob
+    - Bruno
+    - Hakim
+    - Amy
+    - Alfred
+    - Aniss
+    - Bernard
+    - Bianca
+    - Bea
+    - Celia
+    - Cameron
+    - Charles
+    - Diana
+    - Dick
+    - David
+    - Emily
+    - Eric
+    - Franck
+    - Fiona
+    - Gerard
+    - Geralt
+    - Gloria
+    - Harry
+    - Heloise
+    - Ilona
+    - Isaac
+    - Jessica
+    - Jordan
+    - Kevin
+    - Killian
+    - Kimberley
+    - Leonardo
+    - Lucie
+    - Liam
+    - Lola
+    - Margaret
+    - Matthew
+    - Mark
+    - Mona
+    - Nathan
+    - Natalie
+    - Natasha
+    - Olga
+    - Olaf
+    - Oscar
+    - Patricia
+    - Parker
+    - Quentin
+    - Qweenie
+    - Rose
+    - Rosa
+    - Robert
+    - Romeo
+    - Romuald
+    - Sarah
+    - Sofian
+    - Sauron
+    - Susan
+    - Timothee
+    - Thomas
+    - Theo
+    - Tamira
+    - Thais
+    - Tiffany
+    - Ursula
+    - Uriel
+    - Ulysse
+    - Valentine
+    - Viviane
+    - Victor
+    - William
+    - Wilfried
+    - Wyona
+    - Wanda
+    - Xavier
+    - Xena
+    - Yolanda
+    - Yvonne
+    - Yann
+    - Yvan
+    - Zoe
+    - Zack
+    - Elvis
+    - Joan
 - lookup: date
   examples: |
     - saturday
@@ -337,3 +425,51 @@ nlu:
     - thursday twenty sixth of january
     - friday the fifteenth
     - the second of may
+    - on monday
+    - on tuesday
+    - on wednesday
+    - on thursday
+    - on friday
+    - on saturday
+    - on sunday
+    - for monday
+    - for tuesday
+    - for wednesday
+    - for thursday
+    - for friday
+    - for saturday
+    - for sunday
+- lookup: name_appointment
+  examples: |
+    - dinner with Patrick
+    - lunch with Jamie
+    - ophtalmologist
+    - eye doctor
+    - veterinary
+    - surgeon
+    - meeting with boss
+    - vet
+    - museum
+    - theater
+    - mechanic
+    - study group
+    - beautician
+    - beers with friends
+    - lunch with team
+    - lunch with friends
+    - lunch
+    - dinner
+    - breakfast
+    - research meeting
+    - meeting
+    - interview
+    - internship meeting
+    - restaurant
+    - pub
+    - concert
+    - outdoor concert
+    - festival
+    - party
+    - surprise party
+    - wedding
+    - reception
