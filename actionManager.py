@@ -10,10 +10,11 @@ from API.send_messages import send_msg
 # Pour la V1 -- API
 # Informer d'une nouvelle arrivée de message
 
-SMS_DB = "Databases/SMS/SMS_DataBase.json"
-VM_DB = "Databases/Voicemails/Voicemail_DataBase.json"
-CALLS_DB = "Databases/Calls/Calls_DataBase.json"
+#SMS_DB = "Databases/SMS/SMS_DataBase.json"
+#VM_DB = "Databases/Voicemails/Voicemail_DataBase.json"
+#CALLS_DB = "Databases/Calls/Calls_DataBase.json"
 GENERAL_DB = "Databases/General_DataBase_test.json"
+GENERAL_EVENT_DB = "Databases/General_event_DataBase_test.json"
 
 SMS_medium = "SMS"
 VM_medium = "VOICEMAIL"
